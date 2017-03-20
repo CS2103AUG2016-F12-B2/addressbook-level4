@@ -23,11 +23,6 @@ public interface Model {
     /** Adds the given task */
     void addTask(Task task) throws UniqueTaskList.DuplicateTaskException;
 
-    //@@author A0114395E
-    /** Adds the given task at a specified index */
-    void addTask(Task task, int idx) throws UniqueTaskList.DuplicateTaskException;
-    //@@author
-
     /**
      * Updates the person located at {@code filteredPersonListIndex} with {@code editedPerson}.
      *

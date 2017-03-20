@@ -31,7 +31,6 @@ public class AddCommand extends Command {
     public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the ToDoApp";
 
     private final Task toAdd;
-    private final int idx; // Optional adding of index
 
     /**
      * Creates an AddCommand using raw values.
@@ -39,7 +38,7 @@ public class AddCommand extends Command {
      * @throws IllegalValueException if any of the raw values are invalid
      */
     public AddCommand(String name, String start, String deadline,
-                        Integer priority, Set<String> tags, String notes, int idx)
+                        Integer priority, Set<String> tags, String notes)
             throws IllegalValueException {
         final Set<Tag> tagSet = new HashSet<>();
         for (String tagName : tags) {
@@ -53,18 +52,13 @@ public class AddCommand extends Command {
                 new UniqueTagList(tagSet),
                 new Notes(notes)
         );
-        this.idx = idx;
     }
 
     @Override
     public CommandResult execute() throws CommandException {
         assert model != null;
         try {
-            if (this.idx >= 0) {
-                model.addTask(toAdd, idx);
-            } else {
-                model.addTask(toAdd);
-            }
+            model.addTask(toAdd);
             return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
         } catch (UniqueTaskList.DuplicateTaskException e) {
             throw new CommandException(MESSAGE_DUPLICATE_TASK);
