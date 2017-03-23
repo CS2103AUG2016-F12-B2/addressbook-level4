@@ -244,7 +244,7 @@ public class ModelManager extends ComponentManager implements Model {
 
         @Override
         public boolean run(ReadOnlyTask task) {
-            return String.valueOf(task.getCompletion().value).toLowerCase().equals(completionValue.toLowerCase());
+            return String.valueOf(task.getCompletion().value).equalsIgnoreCase(completionValue);
         }
 
         @Override
