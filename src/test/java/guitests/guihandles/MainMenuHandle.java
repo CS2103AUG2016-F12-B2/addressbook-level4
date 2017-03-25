@@ -2,10 +2,10 @@ package guitests.guihandles;
 
 import java.util.Arrays;
 
+import f12b2.todoapp.TestApp;
 import guitests.GuiRobot;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
-import seedu.address.TestApp;
 
 /**
  * Provides a handle to the main menu of the app.

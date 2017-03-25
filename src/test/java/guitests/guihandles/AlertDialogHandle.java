@@ -1,9 +1,9 @@
 package guitests.guihandles;
 
+import f12b2.todoapp.ui.UiManager;
 import guitests.GuiRobot;
 import javafx.scene.control.DialogPane;
 import javafx.stage.Stage;
-import seedu.address.ui.UiManager;
 
 /**
  * A handle for the AlertDialog of the UI
