@@ -4,11 +4,11 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import f12b2.todoapp.commons.core.Messages;
+import f12b2.todoapp.logic.commands.AddCommand;
+import f12b2.todoapp.testutil.TestTask;
+import f12b2.todoapp.testutil.TestUtil;
 import guitests.guihandles.TaskCardHandle;
-import seedu.address.commons.core.Messages;
-import seedu.address.logic.commands.AddCommand;
-import seedu.address.testutil.TestTask;
-import seedu.address.testutil.TestUtil;
 
 public class AddCommandTest extends ToDoAppGuiTest {
 

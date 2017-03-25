@@ -6,8 +6,8 @@ import java.io.IOException;
 
 import org.junit.Test;
 
+import f12b2.todoapp.commons.events.storage.DataSavingExceptionEvent;
 import guitests.guihandles.AlertDialogHandle;
-import seedu.address.commons.events.storage.DataSavingExceptionEvent;
 
 public class ErrorDialogGuiTest extends ToDoAppGuiTest {
 

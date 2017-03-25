@@ -7,15 +7,15 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
+import f12b2.todoapp.TestApp;
+import f12b2.todoapp.model.person.ReadOnlyTask;
+import f12b2.todoapp.model.person.Task;
+import f12b2.todoapp.testutil.TestUtil;
 import guitests.GuiRobot;
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
-import seedu.address.TestApp;
-import seedu.address.model.person.ReadOnlyTask;
-import seedu.address.model.person.Task;
-import seedu.address.testutil.TestUtil;
 
 /**
  * Provides a handle for the panel containing the task list.

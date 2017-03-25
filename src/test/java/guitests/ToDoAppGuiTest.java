@@ -12,6 +12,13 @@ import org.junit.Rule;
 import org.junit.rules.TestName;
 import org.testfx.api.FxToolkit;
 
+import f12b2.todoapp.TestApp;
+import f12b2.todoapp.commons.core.EventsCenter;
+import f12b2.todoapp.commons.events.BaseEvent;
+import f12b2.todoapp.model.ToDoApp;
+import f12b2.todoapp.model.person.ReadOnlyTask;
+import f12b2.todoapp.testutil.TestUtil;
+import f12b2.todoapp.testutil.TypicalTestTasks;
 import guitests.guihandles.BrowserPanelHandle;
 import guitests.guihandles.CommandBoxHandle;
 import guitests.guihandles.MainGuiHandle;
@@ -21,13 +28,6 @@ import guitests.guihandles.TaskCardHandle;
 import guitests.guihandles.TaskListPanelHandle;
 import javafx.application.Platform;
 import javafx.stage.Stage;
-import seedu.address.TestApp;
-import seedu.address.commons.core.EventsCenter;
-import seedu.address.commons.events.BaseEvent;
-import seedu.address.model.ToDoApp;
-import seedu.address.model.person.ReadOnlyTask;
-import seedu.address.testutil.TestUtil;
-import seedu.address.testutil.TypicalTestTasks;
 
 /**
  * A GUI Test class for ToDoApp.

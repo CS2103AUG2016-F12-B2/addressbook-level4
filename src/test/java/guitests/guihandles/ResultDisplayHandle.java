@@ -1,9 +1,9 @@
 package guitests.guihandles;
 
+import f12b2.todoapp.TestApp;
 import guitests.GuiRobot;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
-import seedu.address.TestApp;
 
 /**
  * A handler for the ResultDisplay of the UI

@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import seedu.address.model.person.ReadOnlyTask;
+import f12b2.todoapp.model.person.ReadOnlyTask;
 
 public class SelectCommandTest extends ToDoAppGuiTest {
 
