@@ -1,6 +1,7 @@
 //@@author A0114395E
 package seedu.address.model;
 
+import java.text.ParseException;
 import java.util.Stack;
 
 import seedu.address.commons.exceptions.IllegalValueException;
@@ -57,8 +58,9 @@ public class StateManager {
      * stack
      * @throws CommandException
      * @throws IllegalValueException
+     * @throws ParseException 
      */
-    public void undo() throws CommandException, IllegalValueException {
+    public void undo() throws CommandException, IllegalValueException, ParseException {
         if (undoStack.isEmpty()) {
             // Can't undo as no history
             System.out.println("No undo commands found");
@@ -76,8 +78,9 @@ public class StateManager {
      * the undo stack
      * @throws CommandException
      * @throws IllegalValueException
+     * @throws ParseException 
      */
-    public void redo() throws CommandException, IllegalValueException {
+    public void redo() throws CommandException, IllegalValueException, ParseException {
         if (redoStack.isEmpty()) {
             // Can't redo as no history
             System.out.println("No redo commands found");

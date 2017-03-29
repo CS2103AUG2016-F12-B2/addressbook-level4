@@ -1,6 +1,8 @@
 //@@author A0114395E
 package seedu.address.model;
 
+import java.text.ParseException;
+
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -26,8 +28,9 @@ public class StateCommandPair {
      * Executes the command previously entered (for redo)
      * @throws CommandException
      * @throws IllegalValueException
+     * @throws ParseException 
      */
-    public void executeCommand() throws CommandException, IllegalValueException {
+    public void executeCommand() throws CommandException, IllegalValueException, ParseException {
         this.executeCommand.setData(model);
         this.executeCommand.execute();
     }
@@ -36,8 +39,9 @@ public class StateCommandPair {
      * Executes the inverse of the command previously entered (for undo)
      * @throws CommandException
      * @throws IllegalValueException
+     * @throws ParseException 
      */
-    public void executeInverseCommand() throws CommandException, IllegalValueException {
+    public void executeInverseCommand() throws CommandException, IllegalValueException, ParseException {
         System.out.println("State Pair - executing undo");
         this.undoCommand.setData(model);
         this.undoCommand.execute();

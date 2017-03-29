@@ -1,5 +1,7 @@
 package seedu.address.logic;
 
+import java.text.ParseException;
+
 import javafx.collections.ObservableList;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.CommandResult;
@@ -18,8 +20,9 @@ public interface Logic {
      * @throws CommandException
      *             If an error occurs during command execution.
      * @throws IllegalValueException
+     * @throws ParseException 
      */
-    CommandResult execute(String commandText) throws CommandException, IllegalValueException;
+    CommandResult execute(String commandText) throws CommandException, IllegalValueException, ParseException;
 
     /** Returns the filtered list of persons */
     ObservableList<ReadOnlyTask> getFilteredTaskList();

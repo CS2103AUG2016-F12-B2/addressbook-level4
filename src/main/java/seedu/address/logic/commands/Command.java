@@ -1,5 +1,7 @@
 package seedu.address.logic.commands;
 
+import java.text.ParseException;
+
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -31,8 +33,9 @@ public abstract class Command {
      * @throws CommandException
      *             If an error occurs during command execution.
      * @throws IllegalValueException
+     * @throws ParseException 
      */
-    public abstract CommandResult execute() throws CommandException, IllegalValueException;
+    public abstract CommandResult execute() throws CommandException, IllegalValueException, ParseException;
 
     /**
      * Provides any needed dependencies to the command. Commands making use of
