@@ -48,8 +48,8 @@ public class Deadline {
 
     //@@author A0114395E
     /**
-     * 
-     * @throws ParseException 
+     *
+     * @throws ParseException
      * @returns the date object
      */
     public Date getDate() throws ParseException {

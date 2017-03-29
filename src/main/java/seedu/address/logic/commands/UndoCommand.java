@@ -5,6 +5,7 @@ import java.text.ParseException;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.StateManager;
+import seedu.address.model.person.UniqueTaskList.TaskInvalidTimestampsException;
 
 /**
  * Undo most recent command
@@ -17,7 +18,8 @@ public class UndoCommand extends Command {
     private final StateManager stateManager = StateManager.getInstance();
 
     @Override
-    public CommandResult execute() throws CommandException, IllegalValueException, ParseException {
+    public CommandResult execute()
+            throws CommandException, IllegalValueException, ParseException, TaskInvalidTimestampsException {
         if (stateManager.undoStackHasCommands()) {
             stateManager.undo();
             return new CommandResult(MESSAGE_SUCCESS);

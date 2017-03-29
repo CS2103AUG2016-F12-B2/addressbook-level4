@@ -15,6 +15,7 @@ import seedu.address.commons.util.FxViewUtil;
 import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.person.UniqueTaskList.TaskInvalidTimestampsException;
 
 public class CommandBox extends UiPart<Region> {
     private final Logger logger = LogsCenter.getLogger(CommandBox.class);
@@ -40,7 +41,8 @@ public class CommandBox extends UiPart<Region> {
     }
 
     @FXML
-    private void handleCommandInputChanged() throws IllegalValueException, ParseException {
+    private void handleCommandInputChanged()
+            throws IllegalValueException, ParseException, TaskInvalidTimestampsException {
         try {
             CommandResult commandResult = logic.execute(commandTextField.getText());
 

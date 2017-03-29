@@ -15,6 +15,7 @@ import seedu.address.model.Model;
 import seedu.address.model.StateCommandPair;
 import seedu.address.model.StateManager;
 import seedu.address.model.person.ReadOnlyTask;
+import seedu.address.model.person.UniqueTaskList.TaskInvalidTimestampsException;
 import seedu.address.storage.Storage;
 
 /**
@@ -33,7 +34,8 @@ public class LogicManager extends ComponentManager implements Logic {
     }
 
     @Override
-    public CommandResult execute(String commandText) throws CommandException, IllegalValueException, ParseException {
+    public CommandResult execute(String commandText)
+            throws CommandException, IllegalValueException, ParseException, TaskInvalidTimestampsException {
         logger.info("----------------[USER COMMAND][" + commandText + "]");
         Command command = parser.parseCommand(commandText);
         command.setData(model);
