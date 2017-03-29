@@ -3,6 +3,10 @@
 
 package seedu.address.model.person;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import seedu.address.commons.exceptions.IllegalValueException;
 
 /**
@@ -41,6 +45,19 @@ public class Deadline {
     public static boolean isValidDeadline(String test) {
         return true;
     }
+
+    //@@author A0114395E
+    /**
+     * 
+     * @throws ParseException 
+     * @returns the date object
+     */
+    public Date getDate() throws ParseException {
+        SimpleDateFormat df = new SimpleDateFormat("EEE MMM dd kk:mm:ss yyyy");
+        Date date = df.parse(this.value);
+        return date;
+    }
+    //@@author
 
     @Override
     public String toString() {
