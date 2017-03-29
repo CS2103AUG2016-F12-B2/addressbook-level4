@@ -12,14 +12,16 @@ import seedu.address.logic.commands.exceptions.CommandException;
 public class StateManager {
 
     private static StateManager instance = null;
+    private Model model = null;
     private Stack<StateCommandPair> undoStack;
     private Stack<StateCommandPair> redoStack;
-    private Stack<Model> modelStack;
+    private Stack<ReadOnlyToDoApp> previousDataStack;
 
     // Exists only to defeat instantiation.
     protected StateManager() {
         undoStack = new Stack<StateCommandPair>();
         redoStack = new Stack<StateCommandPair>();
+        previousDataStack = new Stack<ReadOnlyToDoApp>();
     }
 
     // Returns the singleton instance
@@ -28,6 +30,11 @@ public class StateManager {
             instance = new StateManager();
         }
         return instance;
+    }
+
+    // Updates the Model in StateManager
+    public void setModel(Model model) {
+        this.model = model;
     }
 
     /**
@@ -47,8 +54,8 @@ public class StateManager {
     /**
      * Check if stack exist for models
      */
-    public boolean modelStackHasCommands() {
-        return !modelStack.isEmpty();
+    public boolean previousDataStackHasCommands() {
+        return !previousDataStack.isEmpty();
     }
 
     /**
@@ -97,4 +104,21 @@ public class StateManager {
             currentCommand.executeCommand();
         }
     }  
+
+    /**
+     * Restores previous data (i.e undo a clear command )
+     * 
+     * @throws CommandException
+     * @throws IllegalValueException
+     */
+    public void restoreData() throws CommandException, IllegalValueException {
+        if (previousDataStack.isEmpty()) {
+            // Can't undo as no history
+            System.out.println("No previous data found");
+        } else {
+            // Moving command from undo to redo
+            ReadOnlyToDoApp previousData = previousDataStack.pop();
+            this.model.resetData(previousData);
+        }
+    }
 }

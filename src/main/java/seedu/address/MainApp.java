@@ -23,6 +23,7 @@ import seedu.address.logic.LogicManager;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyToDoApp;
+import seedu.address.model.StateManager;
 import seedu.address.model.ToDoApp;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.util.SampleDataUtil;
@@ -60,6 +61,8 @@ public class MainApp extends Application {
         initLogging(config);
 
         model = initModelManager(storage, userPrefs);
+        
+        StateManager.getInstance().setModel(model);
 
         logic = new LogicManager(model, storage);
 
