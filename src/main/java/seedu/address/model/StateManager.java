@@ -14,6 +14,7 @@ public class StateManager {
     private static StateManager instance = null;
     private Stack<StateCommandPair> undoStack;
     private Stack<StateCommandPair> redoStack;
+    private Stack<Model> modelStack;
 
     // Exists only to defeat instantiation.
     protected StateManager() {
@@ -41,6 +42,13 @@ public class StateManager {
      */
     public boolean undoStackHasCommands() {
         return !undoStack.isEmpty();
+    }
+
+    /**
+     * Check if stack exist for models
+     */
+    public boolean modelStackHasCommands() {
+        return !modelStack.isEmpty();
     }
 
     /**
@@ -88,5 +96,5 @@ public class StateManager {
             // Executing redo command
             currentCommand.executeCommand();
         }
-    }
+    }  
 }
