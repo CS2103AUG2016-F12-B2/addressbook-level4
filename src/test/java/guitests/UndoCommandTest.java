@@ -83,7 +83,7 @@ public class UndoCommandTest extends ToDoAppGuiTest {
      */
     private void assertUndoCommandSuccess(TestTask[] expectedList) {
         commandBox.runCommand("undo");
-        assertTrue(taskListPanel.isListMatching(td.getTypicalTasks()));
+        assertTrue(taskListPanel.isListMatching(expectedList));
         assertResultMessage(UndoCommand.MESSAGE_SUCCESS);
     }
 }
