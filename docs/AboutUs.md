@@ -4,10 +4,24 @@ We are a team based in the [School of Computing, National University of Singapor
 
 ## Project Team
 
-#### [Lim Jing Rong](http://github.com/jjingrong)
+#### [Lim Jing Rong](http://jjingrong.com) [@jjingrong](http://github.com/jjingrong)
 <img src="images/jjingrong.png" width="150"><br>
-Role: Team Lead, Developer <br>
-Responsibilities: Deliverables and deadlines, Documentation, Parsing, Integration, Scheduling, Tracking and Professional Firefighter.
+
+* Components in charge of: [Parsing](https://github.com/CS2103JAN2017-F12-B2/main/blob/master/docs/DeveloperGuide.md#parsing-component)
+* Aspects/tools in charge of: Git, Project Management, Issue tracking, CI
+* Features implemented:
+   * [Undo/Redo](https://github.com/CS2103JAN2017-F12-B2/main/blob/master/docs/UserGuide.md#undo)
+   * [Edit](https://github.com/se-edu/addressbook-level4/blob/master/docs/UserGuide.md#edit)
+   * [Rich Parsing](https://github.com/se-edu/addressbook-level4/blob/master/docs/UserGuide.md#add)   
+<!-- todo code written -->
+* Code written: [[functional code](A0114395E.md)][[test code](A0114395E.md)]
+* Other major contributions:
+  * Set up Travis, Coveralls, Codacy, Appveyor.
+  * Added libraries for Date Parsing
+  * Fixed the initial refactoring for Find/Edit commands
+  * Fixed most initial checkstyle issues during refactor
+  * Tagging and write-up for releases every week
+  * Changed color scheme of the application
 
 ----
 
