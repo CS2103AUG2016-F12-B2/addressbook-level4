@@ -31,6 +31,13 @@ public class UndoCommandTest extends ToDoAppGuiTest {
         assertDeleteSuccess(targetIndex, currentList);
 
         assertUndoCommandSuccess(td.getTypicalTasks());
+
+        // Test CLEAR
+        //verify a non-empty list can be cleared
+        currentList = td.getTypicalTasks();
+        assertClearCommandSuccess(); 
+
+        assertUndoCommandSuccess(td.getTypicalTasks());
     }
 
     private void assertAddSuccess(TestTask taskToAdd, TestTask... currentList) {
@@ -61,6 +68,15 @@ public class UndoCommandTest extends ToDoAppGuiTest {
 
         //confirm the result message is correct
         assertResultMessage(String.format(MESSAGE_DELETE_TASK_SUCCESS, taskToDelete));
+    }
+
+    /*
+     * Runs the clear command, and check that the list is empty
+     */
+    private void assertClearCommandSuccess() {
+        commandBox.runCommand("clear");
+        assertListSize(0);
+        assertResultMessage("ToDoApp has been cleared!");
     }
 
     private void assertUndoCommandSuccess(TestTask[] expectedList) {
