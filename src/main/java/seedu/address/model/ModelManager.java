@@ -18,6 +18,7 @@ import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.NattyParser;
 import seedu.address.model.person.Deadline;
 import seedu.address.model.person.ReadOnlyTask;
+import seedu.address.model.person.Start;
 import seedu.address.model.person.Task;
 import seedu.address.model.person.UniqueTaskList;
 import seedu.address.model.person.UniqueTaskList.TaskNotFoundException;
@@ -185,6 +186,35 @@ public class ModelManager extends ComponentManager implements Model {
         @Override
         public String toString() {
             return "name=" + String.join(", ", nameKeyWords);
+        }
+    }
+
+    // @@author A0124591H
+    private class StartQualifier implements Qualifier {
+        private String startKeyString;
+        private Start startKeyStart;
+
+        StartQualifier(String[] startKeyInput) {
+            NattyParser nattyParser = NattyParser.getInstance();
+            this.startKeyString = nattyParser
+                    .parseNLPDate(Arrays.toString(startKeyInput).replaceAll("[^A-Za-z0-9 ]", ""));
+        }
+
+        @Override
+        public boolean run(ReadOnlyTask task) {
+            try {
+                startKeyStart = new Start(startKeyString);
+                return task.getDeadline().equals(startKeyStart);
+            } catch (IllegalValueException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            return false;
+        }
+
+        @Override
+        public String toString() {
+            return "start=" + String.join(", ", startKeyString);
         }
     }
 
