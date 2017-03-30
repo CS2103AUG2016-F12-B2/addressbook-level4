@@ -114,16 +114,18 @@ public class ModelManager extends ComponentManager implements Model {
     public void updateFilteredTaskList(String[] keywords) {
         final Set<String> keywordSet = new HashSet<>(Arrays.asList(keywords));
         String[] trimmedKeywords = Arrays.copyOfRange(keywords, 1, keywords.length);
-        if (keywordSet.contains("name")) {
-            keywordSet.remove("name");
+        if (keywordSet.contains("n/")) {
+            keywordSet.remove("n/");
             updateFilteredTaskList(new PredicateExpression(new NameQualifier(keywordSet)));
-        } else if (keywordSet.contains("deadline")) {
+        } else if (keywordSet.contains("d/")) {
             updateFilteredTaskList(new PredicateExpression(new DeadlineQualifier(trimmedKeywords)));
-        } else if (keywordSet.contains("priority")) {
-            keywordSet.remove("priority");
+        } else if (keywordSet.contains("s/")) {
+            updateFilteredTaskList(new PredicateExpression(new StartQualifier(trimmedKeywords)));
+        } else if (keywordSet.contains("p/")) {
+            keywordSet.remove("p/");
             updateFilteredTaskList(new PredicateExpression(
                     new PriorityQualifier(Integer.parseInt(Joiner.on(" ").skipNulls().join(keywordSet)))));
-        } else if (keywordSet.contains("completion")) {
+        } else if (keywordSet.contains("c/")) {
             updateFilteredTaskList(new PredicateExpression(new CompletionQualifier(trimmedKeywords)));
         }
     }
