@@ -61,7 +61,7 @@ public class MainApp extends Application {
         initLogging(config);
 
         model = initModelManager(storage, userPrefs);
-        
+
         StateManager.getInstance().setModel(model);
 
         logic = new LogicManager(model, storage);

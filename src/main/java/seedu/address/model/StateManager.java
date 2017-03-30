@@ -68,6 +68,15 @@ public class StateManager {
     }
 
     /**
+     * On each clear command, we store the current model,
+     * in case the user wants to undo that clear command
+     */
+    public void onClearCommand(ReadOnlyToDoApp data) {
+        ToDoApp currentData = new ToDoApp(data);
+        this.previousDataStack.push(currentData);
+    }
+
+    /**
      * Undo the most recent command, then store that undo command in a redo
      * stack
      * @throws CommandException
@@ -103,11 +112,11 @@ public class StateManager {
             // Executing redo command
             currentCommand.executeCommand();
         }
-    }  
+    }
 
     /**
      * Restores previous data (i.e undo a clear command )
-     * 
+     *
      * @throws CommandException
      * @throws IllegalValueException
      */
@@ -116,7 +125,6 @@ public class StateManager {
             // Can't undo as no history
             System.out.println("No previous data found");
         } else {
-            // Moving command from undo to redo
             ReadOnlyToDoApp previousData = previousDataStack.pop();
             this.model.resetData(previousData);
         }

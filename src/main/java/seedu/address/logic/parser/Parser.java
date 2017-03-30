@@ -20,10 +20,12 @@ import seedu.address.logic.commands.IncorrectCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.MarkCommand;
 import seedu.address.logic.commands.RedoCommand;
+import seedu.address.logic.commands.RestoreModelCommand;
 import seedu.address.logic.commands.SelectCommand;
 import seedu.address.logic.commands.UndoCommand;
 import seedu.address.logic.commands.UnmarkCommand;
 import seedu.address.model.Model;
+import seedu.address.model.StateManager;
 import seedu.address.model.person.ReadOnlyTask;
 
 /**
@@ -135,6 +137,11 @@ public class Parser {
 
         case AddCommand.COMMAND_WORD:
             return new DeleteCommand(lastShownList.size() + 1);
+
+        case ClearCommand.COMMAND_WORD:
+            // We need to save the current data
+            StateManager.getInstance().onClearCommand(model.getToDoApp());
+            return new RestoreModelCommand();
 
         case EditCommand.COMMAND_WORD:
             return new EditCommandParser().parseInverse(arguments, lastShownList);
