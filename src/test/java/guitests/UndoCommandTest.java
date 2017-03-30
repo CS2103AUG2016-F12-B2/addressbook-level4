@@ -79,6 +79,9 @@ public class UndoCommandTest extends ToDoAppGuiTest {
         assertResultMessage("ToDoApp has been cleared!");
     }
 
+    /*
+     * Runs the undo command, and check that the list is back to the previous state
+     */
     private void assertUndoCommandSuccess(TestTask[] expectedList) {
         commandBox.runCommand("undo");
         assertTrue(taskListPanel.isListMatching(td.getTypicalTasks()));
