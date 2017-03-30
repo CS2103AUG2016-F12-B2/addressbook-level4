@@ -17,7 +17,7 @@ public class Block {
      * The first character of the start must not be a whitespace, otherwise " "
      * (a blank string) becomes a valid input.
      */
-    public static final String DEADLINE_VALIDATION_REGEX = "([^\\s])+";
+    public static final String BLOCK_VALIDATION_REGEX = "[A-Za-z0-9 ]+[to][A-Za-z0-9 ]+";
     public static final String STRING_CONCATENATOR = " to ";
 
     public final String[] blockPeriod;
@@ -31,7 +31,7 @@ public class Block {
      */
     public Block(String blockPeriod) throws IllegalValueException {
         assert blockPeriod != null;
-        if (!isValidBlock(blockPeriod)) {
+        if (!isValidBlock(blockPeriod)  && blockPeriod.length() > 0) {
             throw new IllegalValueException(MESSAGE_START_CONSTRAINTS);
         }
         this.blockPeriodWhole = blockPeriod;
@@ -44,7 +44,7 @@ public class Block {
      * Returns true if a given string is a valid start.
      */
     public static boolean isValidBlock(String test) {
-        return true;
+        return test.matches(BLOCK_VALIDATION_REGEX);
     }
 
     @Override

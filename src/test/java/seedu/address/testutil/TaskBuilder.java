@@ -1,12 +1,14 @@
 package seedu.address.testutil;
 
 import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.model.person.Block;
 import seedu.address.model.person.Completion;
 import seedu.address.model.person.Deadline;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Notes;
 import seedu.address.model.person.Priority;
 import seedu.address.model.person.Start;
+import seedu.address.model.person.UniqueBlockList;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.tag.UniqueTagList;
 
@@ -21,6 +23,7 @@ public class TaskBuilder {
         this.task = new TestTask();
     }
 
+    //@@author: A0124591H
     /**
      * Initializes the TaskBuilder with the data of {@code taskToCopy}.
      */
@@ -48,6 +51,14 @@ public class TaskBuilder {
         return this;
     }
 
+    public TaskBuilder withBlocks(String... blocks) throws IllegalValueException {
+        task.setBlocks(new UniqueBlockList());
+        for (String block : blocks) {
+            task.getBlocks().add(new Block(block));
+        }
+        return this;
+    }
+    
     public TaskBuilder withTags(String... tags) throws IllegalValueException {
         task.setTags(new UniqueTagList());
         for (String tag : tags) {

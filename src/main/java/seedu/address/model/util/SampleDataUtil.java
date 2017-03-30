@@ -21,7 +21,7 @@ public class SampleDataUtil {
                 // @@author A0124591H
                 new Task(new Name("Buy printer"), new Start("today"), new Deadline("tomorrow"), new Priority(1),
                         new UniqueTagList("shopping"), new Notes("this is a note"), new Completion("true"),
-                        new UniqueBlockList("")),
+                        new UniqueBlockList("today to tmr")),
                 new Task(new Name("Go to the gym"), new Start(""), new Deadline(""), new Priority(0),
                         new UniqueTagList("exercise"), new Notes(""), new Completion(""),
                         new UniqueBlockList("today to tmr")), };
