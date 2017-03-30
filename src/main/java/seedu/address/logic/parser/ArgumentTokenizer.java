@@ -27,6 +27,8 @@ public class ArgumentTokenizer {
 
     /** Arguments found after tokenizing **/
     private final Map<Prefix, List<String>> tokenizedArguments = new HashMap<>();
+    
+    private final String BLOCK_CONCATENATOR = " to ";
 
     /**
      * Creates an ArgumentTokenizer that can tokenize arguments string as described by prefixes
@@ -163,7 +165,7 @@ public class ArgumentTokenizer {
             if (splitValue.length == 2) {
                 startValue = nattyParser.parseNLPDate(splitValue[0]);
                 endValue = nattyParser.parseNLPDate(splitValue[1]);
-                value = startValue + " to " + endValue;
+                value = startValue + BLOCK_CONCATENATOR + endValue;
             }
         }
         //@@author
