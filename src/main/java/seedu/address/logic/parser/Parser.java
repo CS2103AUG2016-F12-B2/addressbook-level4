@@ -139,7 +139,7 @@ public class Parser {
             return new DeleteCommand(lastShownList.size() + 1);
 
         case ClearCommand.COMMAND_WORD:
-            // We need to save the current data
+            // Saving the current data
             StateManager.getInstance().onClearCommand(model.getToDoApp());
             return new RestoreModelCommand();
 
