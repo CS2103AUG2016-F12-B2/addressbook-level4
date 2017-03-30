@@ -1,16 +1,16 @@
 //@@author A0114395E
 package seedu.address.logic.parser;
 
-import java.util.Arrays;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.joestelmach.natty.DateGroup;
 
 public class NattyParser {
     private static NattyParser instance = null;
-    private static String EMPTY_VALUE = "-";
-    private static int TIMEZONE_IDX = 4;
+    private static final String EMPTY_VALUE = "-";
+    private static final int TIMEZONE_IDX = 4;
     // Exists only to defeat instantiation.
     protected NattyParser() {
     }
