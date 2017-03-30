@@ -121,6 +121,10 @@ public class ParserUtil {
             task.getTags().forEach(tagBuilder::append);
             // Remove square brackets for tags
             builder.append(tagBuilder.toString().replaceAll("\\[", "").replaceAll("\\]", ""));
+        } else {
+            // Return empty tag
+            builder.append(" ");
+            builder.append(CliSyntax.PREFIX_TAG.getPrefix());
         }
         return builder.toString();
     }
