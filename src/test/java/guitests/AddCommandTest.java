@@ -19,6 +19,11 @@ public class AddCommandTest extends ToDoAppGuiTest {
         assertAddSuccess(taskToAdd, currentList);
         currentList = TestUtil.addTasksToList(currentList, taskToAdd);
 
+        //add another task
+        taskToAdd = td.ida;
+        assertAddSuccess(taskToAdd, currentList);
+        currentList = TestUtil.addTasksToList(currentList, taskToAdd);
+
         //add to empty list
         commandBox.runCommand("clear");
         assertAddSuccess(td.alice);
