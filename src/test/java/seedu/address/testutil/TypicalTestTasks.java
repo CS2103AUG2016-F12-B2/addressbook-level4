@@ -41,10 +41,10 @@ public class TypicalTestTasks {
 
             // Manually added
             hoon = new TaskBuilder().withName("Hoon Meier")
-                    .withStart("today").withDeadline("tomorrow")
+                    .withStart("Thu Mar 30 12:43:24 2017").withDeadline("Sat Apr 1 12:43:24 2017")
                     .withPriority(1).withNotes("").withCompletion("false").build();
             ida = new TaskBuilder().withName("Ida Mueller")
-                    .withStart("today").withDeadline("tomorrow")
+                    .withStart("Thu Mar 30 12:43:24 2017").withDeadline("Sat Apr 1 12:43:24 2017")
                     .withPriority(1).withNotes("").withCompletion("false").build();
         } catch (IllegalValueException e) {
             e.printStackTrace();
