@@ -72,4 +72,10 @@ public class XmlToDoAppStorage implements ToDoAppStorage {
         XmlFileStorage.saveDataToFile(file, new XmlSerializableToDoApp(toDoApp));
     }
 
+    //@@author A0124591H
+    @Override
+    public void changeToDoAppFilePath(String filePath) {
+        this.filePath = filePath;
+    }
+
 }

@@ -21,6 +21,7 @@ import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.MarkCommand;
 import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.SelectCommand;
+import seedu.address.logic.commands.SpecifyPathCommand;
 import seedu.address.logic.commands.UndoCommand;
 import seedu.address.logic.commands.UnmarkCommand;
 import seedu.address.model.Model;
@@ -87,12 +88,14 @@ public class Parser {
 
         case ListCommand.COMMAND_WORD:
             return new ListCommand();
-
+        
+        //@@author A0124591H
         case MarkCommand.COMMAND_WORD:
             return new MarkCommandParser().parse(arguments);
 
         case UnmarkCommand.COMMAND_WORD:
             return new UnmarkCommandParser().parse(arguments);
+        //@@author
 
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
@@ -106,6 +109,11 @@ public class Parser {
         case RedoCommand.COMMAND_WORD:
             return new RedoCommand();
 
+        //@@author A0124591H
+        case SpecifyPathCommand.COMMAND_WORD:
+            return new SpecifyPathCommand(arguments);
+        //@@author
+            
         default:
             return new IncorrectCommand(MESSAGE_UNKNOWN_COMMAND);
         }
@@ -149,13 +157,7 @@ public class Parser {
                 ReadOnlyTask taskToDelete = lastShownList.get(index.get() - 1);
                 return new AddCommandParser().parse(ParserUtil.getTaskArgs(taskToDelete), index.get() - 1);
             }
-
-        case MarkCommand.COMMAND_WORD:
-            return new UnmarkCommandParser().parse(arguments);
-
-        case UnmarkCommand.COMMAND_WORD:
-            return new MarkCommandParser().parse(arguments);
-
+        
         default:
             return null;
         }

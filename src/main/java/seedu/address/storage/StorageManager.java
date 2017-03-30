@@ -8,6 +8,7 @@ import com.google.common.eventbus.Subscribe;
 
 import seedu.address.commons.core.ComponentManager;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.events.model.FilePathChangedEvent;
 import seedu.address.commons.events.model.ToDoAppChangedEvent;
 import seedu.address.commons.events.storage.DataSavingExceptionEvent;
 import seedu.address.commons.exceptions.DataConversionException;
@@ -87,5 +88,19 @@ public class StorageManager extends ComponentManager implements Storage {
             raise(new DataSavingExceptionEvent(e));
         }
     }
+
+    //@@author A0124591H
+    @Override
+    public void changeToDoAppFilePath(String filePath) {
+        toDoAppStorage.changeToDoAppFilePath(filePath);        
+    }
+    
+    @Override
+    @Subscribe
+    public void handleFilePathChangedEvent(FilePathChangedEvent event) {
+        logger.info(LogsCenter.getEventHandlingLogMessage(event, "File path changed, shifting ToDoApp"));
+        toDoAppStorage.changeToDoAppFilePath(event.filePath);
+    }
+
 
 }
