@@ -37,6 +37,13 @@ Responsibilities: In charge of GUI, Model and Logic, Testing, Help team members 
 Role: Developer <br>
 Responsibilities: In charge of development operation, data, helping the team with miscellaneous items.
 
+* Components in charge of:
+* Aspects/tools in charge of: Testing
+* Features implemented:
+<!-- todo code written -->
+* Code written:
+* Other major contributions:
+
 -----
 
 # Contributors
