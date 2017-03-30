@@ -24,7 +24,6 @@ public class StorageManager extends ComponentManager implements Storage {
     private ToDoAppStorage toDoAppStorage;
     private UserPrefsStorage userPrefsStorage;
 
-
     public StorageManager(ToDoAppStorage toDoAppStorage, UserPrefsStorage userPrefsStorage) {
         super();
         this.toDoAppStorage = toDoAppStorage;
@@ -46,7 +45,6 @@ public class StorageManager extends ComponentManager implements Storage {
     public void saveUserPrefs(UserPrefs userPrefs) throws IOException {
         userPrefsStorage.saveUserPrefs(userPrefs);
     }
-
 
     // ================ AddressBook methods ==============================
 
@@ -77,7 +75,6 @@ public class StorageManager extends ComponentManager implements Storage {
         toDoAppStorage.saveToDoApp(toDoApp, filePath);
     }
 
-
     @Override
     @Subscribe
     public void handleToDoAppChangedEvent(ToDoAppChangedEvent event) {
@@ -89,18 +86,17 @@ public class StorageManager extends ComponentManager implements Storage {
         }
     }
 
-    //@@author A0124591H
+    // @@author A0124591H
     @Override
     public void changeToDoAppFilePath(String filePath) {
-        toDoAppStorage.changeToDoAppFilePath(filePath);        
+        toDoAppStorage.changeToDoAppFilePath(filePath);
     }
-    
+
     @Override
     @Subscribe
     public void handleFilePathChangedEvent(FilePathChangedEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event, "File path changed, shifting ToDoApp"));
         toDoAppStorage.changeToDoAppFilePath(event.filePath);
     }
-
 
 }

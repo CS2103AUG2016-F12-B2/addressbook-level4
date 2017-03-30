@@ -1,5 +1,4 @@
-//@@author A0124591H
-
+// @@author A0124591H
 package seedu.address.logic.commands;
 
 import java.io.IOException;
@@ -17,8 +16,7 @@ public class SpecifyPathCommand extends Command {
     public static final String COMMAND_WORD = "cd";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Changes the file path for the ToDoApp."
-            + "Parameters: FILE_PATH\n"
-            + "Example: " + COMMAND_WORD + " ~/ToDoApp/ToDoApp.xml";
+            + "Parameters: FILE_PATH\n" + "Example: " + COMMAND_WORD + " ~/ToDoApp/ToDoApp.xml";
 
     public static final String MESSAGE_SUCCESS = "File path successfully changed to: %1$s";
     public static final String MESSAGE_FAIL = "Error changing file path";
@@ -32,7 +30,7 @@ public class SpecifyPathCommand extends Command {
     }
 
     @Override
-    public CommandResult execute(){
+    public CommandResult execute() {
         assert model != null;
         XmlToDoAppStorage newFile = new XmlToDoAppStorage(filePath);
         try {
