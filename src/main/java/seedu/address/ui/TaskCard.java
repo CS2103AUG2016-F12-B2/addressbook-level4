@@ -29,6 +29,8 @@ public class TaskCard extends UiPart<Region> {
     private Label notes;
     @FXML
     private Label completion;
+    @FXML
+    private FlowPane blocks;
 
     public TaskCard(ReadOnlyTask task, int displayedIndex) {
         super(FXML);
@@ -43,6 +45,7 @@ public class TaskCard extends UiPart<Region> {
             priority.setText("Priority: " + task.getPriority().value);
         }
         initTags(task);
+        initBlocks(task);
 
         notes.setText("Notes: " + task.getNotes().value);
         completion.setText("Completion: " + task.getCompletion().value);
@@ -50,5 +53,9 @@ public class TaskCard extends UiPart<Region> {
 
     private void initTags(ReadOnlyTask task) {
         task.getTags().forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
+    }
+
+    private void initBlocks(ReadOnlyTask task) {
+        task.getBlocks().forEach(block -> blocks.getChildren().add(new Label(block.blockPeriodWhole)));
     }
 }

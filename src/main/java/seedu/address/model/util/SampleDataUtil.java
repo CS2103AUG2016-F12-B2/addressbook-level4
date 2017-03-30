@@ -10,6 +10,7 @@ import seedu.address.model.person.Notes;
 import seedu.address.model.person.Priority;
 import seedu.address.model.person.Start;
 import seedu.address.model.person.Task;
+import seedu.address.model.person.UniqueBlockList;
 import seedu.address.model.person.UniqueTaskList.DuplicateTaskException;
 import seedu.address.model.tag.UniqueTagList;
 
@@ -17,10 +18,13 @@ public class SampleDataUtil {
     public static Task[] getSampleTasks() {
         try {
             return new Task[] {
+                // @@author A0124591H
                 new Task(new Name("Buy printer"), new Start("today"), new Deadline("tomorrow"), new Priority(1),
-                        new UniqueTagList("shopping"), new Notes("this is a note"), new Completion("true")),
+                        new UniqueTagList("shopping"), new Notes("this is a note"), new Completion("true"),
+                        new UniqueBlockList("")),
                 new Task(new Name("Go to the gym"), new Start(""), new Deadline(""), new Priority(0),
-                        new UniqueTagList("exercise"), new Notes(""), new Completion("")), };
+                        new UniqueTagList("exercise"), new Notes(""), new Completion(""),
+                        new UniqueBlockList("today to tmr")), };
         } catch (IllegalValueException e) {
             throw new AssertionError("sample data cannot be invalid", e);
         }

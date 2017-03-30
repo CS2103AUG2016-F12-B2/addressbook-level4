@@ -13,8 +13,10 @@ import java.util.stream.Collectors;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.StringUtil;
+import seedu.address.model.person.Block;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.ReadOnlyTask;
+import seedu.address.model.person.UniqueBlockList;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.tag.UniqueTagList;
 
@@ -52,7 +54,7 @@ public class ParserUtil {
         List<String> elements = list.orElse(Collections.emptyList());
         return new HashSet<>(elements);
     }
-
+    
     /**
     * Splits a preamble string into ordered fields.
     * @return A list of size {@code numFields} where the ith element is the ith field value if specified in
@@ -82,6 +84,18 @@ public class ParserUtil {
             tagSet.add(new Tag(tagName));
         }
         return new UniqueTagList(tagSet);
+    }
+    
+    /**
+     * Parses {@code Collection<String> blocks} into an {@code UniqueBlockList}.
+     */
+    public static UniqueBlockList parseBlocks(Collection<String> blocks) throws IllegalValueException {
+        assert blocks != null;
+        final Set<Block> blockSet = new HashSet<>();
+        for (String blockName : blocks) {
+            blockSet.add(new Block(blockName));
+        }
+        return new UniqueBlockList(blockSet);
     }
 
     //@@author A0114395E

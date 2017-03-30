@@ -21,6 +21,7 @@ public class Block {
     public static final String STRING_CONCATENATOR = " to ";
 
     public final String[] blockPeriod;
+    public final String blockPeriodWhole;
     public final String startValue;
     public final String endValue;
 
@@ -33,6 +34,7 @@ public class Block {
         if (!isValidBlock(blockPeriod)) {
             throw new IllegalValueException(MESSAGE_START_CONSTRAINTS);
         }
+        this.blockPeriodWhole = blockPeriod;
         this.blockPeriod = blockPeriod.split(" to ");
         this.startValue = this.blockPeriod[0];
         this.endValue = this.blockPeriod[1];
@@ -47,21 +49,19 @@ public class Block {
 
     @Override
     public String toString() {
-        return startValue + STRING_CONCATENATOR + endValue;
+        return blockPeriodWhole;
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof Block // instanceof handles nulls
-                        && this.startValue.equals(((Block) other).startValue)
-                        && this.endValue.equals(((Block) other).endValue)); // state
-                                                                                // check
+                        && this.blockPeriodWhole.equals(((Block) other).blockPeriodWhole)); // state check
     }
 
     @Override
     public int hashCode() {
-        return (startValue + STRING_CONCATENATOR + endValue).hashCode();
+        return blockPeriodWhole.hashCode();
     }
 
 }

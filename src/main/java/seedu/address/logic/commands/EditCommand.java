@@ -1,3 +1,5 @@
+//@@author A0124591H
+
 package seedu.address.logic.commands;
 
 import java.util.List;
@@ -14,6 +16,7 @@ import seedu.address.model.person.Priority;
 import seedu.address.model.person.ReadOnlyTask;
 import seedu.address.model.person.Start;
 import seedu.address.model.person.Task;
+import seedu.address.model.person.UniqueBlockList;
 import seedu.address.model.person.UniqueTaskList;
 import seedu.address.model.tag.UniqueTagList;
 
@@ -72,8 +75,9 @@ public class EditCommand extends Command {
         }
         model.updateFilteredListToShowAll();
         return new CommandResult(String.format(MESSAGE_EDIT_TASK_SUCCESS, taskToEdit));
-    }
-
+    } 
+    
+    // @@author A0124591H
     /**
      * Creates and returns a {@code Task} with the details of {@code taskToEdit}
      * edited with {@code editTaskDescriptor}.
@@ -88,9 +92,10 @@ public class EditCommand extends Command {
         UniqueTagList updatedTags = editTaskDescriptor.getTags().orElseGet(taskToEdit::getTags);
         Notes updatedNotes = editTaskDescriptor.getNotes().orElseGet(taskToEdit::getNotes);
         Completion updatedCompletion = editTaskDescriptor.getCompletion().orElseGet(taskToEdit::getCompletion);
-
+        UniqueBlockList updatedBlocks = editTaskDescriptor.getBlock().orElseGet(taskToEdit::getBlocks);
+        
         return new Task(updatedName, updatedStart, updatedDeadline, updatedPriority, updatedTags, updatedNotes,
-                updatedCompletion);
+                updatedCompletion, updatedBlocks);
     }
 
     /**
@@ -105,6 +110,7 @@ public class EditCommand extends Command {
         private Optional<UniqueTagList> tags = Optional.empty();
         private Optional<Notes> notes = Optional.empty();
         private Optional<Completion> completion = Optional.empty();
+        private Optional<UniqueBlockList> blocks = Optional.empty();
 
         public EditTaskDescriptor() {
         }
@@ -117,6 +123,7 @@ public class EditCommand extends Command {
             this.tags = toCopy.getTags();
             this.notes = toCopy.getNotes();
             this.completion = toCopy.getCompletion();
+            this.blocks = toCopy.getBlock();
         }
 
         /**
@@ -124,7 +131,7 @@ public class EditCommand extends Command {
          */
         public boolean isAnyFieldEdited() {
             return CollectionUtil.isAnyPresent(this.name, this.start,
-                    this.deadline, this.priority, this.notes, this.tags);
+                    this.deadline, this.priority, this.notes, this.tags, this.blocks);
         }
 
         public void setName(Optional<Name> name) {
@@ -188,6 +195,15 @@ public class EditCommand extends Command {
 
         public Optional<Completion> getCompletion() {
             return completion;
+        }
+
+        public void setBlocks(Optional<UniqueBlockList> blocks) {
+            assert blocks != null;
+            this.blocks = blocks;
+        }
+
+        public Optional<UniqueBlockList> getBlock() {
+            return blocks;
         }
     }
 }

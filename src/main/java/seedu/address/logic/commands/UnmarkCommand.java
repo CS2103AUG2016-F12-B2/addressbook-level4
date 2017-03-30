@@ -1,3 +1,5 @@
+//@@author A0124591H
+
 package seedu.address.logic.commands;
 
 import java.util.List;
@@ -15,6 +17,7 @@ import seedu.address.model.person.Priority;
 import seedu.address.model.person.ReadOnlyTask;
 import seedu.address.model.person.Start;
 import seedu.address.model.person.Task;
+import seedu.address.model.person.UniqueBlockList;
 import seedu.address.model.person.UniqueTaskList;
 import seedu.address.model.tag.UniqueTagList;
 
@@ -77,7 +80,7 @@ public class UnmarkCommand extends Command {
         assert taskToUnmark != null;
 
         return new Task(taskToUnmark.getName(), taskToUnmark.getStart(), taskToUnmark.getDeadline(),
-                taskToUnmark.getPriority(), taskToUnmark.getTags(), taskToUnmark.getNotes(), new Completion("false"));
+                taskToUnmark.getPriority(), taskToUnmark.getTags(), taskToUnmark.getNotes(), new Completion("false"), taskToUnmark.getBlocks());
     }
 
     /**
@@ -92,6 +95,7 @@ public class UnmarkCommand extends Command {
         private Optional<UniqueTagList> tags = Optional.empty();
         private Optional<Notes> notes = Optional.empty();
         private Optional<Completion> completion = Optional.empty();
+        private Optional<UniqueBlockList> blocks = Optional.empty();
 
         public UnmarkTaskDescriptor() {
         }
@@ -104,6 +108,7 @@ public class UnmarkCommand extends Command {
             this.tags = toCopy.getTags();
             this.notes = toCopy.getNotes();
             this.completion = toCopy.getCompletion();
+            this.blocks = toCopy.getBlocks();
         }
 
         /**
@@ -158,6 +163,15 @@ public class UnmarkCommand extends Command {
             return tags;
         }
 
+        public void setBlocks(Optional<UniqueBlockList> blocks) {
+            assert blocks != null;
+            this.blocks = blocks;
+        }
+
+        public Optional<UniqueBlockList> getBlocks() {
+            return blocks;
+        }
+        
         public void setNotes(Optional<Notes> notes) {
             assert notes != null;
             this.notes = notes;

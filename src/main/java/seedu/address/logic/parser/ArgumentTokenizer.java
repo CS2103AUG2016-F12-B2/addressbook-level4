@@ -1,5 +1,6 @@
 package seedu.address.logic.parser;
 
+import static seedu.address.logic.parser.CliSyntax.PREFIX_BLOCK;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START;
 
@@ -150,6 +151,18 @@ public class ArgumentTokenizer {
             // Parse date
             NattyParser nattyParser = NattyParser.getInstance();
             value = nattyParser.parseNLPDate(value);
+        }
+        if (prefix.equals(PREFIX_BLOCK)) {
+            // Parse date
+            NattyParser nattyParser = NattyParser.getInstance();
+            String[] splitValue = value.split(" to ");
+            String startValue;
+            String endValue;
+            if (splitValue.length == 2) {
+                startValue = nattyParser.parseNLPDate(splitValue[0]);
+                endValue = nattyParser.parseNLPDate(splitValue[1]);
+                value = startValue + " to " + endValue;
+            }
         }
         return value.trim();
     }
