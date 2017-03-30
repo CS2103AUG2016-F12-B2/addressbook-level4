@@ -7,6 +7,7 @@ import com.joestelmach.natty.DateGroup;
 
 public class NattyParser {
     private static NattyParser instance = null;
+    private static String emptyValue = "-";
     // Exists only to defeat instantiation.
     protected NattyParser() {
     }
@@ -27,6 +28,9 @@ public class NattyParser {
      * @return String - Timestamp
      */
     public String parseNLPDate(String argsString) {
+        if (argsString.trim().equals(emptyValue)) {
+            return emptyValue;
+        }
         com.joestelmach.natty.Parser nParser = new com.joestelmach.natty.Parser();
         List<DateGroup> groups = nParser.parse(argsString);
         String output = "";
