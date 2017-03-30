@@ -140,11 +140,11 @@ The Activity Diagram below shows the flow when a Command is being executed in To
 <img src="images/ToDoApp_Activity-Diagram.png" width="600"><br>
 _Figure 2.1.4 : Component interactions for commands_
 
-The Sequence Diagram below shows the flow when `add`, `edit`, `delete` Command is being executed in ToDoApp<br><br>
+The Sequence Diagram below shows the flow when `add`, `delete`, `edit`, `mark`, `unmark`, `clear`  Command is being executed in ToDoApp<br><br>
 <img src="images/ToDoApp_Seq-Diag-AddDelEdit.png" width="800"><br>
 _Figure 2.1.5 : Sequence diagram for commands_
 
-> Note how if a comand is `add`, `delete`, or `edit`, we will parse the inverse of it's command to be stored as well.
+> Note how if a comand is `add`, `delete`, `edit`, `mark`, `unmark`, `clear` we will parse the inverse of it's command to be stored as well.
 
 The Sequence Diagram below shows how ToDoApp handles `undo` and `redo` requests from the user.<br><br>
 <img src="images/ToDoApp_Seq-Diag-UndoRedo.png" width="800"><br>
@@ -155,7 +155,7 @@ _Figure 2.1.6 : Sequence diagram for `undo` & `redo` commands_
 > When `undo` command is invoked, we pop the `StateCommandPair` from `undoStack` and put it on `redoStack`. We invoke the `undoCommand` from the `StateCommandPair`. <br>
 > Vice versa, when `redo` command is invoked, we pop the `StateCommandPair` from `redoStack` and put it on the `undoStack`. We then invoke the `executeCommand` from `StateCommandPair`. <br><br>
 > When the user performs any action, the redo stack is cleared. <br>
-> Undoability and Redoability are defined by whether either stack is empty, as well as if an action is undo-able, i.e only `add`, `edit`, `delete`, `mark`, `unmark` commands.
+> Undoability and Redoability are defined by whether either stack is empty, as well as if an action is undo-able, i.e only `add`, `edit`, `delete`, `mark`, `unmark`, `clear` commands.
 <!-- @@author -->
 
 The sections below give more details of each component.
@@ -578,7 +578,7 @@ Use case resumes at step 2
 
 **MSS**
 
-1. User does `add`, `edit`, `delete`, `mark`, `unmark` command
+1. User does `add`, `edit`, `delete`, `mark`, `unmark`, `clear` command
 2. TodoApp executes command
 3. User wants to undo previous command, executes `undo`
 4. ToDoApp reverts the command
