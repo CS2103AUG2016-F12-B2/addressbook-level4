@@ -8,7 +8,6 @@ import org.junit.Test;
 
 import guitests.guihandles.TaskCardHandle;
 import seedu.address.logic.commands.UndoCommand;
-import seedu.address.testutil.TaskBuilder;
 import seedu.address.testutil.TestTask;
 import seedu.address.testutil.TestUtil;
 
@@ -35,7 +34,7 @@ public class UndoCommandTest extends ToDoAppGuiTest {
         // Test CLEAR
         //verify a non-empty list can be cleared
         currentList = td.getTypicalTasks();
-        assertClearCommandSuccess(); 
+        assertClearCommandSuccess();
 
         assertUndoCommandSuccess(td.getTypicalTasks());
     }
