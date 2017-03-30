@@ -20,16 +20,6 @@ public class AddCommandTest extends ToDoAppGuiTest {
         assertAddSuccess(taskToAdd, currentList);
         currentList = TestUtil.addTasksToList(currentList, taskToAdd);
 
-        //add another task
-        taskToAdd = td.ida;
-        assertAddSuccess(taskToAdd, currentList);
-        currentList = TestUtil.addTasksToList(currentList, taskToAdd);
-
-        //add duplicate task
-        commandBox.runCommand(td.hoon.getAddCommand());
-        assertResultMessage(AddCommand.MESSAGE_DUPLICATE_TASK);
-        assertTrue(taskListPanel.isListMatching(currentList));
-
         //add to empty list
         commandBox.runCommand("clear");
         assertAddSuccess(td.alice);
