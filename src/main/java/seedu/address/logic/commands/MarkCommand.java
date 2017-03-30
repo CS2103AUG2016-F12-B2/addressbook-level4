@@ -1,4 +1,4 @@
-//@@author A0124591H
+// @@author A0124591H
 
 package seedu.address.logic.commands;
 
@@ -40,10 +40,9 @@ public class MarkCommand extends Command {
     private final int filteredTaskListIndex;
 
     /**
-     * @param filteredTaskListIndex
-     *            the index of the person in the filtered person list to mark
-     * @param markTaskDescriptor
-     *            details to mark the person with
+     * @param filteredTaskListIndex the index of the person in the filtered
+     *            person list to mark
+     * @param markTaskDescriptor details to mark the person with
      */
     public MarkCommand(int filteredTaskListIndex) {
         assert filteredTaskListIndex > 0;
@@ -163,7 +162,7 @@ public class MarkCommand extends Command {
         public Optional<UniqueTagList> getTags() {
             return tags;
         }
-        
+
         public void setBlocks(Optional<UniqueBlockList> blocks) {
             assert blocks != null;
             this.blocks = blocks;

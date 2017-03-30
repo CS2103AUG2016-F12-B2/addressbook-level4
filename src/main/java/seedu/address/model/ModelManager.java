@@ -109,8 +109,8 @@ public class ModelManager extends ComponentManager implements Model {
     public void updateFilteredListToShowAll() {
         filteredTasks.setPredicate(null);
     }
-    
-    //@@author A0124591H
+
+    // @@author A0124591H
     @Override
     public void updateFilteredTaskList(String[] keywords) {
         final Set<String> keywordSet = new HashSet<>(Arrays.asList(keywords));

@@ -1,4 +1,4 @@
-//@@author A0124591H
+// @@author A0124591H
 
 package seedu.address.logic.commands;
 
@@ -42,10 +42,9 @@ public class EditCommand extends Command {
     private final EditTaskDescriptor editTaskDescriptor;
 
     /**
-     * @param filteredTaskListIndex
-     *            the index of the person in the filtered person list to edit
-     * @param editTaskDescriptor
-     *            details to edit the person with
+     * @param filteredTaskListIndex the index of the person in the filtered
+     *            person list to edit
+     * @param editTaskDescriptor details to edit the person with
      */
     public EditCommand(int filteredTaskListIndex, EditTaskDescriptor editTaskDescriptor) {
         assert filteredTaskListIndex > 0;
@@ -75,8 +74,8 @@ public class EditCommand extends Command {
         }
         model.updateFilteredListToShowAll();
         return new CommandResult(String.format(MESSAGE_EDIT_TASK_SUCCESS, taskToEdit));
-    } 
-    
+    }
+
     // @@author A0124591H
     /**
      * Creates and returns a {@code Task} with the details of {@code taskToEdit}
@@ -93,7 +92,7 @@ public class EditCommand extends Command {
         Notes updatedNotes = editTaskDescriptor.getNotes().orElseGet(taskToEdit::getNotes);
         Completion updatedCompletion = editTaskDescriptor.getCompletion().orElseGet(taskToEdit::getCompletion);
         UniqueBlockList updatedBlocks = editTaskDescriptor.getBlock().orElseGet(taskToEdit::getBlocks);
-        
+
         return new Task(updatedName, updatedStart, updatedDeadline, updatedPriority, updatedTags, updatedNotes,
                 updatedCompletion, updatedBlocks);
     }
@@ -130,8 +129,8 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyPresent(this.name, this.start,
-                    this.deadline, this.priority, this.notes, this.tags, this.blocks);
+            return CollectionUtil.isAnyPresent(this.name, this.start, this.deadline, this.priority, this.notes,
+                    this.tags, this.blocks);
         }
 
         public void setName(Optional<Name> name) {

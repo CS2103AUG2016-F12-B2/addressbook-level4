@@ -115,7 +115,7 @@ public class TestTask implements ReadOnlyTask {
     public UniqueBlockList getBlocks() {
         return blocks;
     }
-    
+
     @Override
     public String toString() {
         return getAsText();

@@ -1,4 +1,4 @@
-//@@author A0124591H
+// @@author A0124591H
 
 package seedu.address.logic.commands;
 
@@ -80,7 +80,8 @@ public class UnmarkCommand extends Command {
         assert taskToUnmark != null;
 
         return new Task(taskToUnmark.getName(), taskToUnmark.getStart(), taskToUnmark.getDeadline(),
-                taskToUnmark.getPriority(), taskToUnmark.getTags(), taskToUnmark.getNotes(), new Completion("false"), taskToUnmark.getBlocks());
+                taskToUnmark.getPriority(), taskToUnmark.getTags(), taskToUnmark.getNotes(), new Completion("false"),
+                taskToUnmark.getBlocks());
     }
 
     /**
@@ -171,7 +172,7 @@ public class UnmarkCommand extends Command {
         public Optional<UniqueBlockList> getBlocks() {
             return blocks;
         }
-        
+
         public void setNotes(Optional<Notes> notes) {
             assert notes != null;
             this.notes = notes;

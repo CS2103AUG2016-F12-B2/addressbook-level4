@@ -78,24 +78,24 @@ public class TestUtil {
         try {
             // @@author A0124591H
             return new Task[] {
-                    new Task(new Name("Ali Muster"), new Start(""), new Deadline(""), new Priority(0),
-                            new UniqueTagList(), new Notes(""), new Completion(""), new UniqueBlockList()),
-                    new Task(new Name("Boris Mueller"), new Start(""), new Deadline(""), new Priority(0),
-                            new UniqueTagList(), new Notes(""), new Completion(""), new UniqueBlockList()),
-                    new Task(new Name("Carl Kurz"), new Start(""), new Deadline(""), new Priority(0),
-                            new UniqueTagList(), new Notes(""), new Completion(""), new UniqueBlockList()),
-                    new Task(new Name("Daniel Meier"), new Start(""), new Deadline(""), new Priority(0),
-                            new UniqueTagList(), new Notes(""), new Completion(""), new UniqueBlockList()),
-                    new Task(new Name("Fiona Kunz"), new Start(""), new Deadline(""), new Priority(0),
-                            new UniqueTagList(), new Notes(""), new Completion(""), new UniqueBlockList()),
-                    new Task(new Name("Elle Meyer"), new Start(""), new Deadline(""), new Priority(0),
-                            new UniqueTagList(), new Notes(""), new Completion(""), new UniqueBlockList()),
-                    new Task(new Name("George Best"), new Start(""), new Deadline(""), new Priority(0),
-                            new UniqueTagList(), new Notes(""), new Completion(""), new UniqueBlockList()),
-                    new Task(new Name("Hoon Meier"), new Start(""), new Deadline(""), new Priority(0),
-                            new UniqueTagList(), new Notes(""), new Completion(""), new UniqueBlockList()),
-                    new Task(new Name("Ida Mueller"), new Start(""), new Deadline(""), new Priority(0),
-                            new UniqueTagList(), new Notes(""), new Completion(""), new UniqueBlockList()) };
+                new Task(new Name("Ali Muster"), new Start(""), new Deadline(""), new Priority(0),
+                        new UniqueTagList(), new Notes(""), new Completion(""), new UniqueBlockList()),
+                new Task(new Name("Boris Mueller"), new Start(""), new Deadline(""), new Priority(0),
+                        new UniqueTagList(), new Notes(""), new Completion(""), new UniqueBlockList()),
+                new Task(new Name("Carl Kurz"), new Start(""), new Deadline(""), new Priority(0),
+                        new UniqueTagList(), new Notes(""), new Completion(""), new UniqueBlockList()),
+                new Task(new Name("Daniel Meier"), new Start(""), new Deadline(""), new Priority(0),
+                        new UniqueTagList(), new Notes(""), new Completion(""), new UniqueBlockList()),
+                new Task(new Name("Fiona Kunz"), new Start(""), new Deadline(""), new Priority(0),
+                        new UniqueTagList(), new Notes(""), new Completion(""), new UniqueBlockList()),
+                new Task(new Name("Elle Meyer"), new Start(""), new Deadline(""), new Priority(0),
+                        new UniqueTagList(), new Notes(""), new Completion(""), new UniqueBlockList()),
+                new Task(new Name("George Best"), new Start(""), new Deadline(""), new Priority(0),
+                        new UniqueTagList(), new Notes(""), new Completion(""), new UniqueBlockList()),
+                new Task(new Name("Hoon Meier"), new Start(""), new Deadline(""), new Priority(0),
+                        new UniqueTagList(), new Notes(""), new Completion(""), new UniqueBlockList()),
+                new Task(new Name("Ida Mueller"), new Start(""), new Deadline(""), new Priority(0),
+                        new UniqueTagList(), new Notes(""), new Completion(""), new UniqueBlockList()) };
         } catch (IllegalValueException e) {
             assert false;
             // not possible

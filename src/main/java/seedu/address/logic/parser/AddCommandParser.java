@@ -41,7 +41,7 @@ public class AddCommandParser {
 
         try {
             return new AddCommand(name, start, deadline, priority,
-                    ParserUtil.toSet(argsTokenizer.getAllValues(PREFIX_TAG)), notes, completion, 
+                    ParserUtil.toSet(argsTokenizer.getAllValues(PREFIX_TAG)), notes, completion,
                     ParserUtil.toSet(argsTokenizer.getAllValues(PREFIX_BLOCK)), idx);
         } catch (NoSuchElementException nsee) {
             return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
