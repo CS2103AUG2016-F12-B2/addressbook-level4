@@ -18,7 +18,10 @@ import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.NattyParser;
 import seedu.address.model.person.Deadline;
 import seedu.address.model.person.ReadOnlyTask;
+<<<<<<< HEAD
 import seedu.address.model.person.Start;
+=======
+>>>>>>> ed08db3383f451b216242b2429662c50bab331e9
 import seedu.address.model.person.Task;
 import seedu.address.model.person.UniqueTaskList;
 import seedu.address.model.person.UniqueTaskList.TaskNotFoundException;
@@ -64,6 +67,13 @@ public class ModelManager extends ComponentManager implements Model {
     /** Raises an event to indicate the model has changed */
     private void indicateToDoAppChanged() {
         raise(new ToDoAppChangedEvent(toDoApp));
+<<<<<<< HEAD
+    }
+
+    @Override
+    public synchronized void deleteTask(ReadOnlyTask target) throws TaskNotFoundException {
+        toDoApp.removeTask(target);
+=======
     }
 
     @Override
@@ -76,11 +86,27 @@ public class ModelManager extends ComponentManager implements Model {
     public synchronized void addTask(Task task) throws UniqueTaskList.DuplicateTaskException {
         toDoApp.addTask(task);
         updateFilteredListToShowAll();
+>>>>>>> ed08db3383f451b216242b2429662c50bab331e9
         indicateToDoAppChanged();
     }
 
     // @@author A0114395E
     @Override
+<<<<<<< HEAD
+    public synchronized void addTask(Task task) throws UniqueTaskList.DuplicateTaskException {
+        toDoApp.addTask(task);
+=======
+    public synchronized void addTask(Task task, int idx) throws UniqueTaskList.DuplicateTaskException {
+        toDoApp.addTask(task, idx);
+>>>>>>> ed08db3383f451b216242b2429662c50bab331e9
+        updateFilteredListToShowAll();
+        indicateToDoAppChanged();
+    }
+    // @@author
+
+    // @@author A0114395E
+    @Override
+<<<<<<< HEAD
     public synchronized void addTask(Task task, int idx) throws UniqueTaskList.DuplicateTaskException {
         toDoApp.addTask(task, idx);
         updateFilteredListToShowAll();
@@ -93,6 +119,12 @@ public class ModelManager extends ComponentManager implements Model {
             throws UniqueTaskList.DuplicateTaskException {
         assert editedTask != null;
 
+=======
+    public void updateTask(int filteredTaskListIndex, ReadOnlyTask editedTask)
+            throws UniqueTaskList.DuplicateTaskException {
+        assert editedTask != null;
+
+>>>>>>> ed08db3383f451b216242b2429662c50bab331e9
         int toDoAppIndex = filteredTasks.getSourceIndex(filteredTaskListIndex);
         toDoApp.updateTask(toDoAppIndex, editedTask);
         indicateToDoAppChanged();
@@ -116,6 +148,7 @@ public class ModelManager extends ComponentManager implements Model {
     public void updateFilteredTaskList(String[] keywords) {
         final Set<String> keywordSet = new HashSet<>(Arrays.asList(keywords));
         String[] trimmedKeywords = Arrays.copyOfRange(keywords, 1, keywords.length);
+<<<<<<< HEAD
         if (keywordSet.contains("n/")) {
             keywordSet.remove("n/");
             updateFilteredTaskList(new PredicateExpression(new NameQualifier(keywordSet)));
@@ -128,6 +161,18 @@ public class ModelManager extends ComponentManager implements Model {
             updateFilteredTaskList(new PredicateExpression(
                     new PriorityQualifier(Integer.parseInt(Joiner.on(" ").skipNulls().join(keywordSet)))));
         } else if (keywordSet.contains("c/")) {
+=======
+        if (keywordSet.contains("name")) {
+            keywordSet.remove("name");
+            updateFilteredTaskList(new PredicateExpression(new NameQualifier(keywordSet)));
+        } else if (keywordSet.contains("deadline")) {
+            updateFilteredTaskList(new PredicateExpression(new DeadlineQualifier(trimmedKeywords)));
+        } else if (keywordSet.contains("priority")) {
+            keywordSet.remove("priority");
+            updateFilteredTaskList(new PredicateExpression(
+                    new PriorityQualifier(Integer.parseInt(Joiner.on(" ").skipNulls().join(keywordSet)))));
+        } else if (keywordSet.contains("completion")) {
+>>>>>>> ed08db3383f451b216242b2429662c50bab331e9
             updateFilteredTaskList(new PredicateExpression(new CompletionQualifier(trimmedKeywords)));
         }
     }
@@ -220,6 +265,7 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     // @@author A0124591H
+<<<<<<< HEAD
     private class StartQualifier implements Qualifier {
         private String startKeyString;
         private Start startKeyStart;
@@ -249,6 +295,8 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     // @@author A0124591H
+=======
+>>>>>>> ed08db3383f451b216242b2429662c50bab331e9
     private class PriorityQualifier implements Qualifier {
         private int priorityNumber;
 
@@ -277,7 +325,11 @@ public class ModelManager extends ComponentManager implements Model {
 
         @Override
         public boolean run(ReadOnlyTask task) {
+<<<<<<< HEAD
             return String.valueOf(task.getCompletion().value).equalsIgnoreCase(completionValue);
+=======
+            return String.valueOf(task.getCompletion().value).toLowerCase().equals(completionValue.toLowerCase());
+>>>>>>> ed08db3383f451b216242b2429662c50bab331e9
         }
 
         @Override

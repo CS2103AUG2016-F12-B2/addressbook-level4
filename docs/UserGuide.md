@@ -50,14 +50,21 @@ Format: `help`
 ### 2.2. Adding a task: `add`
 
 Adds a task to the task list<br>
+<<<<<<< HEAD
 Format: `add NAME [s/START_TIME] [d/DEADLINE] [p/PRIORITY] [t/TAG] [n/NOTES] [c/COMPLETION]...`
+=======
+Format: `add NAME [s/START_TIME] [d/DEADLINE] [p/PRIORITY] [t/TAG] [n/NOTES]...`
+>>>>>>> ed08db3383f451b216242b2429662c50bab331e9
 
 > * Task can have a start time
 > * Task can have a deadline
 > * Task can have a priority ranking from 1 - 5
 > * Task can have any number of tags (including 0)
+<<<<<<< HEAD
 > * Task can be completed or uncompleted
 > * Task can have a note
+=======
+>>>>>>> ed08db3383f451b216242b2429662c50bab331e9
 
 Examples:
 
@@ -95,28 +102,46 @@ Examples:
 ### 2.5. Mark task
 
 Marks a task as complete.<br>
+<<<<<<< HEAD
 Format: `mark INDEX`
 
 > * Marks the task at the specified `INDEX` as completed.
+=======
+Format: `mark [INDEX]...`
+
+> * Marks the task at ALL the specified `INDEX` as completed.
+>>>>>>> ed08db3383f451b216242b2429662c50bab331e9
 > * The index refers to the index number shown in the most recent task listing.
 > * The index **must be a positive integer** 1, 2, ...
 
 Examples:
 
+<<<<<<< HEAD
 * `mark 2`<br>
 Marks tasks at index 2 as completed.
+=======
+* `mark 2 4 7`<br>
+Marks tasks at index 1, 4 and 7 as completed.
+>>>>>>> ed08db3383f451b216242b2429662c50bab331e9
 
 ### 2.6. Unmark task
 
 Marks task as incomplete.<br>
+<<<<<<< HEAD
 Format: `unmark INDEX`
 
 > * Marks the task at the specified `INDEX` as incomplete.
+=======
+Format: `unmark INDEX...`
+
+> * Marks the task at ALL the specified `INDEX` as incomplete.
+>>>>>>> ed08db3383f451b216242b2429662c50bab331e9
 > * The index refers to the index number shown in the most recent task listing.
 > * The index **must be a positive integer** 1, 2, ...
 
 Examples:
 
+<<<<<<< HEAD
 * `unmark 2`<br>
 Marks tasks at index 2 as incomplete.
 
@@ -151,6 +176,36 @@ Undo the most recent command<br>
 Format: `undo`
 
 > * Can undo commands `add`, `delete`, `edit`
+=======
+* `unmark 2 4 7`<br>
+Marks tasks at index 2, 4 and 7 as incomplete.
+
+### 2.7. Set a deadline for task
+
+Sets a new deadline for task.<br>
+Format: `schedule INDEX DEADLINE`
+
+> * Updates the task deadline at the specified `INDEX` as `DEADLINE`.
+> * The index refers to the index number shown in the most recent task listing.
+> * The index **must be a positive integer** 1, 2, ...
+
+Examples:
+
+* `schedule 2 07/07/17`<br>
+Adds a deadline of 7th July 2017 to task at index 2.
+
+### 2.8. Find specific tasks
+
+Retrieve tasks based on various conditions.<br>
+Format: `find [d/DEADLINE] [p/PRIORITY] [t/TAG]`
+
+> * Lists all tasks with the specific optional fields.
+
+Examples:
+
+* `find t/CS2103`<br>
+Retrieve all tasks with the tag CS2103.
+>>>>>>> ed08db3383f451b216242b2429662c50bab331e9
 
 ### 2.10. Redo a recent command: `undo`
 
@@ -166,8 +221,28 @@ Format: `redo`
 Exits the program.<br>
 Format: `exit`
 
+<<<<<<< HEAD
 ### 2.12. Saving the data
 
+=======
+### 2.10. Undo a recent command: `undo`
+
+Undo the most recent command<br>
+Format: `undo`
+
+> * Can undo commands `add`, `delete`, `edit`
+
+### 2.11. Redo a recent command: `undo`
+
+Redo the most recent command<br>
+Format: `redo`
+
+> * Can redo commands that were most recently undone
+> * Inputting a new undo-able command clears the redo state history
+
+### 2.12. Saving the data
+
+>>>>>>> ed08db3383f451b216242b2429662c50bab331e9
 ToDoApp data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.
 
@@ -181,6 +256,7 @@ There is no need to save manually.
 
 * **Add**  `add NAME [d/DEADLINE] [p/PRIORITY] [t/TAG] [n/NOTES]` <br>
   e.g. `add Do CS2103 Homework p/1 t/CS2103 n/Buy from Challenger.`
+<<<<<<< HEAD
 
 * **Edit**  `edit INDEX [NAME] [d/DEADLINE] [p/PRIORITY] [t/TAG] [n/NOTES]` <br>
   e.g. `edit 1 Finish CS2103 work`
@@ -205,6 +281,24 @@ There is no need to save manually.
 
 * **Clear** : `clear` <br>
   e.g. `clear`
+=======
+
+* **Edit**  `edit INDEX [NAME] [d/DEADLINE] [p/PRIORITY] [t/TAG] [n/NOTES]` <br>
+  e.g. `edit 1 Finish CS2103 work`
+
+
+* **Find** : `find [d/DEADLINE] [p/PRIORITY] [t/TAG]` <br>
+  e.g. `find t/CS2103`
+
+* **Mark** : `mark INDEX` <br>
+  e.g.`mark 2`
+
+* **Unmark** : `unmark INDEX` <br>
+  e.g.`unmark 2`
+
+* **List** : `list` <br>
+  e.g. `list`
+>>>>>>> ed08db3383f451b216242b2429662c50bab331e9
 
 * **Help** : `help` <br>
   e.g. `help`

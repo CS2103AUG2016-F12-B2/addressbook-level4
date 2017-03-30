@@ -377,7 +377,10 @@ Priority | As a ... | I want to ... | So that I can...
 `* * *` | user | release a blocked period of time | make a period of time available again
 `* * *` | user | find upcoming tasks by date | can track of what is dued soon
 `* * *` | user | mark a task as completed | differentiate between completed and uncompleted tasks
+<<<<<<< HEAD
 `* * *` | user | unmark a task as undone | differentiate between completed and uncompleted tasks
+=======
+>>>>>>> ed08db3383f451b216242b2429662c50bab331e9
 `* * *` | user | set a deadline to a task | easily keep track of deadline for a certain task to be completed
 `* * *` | user | get more information about a command | learn how to use various commands
 `* * *` | user with different kind of tasks| tag a task | so that I can add labels associated with the task
@@ -404,6 +407,7 @@ Priority | As a ... | I want to ... | So that I can...
 ## Appendix B : Use Cases
 
 (For all use cases below, the **System** is the `TodoApp` and the **Actor** is the `user`, unless specified otherwise)
+<<<<<<< HEAD
 
 #### Use case: Add a task
 
@@ -417,6 +421,21 @@ Use case ends
 
 **MSS**
 
+=======
+
+#### Use case: Add a task
+
+**MSS**
+
+1. User inputs command to add a new task
+2. TodoApp adds said task, and shows the task's details
+Use case ends
+
+#### Use case: Delete a task
+
+**MSS**
+
+>>>>>>> ed08db3383f451b216242b2429662c50bab331e9
 1. User requests to list tasks
 2. TodoApp shows a list of tasks
 3. User requests to delete a specific task in the list
@@ -450,6 +469,7 @@ Use case ends
 
 > Use case ends
 
+<<<<<<< HEAD
 3a. Invalid index given to edit
 
 > 3a1. TodoApp shows an error message
@@ -511,6 +531,28 @@ Use case ends
 1b. Given inputs not found
 
 > Use case ends
+=======
+3a. Invalid index given to delete
+
+> 3a1. TodoApp shows an error message
+  Use case resumes at step 2
+
+3b. The attribute given is invalid
+
+> 3b1. TodoApp shows an error message
+  Use case resumes at step 2
+
+3c. Value of the attribute is invalid
+
+> 3c1. TodoApp shows an error message
+  Use case resumes at step 2
+
+3d. Value of the attribute is the same as the previous value
+> 3d1. TodoApp does nothing
+
+>Use case ends
+
+>>>>>>> ed08db3383f451b216242b2429662c50bab331e9
 
 #### Use case: List task
 
@@ -663,6 +705,7 @@ Pros:
 * Good search
 
 Cons:
+<<<<<<< HEAD
 
 * Not much integrations
 * No options for subtasks
@@ -685,3 +728,9 @@ Cons:
 * No options for subtasks
 * No repeat options
 * Plain UI/ graphics
+=======
+
+* Not much integrations
+* No options for subtasks
+* No repeat options
+>>>>>>> ed08db3383f451b216242b2429662c50bab331e9

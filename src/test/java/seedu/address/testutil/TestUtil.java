@@ -16,7 +16,10 @@ import org.testfx.api.FxToolkit;
 
 import com.google.common.io.Files;
 
+<<<<<<< HEAD
 import guitests.guihandles.TaskCardHandle;
+=======
+>>>>>>> ed08db3383f451b216242b2429662c50bab331e9
 import javafx.geometry.Bounds;
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
@@ -35,7 +38,10 @@ import seedu.address.model.person.Deadline;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Notes;
 import seedu.address.model.person.Priority;
+<<<<<<< HEAD
 import seedu.address.model.person.ReadOnlyTask;
+=======
+>>>>>>> ed08db3383f451b216242b2429662c50bab331e9
 import seedu.address.model.person.Start;
 import seedu.address.model.person.Task;
 import seedu.address.model.tag.Tag;
@@ -335,10 +341,13 @@ public class TestUtil {
         return list;
     }
 
+<<<<<<< HEAD
     public static boolean compareCardAndTask(TaskCardHandle card, ReadOnlyTask task) {
         return card.isSameTask(task);
     }
 
+=======
+>>>>>>> ed08db3383f451b216242b2429662c50bab331e9
     public static Tag[] getTagList(String tags) {
         if ("".equals(tags)) {
             return new Tag[]{};

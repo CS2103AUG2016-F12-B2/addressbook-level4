@@ -89,7 +89,11 @@ public class EditCommandParser {
         argsTokenizer.tokenize(arguments);
         List<Optional<String>> preambleFields = ParserUtil.splitPreamble(argsTokenizer.getPreamble().orElse(""), 2);
         Optional<Integer> index = preambleFields.get(0).flatMap(ParserUtil::parseIndex);
+<<<<<<< HEAD
         if (index.isPresent() && index.get() <= lastShownList.size()) {
+=======
+        if (index.isPresent()) {
+>>>>>>> ed08db3383f451b216242b2429662c50bab331e9
             ReadOnlyTask taskToEdit = lastShownList.get(index.get() - 1);
             final StringBuilder editBuilder = new StringBuilder();
             editBuilder.append(" ");
@@ -186,7 +190,11 @@ public class EditCommandParser {
             ArgumentTokenizer argsTokenizer, EditTaskDescriptor editTaskDescriptor) throws IllegalValueException {
         // Check notes
         Boolean completionBool = Boolean.parseBoolean(argsTokenizer.getValue(PREFIX_COMPLETION).orElse("false"));
+<<<<<<< HEAD
         if (completionBool) {
+=======
+        if (completionBool == true) {
+>>>>>>> ed08db3383f451b216242b2429662c50bab331e9
             editTaskDescriptor.setCompletion((Optional.of(new Completion(String.valueOf(completionBool)))));
         } else if (containsPrefix) {
             editTaskDescriptor.setCompletion((Optional.of(new Completion("false"))));
