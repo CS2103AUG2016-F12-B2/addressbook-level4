@@ -23,6 +23,14 @@ public class UndoCommandTest extends ToDoAppGuiTest {
         currentList = TestUtil.addTasksToList(currentList, taskToAdd);
 
         assertUndoCommandSuccess(td.getTypicalTasks());
+
+        // Test DELETE
+        // Try delete first in list
+        currentList = td.getTypicalTasks();
+        int targetIndex = 1;
+        assertDeleteSuccess(targetIndex, currentList);
+
+        assertUndoCommandSuccess(td.getTypicalTasks());
     }
 
     private void assertAddSuccess(TestTask taskToAdd, TestTask... currentList) {
@@ -35,6 +43,24 @@ public class UndoCommandTest extends ToDoAppGuiTest {
         //confirm the list now contains all previous tasks plus the new task
         TestTask[] expectedList = TestUtil.addTasksToList(currentList, taskToAdd);
         assertTrue(taskListPanel.isListMatching(expectedList));
+    }
+
+    /**
+     * Runs the delete command to delete the task at specified index and confirms the result is correct.
+     * @param targetIndexOneIndexed e.g. index 1 to delete the first task in the list,
+     * @param currentList A copy of the current list of tasks (before deletion).
+     */
+    private void assertDeleteSuccess(int targetIndexOneIndexed, final TestTask[] currentList) {
+        TestTask taskToDelete = currentList[targetIndexOneIndexed - 1]; // -1 as array uses zero indexing
+        TestTask[] expectedRemainder = TestUtil.removeTaskFromList(currentList, targetIndexOneIndexed);
+
+        commandBox.runCommand("delete " + targetIndexOneIndexed);
+
+        //confirm the list now contains all previous tasks except the deleted task
+        assertTrue(taskListPanel.isListMatching(expectedRemainder));
+
+        //confirm the result message is correct
+        assertResultMessage(String.format(MESSAGE_DELETE_TASK_SUCCESS, taskToDelete));
     }
 
     private void assertUndoCommandSuccess(TestTask[] expectedList) {
