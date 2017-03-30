@@ -152,6 +152,8 @@ public class ArgumentTokenizer {
             NattyParser nattyParser = NattyParser.getInstance();
             value = nattyParser.parseNLPDate(value);
         }
+
+        //@@author A0124591H
         if (prefix.equals(PREFIX_BLOCK)) {
             // Parse date
             NattyParser nattyParser = NattyParser.getInstance();
@@ -164,6 +166,7 @@ public class ArgumentTokenizer {
                 value = startValue + " to " + endValue;
             }
         }
+        //@@author
         return value.trim();
     }
 
