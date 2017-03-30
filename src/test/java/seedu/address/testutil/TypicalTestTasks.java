@@ -41,11 +41,11 @@ public class TypicalTestTasks {
 
             // Manually added
             hoon = new TaskBuilder().withName("Hoon Meier")
-                    .withStart("today").withDeadline("tomorrow")
-                    .withPriority(1).withNotes("").withCompletion("false").build();
+                    .withStart("Thu Mar 30 12:43:24 2017").withDeadline("Sat Apr 1 12:43:24 2017")
+                    .withPriority(1).withNotes("Something").withCompletion("false").build();
             ida = new TaskBuilder().withName("Ida Mueller")
-                    .withStart("tomorrow").withDeadline("next week")
-                    .withPriority(1).withNotes("").withCompletion("false").build();
+                    .withStart("Thu Mar 30 12:43:24 2017").withDeadline("Sat Apr 1 12:43:24 2017")
+                    .withPriority(1).withNotes("Another thing").withCompletion("false").build();
         } catch (IllegalValueException e) {
             e.printStackTrace();
             assert false : "not possible";
@@ -63,7 +63,7 @@ public class TypicalTestTasks {
     }
 
     public TestTask[] getTypicalTasks() {
-        return new TestTask[]{alice, benson, carl, daniel, elle, fiona, george};
+        return new TestTask[]{alice, benson, carl, daniel, elle};
     }
 
     public ToDoApp getTypicalToDoApp() {
