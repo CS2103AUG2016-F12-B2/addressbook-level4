@@ -48,7 +48,7 @@ public class Deadline {
 
     //@@author A0114395E
     /**
-     *
+     * Get the date object of Deadline
      * @throws ParseException
      * @returns the date object
      */
@@ -56,6 +56,14 @@ public class Deadline {
         SimpleDateFormat df = new SimpleDateFormat("EEE MMM dd kk:mm:ss yyyy");
         Date date = df.parse(this.value);
         return date;
+    }
+
+    /**
+    * Check if Deadline has a date value
+    * @returns boolean
+    */
+    public boolean hasDate() {
+        return !(this.value.equals("-"));
     }
     //@@author
 

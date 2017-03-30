@@ -71,7 +71,8 @@ public class EditCommand extends Command {
 
         try {
             // Ensure that Deadline is not before Start
-            if (editedTask.getStart().getDate().after(editedTask.getDeadline().getDate())) {
+            if (editedTask.getStart().hasDate() && editedTask.getDeadline().hasDate() &&
+                    editedTask.getStart().getDate().after(editedTask.getDeadline().getDate())) {
                 throw new UniqueTaskList.TaskInvalidTimestampsException();
             }
             model.updateTask(filteredTaskListIndex, editedTask);

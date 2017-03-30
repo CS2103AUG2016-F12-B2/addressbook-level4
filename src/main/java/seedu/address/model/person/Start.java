@@ -49,7 +49,7 @@ public class Start {
 
     //@@author A0114395E
     /**
-     *
+     * Get the date object of Start
      * @throws ParseException
      * @returns the date object
      */
@@ -57,6 +57,14 @@ public class Start {
         SimpleDateFormat df = new SimpleDateFormat("EEE MMM dd kk:mm:ss yyyy");
         Date date = df.parse(this.value);
         return date;
+    }
+
+    /**
+    * Check if Start has a date value
+    * @returns boolean
+    */
+    public boolean hasDate() {
+        return !(this.value.equals("-"));
     }
     //@@author
 
