@@ -63,7 +63,7 @@ public class Deadline {
     * @returns boolean
     */
     public boolean hasDate() {
-        return !(this.value.equals("-"));
+        return !(this.value.equals("-") || this.value.length() == 0);
     }
     //@@author
 

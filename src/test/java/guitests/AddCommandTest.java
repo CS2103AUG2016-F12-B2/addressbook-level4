@@ -16,17 +16,17 @@ public class AddCommandTest extends ToDoAppGuiTest {
     public void add() {
         //add one task
         TestTask[] currentList = td.getTypicalTasks();
-        TestTask taskToAdd = td.george;
+        TestTask taskToAdd = td.hoon;
         assertAddSuccess(taskToAdd, currentList);
         currentList = TestUtil.addTasksToList(currentList, taskToAdd);
 
         //add another task
-        taskToAdd = td.fiona;
+        taskToAdd = td.ida;
         assertAddSuccess(taskToAdd, currentList);
         currentList = TestUtil.addTasksToList(currentList, taskToAdd);
 
         //add duplicate task
-        commandBox.runCommand(td.george.getAddCommand());
+        commandBox.runCommand(td.hoon.getAddCommand());
         assertResultMessage(AddCommand.MESSAGE_DUPLICATE_TASK);
         assertTrue(taskListPanel.isListMatching(currentList));
 
