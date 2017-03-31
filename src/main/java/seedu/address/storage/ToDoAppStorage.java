@@ -41,4 +41,7 @@ public interface ToDoAppStorage {
      */
     void saveToDoApp(ReadOnlyToDoApp toDoApp, String filePath) throws IOException;
 
+    //@@author A0124591H
+    void changeToDoAppFilePath(String filePath);
+
 }

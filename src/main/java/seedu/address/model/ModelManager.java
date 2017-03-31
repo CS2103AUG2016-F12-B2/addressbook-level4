@@ -11,6 +11,7 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.ComponentManager;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.UnmodifiableObservableList;
+import seedu.address.commons.events.model.FilePathChangedEvent;
 import seedu.address.commons.events.model.ToDoAppChangedEvent;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.CollectionUtil;
@@ -18,6 +19,7 @@ import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.NattyParser;
 import seedu.address.model.person.Deadline;
 import seedu.address.model.person.ReadOnlyTask;
+import seedu.address.model.person.Start;
 import seedu.address.model.person.Task;
 import seedu.address.model.person.UniqueTaskList;
 import seedu.address.model.person.UniqueTaskList.TaskNotFoundException;
@@ -63,6 +65,13 @@ public class ModelManager extends ComponentManager implements Model {
     /** Raises an event to indicate the model has changed */
     private void indicateToDoAppChanged() {
         raise(new ToDoAppChangedEvent(toDoApp));
+    }
+
+    //@@author A0124591H
+    @Override
+    /** Raises an event to indicate the file path has changed */
+    public void indicateFilePathChanged(String filePath) {
+        raise(new FilePathChangedEvent(filePath));
     }
 
     @Override
@@ -114,16 +123,18 @@ public class ModelManager extends ComponentManager implements Model {
     public void updateFilteredTaskList(String[] keywords) {
         final Set<String> keywordSet = new HashSet<>(Arrays.asList(keywords));
         String[] trimmedKeywords = Arrays.copyOfRange(keywords, 1, keywords.length);
-        if (keywordSet.contains("name")) {
-            keywordSet.remove("name");
+        if (keywordSet.contains("n/")) {
+            keywordSet.remove("n/");
             updateFilteredTaskList(new PredicateExpression(new NameQualifier(keywordSet)));
-        } else if (keywordSet.contains("deadline")) {
+        } else if (keywordSet.contains("d/")) {
             updateFilteredTaskList(new PredicateExpression(new DeadlineQualifier(trimmedKeywords)));
-        } else if (keywordSet.contains("priority")) {
-            keywordSet.remove("priority");
+        } else if (keywordSet.contains("s/")) {
+            updateFilteredTaskList(new PredicateExpression(new StartQualifier(trimmedKeywords)));
+        } else if (keywordSet.contains("p/")) {
+            keywordSet.remove("p/");
             updateFilteredTaskList(new PredicateExpression(
                     new PriorityQualifier(Integer.parseInt(Joiner.on(" ").skipNulls().join(keywordSet)))));
-        } else if (keywordSet.contains("completion")) {
+        } else if (keywordSet.contains("c/")) {
             updateFilteredTaskList(new PredicateExpression(new CompletionQualifier(trimmedKeywords)));
         }
     }
@@ -183,6 +194,35 @@ public class ModelManager extends ComponentManager implements Model {
         @Override
         public String toString() {
             return "name=" + String.join(", ", nameKeyWords);
+        }
+    }
+
+    // @@author A0124591H
+    private class StartQualifier implements Qualifier {
+        private String startKeyString;
+        private Start startKeyStart;
+
+        StartQualifier(String[] startKeyInput) {
+            NattyParser nattyParser = NattyParser.getInstance();
+            this.startKeyString = nattyParser
+                    .parseNLPDate(Arrays.toString(startKeyInput).replaceAll("[^A-Za-z0-9 ]", ""));
+        }
+
+        @Override
+        public boolean run(ReadOnlyTask task) {
+            try {
+                startKeyStart = new Start(startKeyString);
+                return task.getDeadline().equals(startKeyStart);
+            } catch (IllegalValueException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            return false;
+        }
+
+        @Override
+        public String toString() {
+            return "start=" + String.join(", ", startKeyString);
         }
     }
 

@@ -45,4 +45,8 @@ public interface Model {
     /** Updates the filter of the filtered person list to filter by the given keywords*/
     void updateFilteredTaskList(String[] keywords);
 
+    //@@author A0124591H
+    /** change the file path of ToDoApp */
+    void indicateFilePathChanged(String filePath);
+
 }

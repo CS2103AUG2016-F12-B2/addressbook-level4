@@ -4,24 +4,53 @@ We are a team based in the [School of Computing, National University of Singapor
 
 ## Project Team
 
-#### [Lim Jing Rong](http://github.com/jjingrong)
+#### [Lim Jing Rong](http://jjingrong.com) [@jjingrong](http://github.com/jjingrong)
 <img src="images/jjingrong.png" width="150"><br>
-Role: Team Lead, Developer <br>
-Responsibilities: Deliverables and deadlines, Documentation, Parsing, Integration, Scheduling, Tracking and Professional Firefighter.
+
+* Components in charge of: [Parsing](https://github.com/CS2103JAN2017-F12-B2/main/blob/master/docs/DeveloperGuide.md#parsing-component)
+* Aspects/tools in charge of: Git, Project Management, Issue tracking, CI
+* Features implemented:
+   * [Undo/Redo](https://github.com/CS2103JAN2017-F12-B2/main/blob/master/docs/UserGuide.md#undo)
+   * [Edit](https://github.com/se-edu/CS2103JAN2017-F12-B2/main/blob/master/docs/UserGuide.md#edit)
+   * [Rich Parsing](https://github.com/CS2103JAN2017-F12-B2/main/blob/master/docs/UserGuide.md#add)   
+
+* Code written: [[Functional Code](https://github.com/CS2103JAN2017-F12-B2/main/blob/master/collated/main/A0114395E.md)][[test code](https://github.com/CS2103JAN2017-F12-B2/main/blob/master/collated/test/A0114395E.md)]
+* Other major contributions:
+  * Set up Travis, Coveralls, Codacy, Appveyor.
+  * Added libraries for Date Parsing
+  * Fixed the initial refactoring for Find/Edit commands
+  * Fixed most initial checkstyle issues during refactor
+  * Tagging and write-up for releases every week
+  * Changed color scheme of the application
 
 ----
 
-#### [Lim Huan Hock](http://github.com/huanhock)
+#### [Lim Huan Hock @huanhock](http://github.com/huanhock)
 <img src="images/huanhock.png" width="150"><br>
-Role: Developer, Tester, Eclipse Expert <br>
-Responsibilities: In charge of GUI, Model and Logic, Testing, Help team members with Eclipse
+
+* Components in charge of: [Model](https://github.com/CS2103JAN2017-F12-B2/main/blob/master/docs/DeveloperGuide.md#)
+* Aspects/tools in charge of: Git, Project Management, Issue tracking, CI
+* Features implemented:
+   * [Mark/Unmark](https://github.com/CS2103JAN2017-F12-B2/main/blob/master/docs/UserGuide.md#mark)
+   * [Finding by start, deadline, priority, completion](https://github.com/se-edu/addressbook-level4/blob/master/docs/UserGuide.md#find)
+   * [Specify Path](https://github.com/se-edu/addressbook-level4/blob/master/docs/UserGuide.md#specifypath)   
+<!-- todo code written -->
+* Code written: [[Functional Code](https://github.com/CS2103JAN2017-F12-B2/main/blob/master/collated/main/A0124591H.md)][[Test Code](https://github.com/CS2103JAN2017-F12-B2/main/blob/master/collated/test/A0124591H.md)]
+* Other major contributions:
+  * Overhauled and adapted whole of AddressBook into ToDoApp
 
 ----
 
-#### [Wong Woon Fui](http://github.com/benwongwf)
+#### [Wong Woon Fui @benwongwf](http://github.com/benwongwf)
 <img src="images/benwongwf.png" width="150"><br>
-Role: Developer <br>
-Responsibilities: In charge of development operation, data, helping the team with miscellaneous items.
+
+* Components in charge of:
+* Aspects/tools in charge of: Testing
+* Features implemented:
+<!-- todo code written -->
+* Code written: [[Functional Code](https://github.com/CS2103JAN2017-F12-B2/main/blob/master/collated/main/A0124153U.md)][[Test Code](https://github.com/CS2103JAN2017-F12-B2/main/blob/master/collated/test/A0124153U.md)]
+* Other major contributions:
+  * Collate tool
 
 -----
 

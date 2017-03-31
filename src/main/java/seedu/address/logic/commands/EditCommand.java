@@ -1,5 +1,8 @@
+//@@author A0124591H
+
 package seedu.address.logic.commands;
 
+import java.text.ParseException;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,6 +18,7 @@ import seedu.address.model.person.ReadOnlyTask;
 import seedu.address.model.person.Start;
 import seedu.address.model.person.Task;
 import seedu.address.model.person.UniqueTaskList;
+import seedu.address.model.person.UniqueTaskList.TaskInvalidTimestampsException;
 import seedu.address.model.tag.UniqueTagList;
 
 /**
@@ -34,6 +38,7 @@ public class EditCommand extends Command {
     public static final String MESSAGE_EDIT_TASK_SUCCESS = "Edited Task: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the ToDoApp.";
+    public static final String MESSAGE_INVALID_START_END = "The task deadline cannot be before the start time";
 
     private final int filteredTaskListIndex;
     private final EditTaskDescriptor editTaskDescriptor;
@@ -54,8 +59,9 @@ public class EditCommand extends Command {
         this.editTaskDescriptor = new EditTaskDescriptor(editTaskDescriptor);
     }
 
+    //@@author A0114395E
     @Override
-    public CommandResult execute() throws CommandException {
+    public CommandResult execute() throws CommandException, ParseException, TaskInvalidTimestampsException {
         List<ReadOnlyTask> lastShownList = model.getFilteredTaskList();
 
         if (filteredTaskListIndex >= lastShownList.size()) {
@@ -66,9 +72,16 @@ public class EditCommand extends Command {
         Task editedTask = createEditedTask(taskToEdit, editTaskDescriptor);
 
         try {
+            // Ensure that Deadline is not before Start
+            if (editedTask.getStart().hasDate() && editedTask.getDeadline().hasDate() &&
+                    editedTask.getStart().getDate().after(editedTask.getDeadline().getDate())) {
+                throw new UniqueTaskList.TaskInvalidTimestampsException();
+            }
             model.updateTask(filteredTaskListIndex, editedTask);
         } catch (UniqueTaskList.DuplicateTaskException dpe) {
             throw new CommandException(MESSAGE_DUPLICATE_TASK);
+        } catch (UniqueTaskList.TaskInvalidTimestampsException e) {
+            throw new CommandException(MESSAGE_INVALID_START_END);
         }
         model.updateFilteredListToShowAll();
         return new CommandResult(String.format(MESSAGE_EDIT_TASK_SUCCESS, taskToEdit));

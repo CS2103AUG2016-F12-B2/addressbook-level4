@@ -25,8 +25,8 @@ public class EditCommandTest extends ToDoAppGuiTest {
         String detailsToEdit = "Bobby t/husband";
         int toDoAppIndex = 1;
 
-        TestTask editedTask = new TaskBuilder().withName("Bobby").withStart("today")
-                .withDeadline("tomorrow").withPriority(1).withTags("husband").withNotes("").build();
+        TestTask editedTask = new TaskBuilder().withName("Bobby").withStart("Thu Mar 30 12:43:24 2017")
+                .withDeadline("Thu Mar 31 12:43:24 2017").withPriority(1).withTags("husband").withNotes("").build();
 
         assertEditSuccess(toDoAppIndex, toDoAppIndex, detailsToEdit, editedTask);
     }
@@ -55,7 +55,7 @@ public class EditCommandTest extends ToDoAppGuiTest {
 
     @Test
     public void edit_findThenEdit_success() throws Exception {
-        commandBox.runCommand("find name Elle");
+        commandBox.runCommand("find n/ Elle");
 
         String detailsToEdit = "Belle";
         int filteredTaskListIndex = 1;

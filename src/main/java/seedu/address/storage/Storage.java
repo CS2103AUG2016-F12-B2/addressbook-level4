@@ -3,6 +3,7 @@ package seedu.address.storage;
 import java.io.IOException;
 import java.util.Optional;
 
+import seedu.address.commons.events.model.FilePathChangedEvent;
 import seedu.address.commons.events.model.ToDoAppChangedEvent;
 import seedu.address.commons.events.storage.DataSavingExceptionEvent;
 import seedu.address.commons.exceptions.DataConversionException;
@@ -30,9 +31,17 @@ public interface Storage extends ToDoAppStorage, UserPrefsStorage {
     void saveToDoApp(ReadOnlyToDoApp toDoApp) throws IOException;
 
     /**
-     * Saves the current version of the Address Book to the hard disk.
-     *   Creates the data file if it is missing.
-     * Raises {@link DataSavingExceptionEvent} if there was an error during saving.
+     * Saves the current version of the Address Book to the hard disk. Creates
+     * the data file if it is missing. Raises {@link DataSavingExceptionEvent}
+     * if there was an error during saving.
      */
-    void handleToDoAppChangedEvent(ToDoAppChangedEvent abce);
+    void handleToDoAppChangedEvent(ToDoAppChangedEvent tdace);
+
+    // @@author A0124591H
+    /**
+     * Saves the current version of the Address Book to the hard disk. Creates
+     * the data file if it is missing. Raises {@link DataSavingExceptionEvent}
+     * if there was an error during saving.
+     */
+    void handleFilePathChangedEvent(FilePathChangedEvent fpce);
 }
