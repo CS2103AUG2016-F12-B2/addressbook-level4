@@ -46,5 +46,4 @@ public class SpecifyPathCommand extends Command {
             return new CommandResult(MESSAGE_DATA_CONVERSION);
         }
     }
-
 }
