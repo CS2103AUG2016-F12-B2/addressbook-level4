@@ -27,8 +27,17 @@ We are a team based in the [School of Computing, National University of Singapor
 
 #### [Lim Huan Hock](http://github.com/huanhock)
 <img src="images/huanhock.png" width="150"><br>
-Role: Developer, Tester, Eclipse Expert <br>
-Responsibilities: In charge of GUI, Model and Logic, Testing, Help team members with Eclipse
+
+* Components in charge of: [Model](https://github.com/CS2103JAN2017-F12-B2/main/blob/master/docs/DeveloperGuide.md#)
+* Aspects/tools in charge of: Git, Project Management, Issue tracking, CI
+* Features implemented:
+   * [Mark/Unmark](https://github.com/CS2103JAN2017-F12-B2/main/blob/master/docs/UserGuide.md#mark)
+   * [Finding by start, deadline, priority, completion](https://github.com/se-edu/addressbook-level4/blob/master/docs/UserGuide.md#find)
+   * [Specify Path](https://github.com/se-edu/addressbook-level4/blob/master/docs/UserGuide.md#specifypath)   
+<!-- todo code written -->
+* Code written: [[functional code](A0124591H.md)][[test code](A0124591H.md)]
+* Other major contributions:
+  * Overhauled and adapted whole of AddressBook into ToDoApp
 
 ----
 
