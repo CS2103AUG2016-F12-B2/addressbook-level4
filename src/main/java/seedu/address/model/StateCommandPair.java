@@ -9,7 +9,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.person.UniqueTaskList.TaskInvalidTimestampsException;
 
 /**
- * Class to store an action, and it's inverse
+ * Class to store an action, and its inverse
  */
 public class StateCommandPair {
     private Command executeCommand;

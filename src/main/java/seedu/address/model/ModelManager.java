@@ -11,6 +11,7 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.ComponentManager;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.UnmodifiableObservableList;
+import seedu.address.commons.events.model.FilePathChangedEvent;
 import seedu.address.commons.events.model.ToDoAppChangedEvent;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.CollectionUtil;
@@ -63,6 +64,13 @@ public class ModelManager extends ComponentManager implements Model {
     /** Raises an event to indicate the model has changed */
     private void indicateToDoAppChanged() {
         raise(new ToDoAppChangedEvent(toDoApp));
+    }
+
+    //@@author A0124591H
+    @Override
+    /** Raises an event to indicate the file path has changed */
+    public void indicateFilePathChanged(String filePath) {
+        raise(new FilePathChangedEvent(filePath));
     }
 
     @Override
