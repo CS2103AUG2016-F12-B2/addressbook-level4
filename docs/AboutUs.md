@@ -25,7 +25,7 @@ We are a team based in the [School of Computing, National University of Singapor
 
 ----
 
-#### [Lim Huan Hock](http://github.com/huanhock)
+#### [Lim Huan Hock @huanhock](http://github.com/huanhock)
 <img src="images/huanhock.png" width="150"><br>
 
 * Components in charge of: [Model](https://github.com/CS2103JAN2017-F12-B2/main/blob/master/docs/DeveloperGuide.md#)
@@ -41,10 +41,8 @@ We are a team based in the [School of Computing, National University of Singapor
 
 ----
 
-#### [Wong Woon Fui](http://github.com/benwongwf)
+#### [Wong Woon Fui @benwongwf](http://github.com/benwongwf)
 <img src="images/benwongwf.png" width="150"><br>
-Role: Developer <br>
-Responsibilities: In charge of development operation, data, helping the team with miscellaneous items.
 
 * Components in charge of:
 * Aspects/tools in charge of: Testing
