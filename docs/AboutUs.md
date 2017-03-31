@@ -11,10 +11,10 @@ We are a team based in the [School of Computing, National University of Singapor
 * Aspects/tools in charge of: Git, Project Management, Issue tracking, CI
 * Features implemented:
    * [Undo/Redo](https://github.com/CS2103JAN2017-F12-B2/main/blob/master/docs/UserGuide.md#undo)
-   * [Edit](https://github.com/se-edu/addressbook-level4/blob/master/docs/UserGuide.md#edit)
-   * [Rich Parsing](https://github.com/se-edu/addressbook-level4/blob/master/docs/UserGuide.md#add)   
-<!-- todo code written -->
-* Code written: [[functional code](A0114395E.md)][[test code](A0114395E.md)]
+   * [Edit](https://github.com/se-edu/CS2103JAN2017-F12-B2/main/blob/master/docs/UserGuide.md#edit)
+   * [Rich Parsing](https://github.com/CS2103JAN2017-F12-B2/main/blob/master/docs/UserGuide.md#add)   
+
+* Code written: [[Functional Code](https://github.com/CS2103JAN2017-F12-B2/main/blob/master/collated/main/A0114395E.md)][[test code](https://github.com/CS2103JAN2017-F12-B2/main/blob/master/collated/test/A0114395E.md)]
 * Other major contributions:
   * Set up Travis, Coveralls, Codacy, Appveyor.
   * Added libraries for Date Parsing
@@ -35,7 +35,7 @@ We are a team based in the [School of Computing, National University of Singapor
    * [Finding by start, deadline, priority, completion](https://github.com/se-edu/addressbook-level4/blob/master/docs/UserGuide.md#find)
    * [Specify Path](https://github.com/se-edu/addressbook-level4/blob/master/docs/UserGuide.md#specifypath)   
 <!-- todo code written -->
-* Code written: [[functional code](A0124591H.md)][[test code](A0124591H.md)]
+* Code written: [[Functional Code](https://github.com/CS2103JAN2017-F12-B2/main/blob/master/collated/main/A0124591H.md)][[Test Code](https://github.com/CS2103JAN2017-F12-B2/main/blob/master/collated/test/A0124591H.md)]
 * Other major contributions:
   * Overhauled and adapted whole of AddressBook into ToDoApp
 
@@ -48,8 +48,9 @@ We are a team based in the [School of Computing, National University of Singapor
 * Aspects/tools in charge of: Testing
 * Features implemented:
 <!-- todo code written -->
-* Code written:
+* Code written: [[Functional Code](https://github.com/CS2103JAN2017-F12-B2/main/blob/master/collated/main/A0124153U.md)][[Test Code](https://github.com/CS2103JAN2017-F12-B2/main/blob/master/collated/test/A0124153U.md)]
 * Other major contributions:
+  * Collate tool
 
 -----
 
