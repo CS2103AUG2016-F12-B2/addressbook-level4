@@ -33,7 +33,7 @@ public class ArgumentTokenizer {
     /** Arguments found after tokenizing **/
     private final Map<Prefix, List<String>> tokenizedArguments = new HashMap<>();
 
-    private final String BLOCK_CONCATENATOR = " to ";
+    private static final String BLOCK_CONCATENATOR = " to ";
 
     /**
      * Creates an ArgumentTokenizer that can tokenize arguments string as
