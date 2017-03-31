@@ -23,7 +23,7 @@ public class TaskBuilder {
         this.task = new TestTask();
     }
 
-    //@@author: A0124591H
+    // @@author: A0124591H
     /**
      * Initializes the TaskBuilder with the data of {@code taskToCopy}.
      */
@@ -58,7 +58,7 @@ public class TaskBuilder {
         }
         return this;
     }
-    
+
     public TaskBuilder withTags(String... tags) throws IllegalValueException {
         task.setTags(new UniqueTagList());
         for (String tag : tags) {
