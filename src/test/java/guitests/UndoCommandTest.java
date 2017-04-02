@@ -2,14 +2,14 @@
 package guitests;
 
 import static org.junit.Assert.assertTrue;
-import static seedu.address.logic.commands.DeleteCommand.MESSAGE_DELETE_TASK_SUCCESS;
+import static seedu.todoapp.logic.commands.DeleteCommand.MESSAGE_DELETE_TASK_SUCCESS;
 
 import org.junit.Test;
 
 import guitests.guihandles.TaskCardHandle;
-import seedu.address.logic.commands.UndoCommand;
-import seedu.address.testutil.TestTask;
-import seedu.address.testutil.TestUtil;
+import seedu.todoapp.logic.commands.UndoCommand;
+import seedu.todoapp.testutil.TestTask;
+import seedu.todoapp.testutil.TestUtil;
 
 public class UndoCommandTest extends ToDoAppGuiTest {
 
