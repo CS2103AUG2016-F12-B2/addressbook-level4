@@ -1,17 +1,17 @@
 package guitests;
 
 import static org.junit.Assert.assertTrue;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX;
+import static seedu.todoapp.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.todoapp.commons.core.Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX;
 
 import org.junit.Test;
 
 import guitests.guihandles.TaskCardHandle;
-import seedu.address.logic.commands.EditCommand;
-import seedu.address.model.person.Name;
-import seedu.address.model.tag.Tag;
-import seedu.address.testutil.TaskBuilder;
-import seedu.address.testutil.TestTask;
+import seedu.todoapp.logic.commands.EditCommand;
+import seedu.todoapp.model.person.Name;
+import seedu.todoapp.model.tag.Tag;
+import seedu.todoapp.testutil.TaskBuilder;
+import seedu.todoapp.testutil.TestTask;
 
 // TODO: reduce GUI tests by transferring some tests to be covered by lower level tests.
 public class EditCommandTest extends ToDoAppGuiTest {
