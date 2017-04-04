@@ -16,24 +16,24 @@ public class TypicalTestTasks {
         try {
             alice = new TaskBuilder().withName("Alice Pauline")
                     .withStart("Thu Mar 30 12:43:24 2017").withDeadline("Sat Apr 1 12:43:24 2017")
-                    .withPriority(1).withTags("friends").withNotes("")
+                    .withPriority(5).withTags("friends").withNotes("")
                     .withCompletion("false").build();
             benson = new TaskBuilder().withName("Benson Meier")
                     .withStart("Thu Mar 30 12:43:24 2017").withDeadline("Sat Apr 1 12:43:24 2017")
                     .withTags("owesMoney", "friends")
-                    .withPriority(1).withNotes("")
+                    .withPriority(5).withNotes("")
                     .withCompletion("false").build();
             carl = new TaskBuilder().withName("Carl Kurz")
                     .withStart("Thu Mar 30 12:43:24 2017").withDeadline("Sat Apr 1 12:43:24 2017")
-                    .withPriority(1).withNotes("").withCompletion("false").build();
+                    .withPriority(5).withNotes("").withCompletion("false").build();
             daniel = new TaskBuilder().withName("Daniel Meier")
                     .withStart("Thu Mar 30 12:43:24 2017").withDeadline("Sat Apr 1 12:43:24 2017")
-                    .withPriority(1).withNotes("").withCompletion("false").build();
+                    .withNotes("").withCompletion("false").build();
             elle = new TaskBuilder().withName("Elle Meyer")
-                    .withStart("Thu Mar 30 12:43:24 2017").withDeadline("Sat Apr 1 12:43:24 2017")
-                    .withPriority(1).withNotes("").withCompletion("false").build();
+                    .withStart("Wed Mar 29 12:43:24 2017").withDeadline("Sat Apr 1 12:43:24 2017")
+                    .withNotes("").withCompletion("false").build();
             fiona = new TaskBuilder().withName("Fiona Kunz")
-                    .withStart("Thu Mar 30 12:43:24 2017").withDeadline("Sat Apr 1 12:43:24 2017")
+                    .withStart("Thu Mar 30 12:43:24 2017").withDeadline("Sat Apr 1 15:43:24 2017")
                     .withPriority(1).withNotes("").withCompletion("false").build();
             george = new TaskBuilder().withName("George Best")
                     .withStart("Thu Mar 30 12:43:24 2017").withDeadline("Sat Apr 1 12:43:24 2017")
