@@ -26,5 +26,7 @@
 	<classpathentry kind="lib" path="lib/ical4j-1.0.2.jar"/>
 	<classpathentry kind="lib" path="lib/natty-0.12.jar"/>
 	<classpathentry kind="lib" path="lib/slf4j-api-1.7.10.jar"/>
+	<classpathentry kind="con" path="com.google.gdt.eclipse.managedapis.MANAGED_API_CONTAINER/calendar-v3r241lv1.21.0"/>
+	<classpathentry kind="con" path="com.google.gdt.eclipse.managedapis.MANAGED_API_CONTAINER/oauth2-v1r129lv1.21.0"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
