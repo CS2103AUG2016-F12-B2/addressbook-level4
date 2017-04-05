@@ -54,7 +54,28 @@ public class RedoCommandTest extends ToDoAppGuiTest {
         assertUndoCommandSuccess(td.getTypicalTasks());
         assertRedoCommandSuccess(TestUtil.removeTaskFromList(currentList, targetIndex));
     }
-    
+
+    @Test
+    public void redo_nothing_failure() {
+        // Test UNDO-ing nothing
+        commandBox.runCommand("redo");
+        assertResultMessage(RedoCommand.MESSAGE_FAIL);
+    }
+
+    @Test
+    public void redo_moreThanComamnds_failure() {
+        TestTask[] currentList = td.getTypicalTasks();
+        TestTask taskToAdd = td.hoon;
+        
+        assertAddSuccess(taskToAdd, currentList);
+        assertUndoCommandSuccess(td.getTypicalTasks());
+        assertRedoCommandSuccess(TestUtil.addTasksToList(currentList, taskToAdd));
+
+        // Should have no more commands to redo
+        commandBox.runCommand("redo");
+        assertResultMessage(RedoCommand.MESSAGE_FAIL);
+    }
+
     /*
      * ASSERTS of typical commands (add,edit,delete...) etc are the same as from the other test files
      * Undo is the same as UndoCommandTest.java
