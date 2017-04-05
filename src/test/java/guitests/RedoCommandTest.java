@@ -100,7 +100,7 @@ public class RedoCommandTest extends ToDoAppGuiTest {
 
     @Test
     public void redo_nothing_failure() {
-        // Test UNDO-ing nothing
+        // Test REDO-ing nothing
         commandBox.runCommand("redo");
         assertResultMessage(RedoCommand.MESSAGE_FAIL);
     }

@@ -84,13 +84,6 @@ public class UndoCommandTest extends ToDoAppGuiTest {
     }
 
     @Test
-    public void undo_nothing_failure() {
-        // Test UNDO-ing nothing
-        commandBox.runCommand("undo");
-        assertResultMessage(UndoCommand.MESSAGE_FAIL);
-    }
-
-    @Test
     public void undo_moreThanComamnds_failure() {
         TestTask[] currentList = td.getTypicalTasks();
         TestTask taskToAdd = td.hoon;
