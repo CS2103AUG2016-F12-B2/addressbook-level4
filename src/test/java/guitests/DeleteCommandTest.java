@@ -5,14 +5,16 @@ import static seedu.todoapp.logic.commands.DeleteCommand.MESSAGE_DELETE_TASK_SUC
 
 import org.junit.Test;
 
+import seedu.todoapp.commons.core.Messages;
+import seedu.todoapp.logic.commands.DeleteCommand;
 import seedu.todoapp.testutil.TestTask;
 import seedu.todoapp.testutil.TestUtil;
 
 public class DeleteCommandTest extends ToDoAppGuiTest {
 
+    //@@author A0114395E
     @Test
-    public void delete() {
-
+    public void delete_success() {
         //delete the first in the list
         TestTask[] currentList = td.getTypicalTasks();
         int targetIndex = 1;
@@ -20,17 +22,30 @@ public class DeleteCommandTest extends ToDoAppGuiTest {
         //delete the last in the list
         currentList = TestUtil.removeTaskFromList(currentList, targetIndex);
         targetIndex = currentList.length;
+        assertDeleteSuccess(targetIndex, currentList);
 
         //delete from the middle of the list
         currentList = TestUtil.removeTaskFromList(currentList, targetIndex);
         targetIndex = currentList.length / 2;
-
-        //invalid index
-        commandBox.runCommand("delete " + currentList.length + 1);
-        assertResultMessage("The task index provided is invalid");
-
+        assertDeleteSuccess(targetIndex, currentList);
     }
 
+    @Test
+    public void delete_outOfIndex_failure() {
+        TestTask[] currentList = td.getTypicalTasks();
+        //invalid index
+        commandBox.runCommand("delete " + String.valueOf(currentList.length + 1));
+        assertResultMessage(Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
+    }
+
+    @Test
+    public void delete_noIndex_failure() {
+        // no index
+        commandBox.runCommand("delete");
+        assertResultMessage(DeleteCommand.MESSAGE_USAGE);
+    }
+
+    //author
     /**
      * Runs the delete command to delete the task at specified index and confirms the result is correct.
      * @param targetIndexOneIndexed e.g. index 1 to delete the first task in the list,
