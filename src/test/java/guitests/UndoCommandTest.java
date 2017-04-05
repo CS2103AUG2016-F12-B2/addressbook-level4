@@ -51,6 +51,14 @@ public class UndoCommandTest extends ToDoAppGuiTest {
     }
 
     @Test
+    public void undo_clear_success() {    
+        // Test CLEAR
+        //verify a non-empty list can be cleared
+        assertClearCommandSuccess();
+        assertUndoCommandSuccess(td.getTypicalTasks());
+    }
+
+    @Test
     public void undo_nothing_failure() {
         // Test UNDO-ing nothing
         commandBox.runCommand("undo");
@@ -69,15 +77,6 @@ public class UndoCommandTest extends ToDoAppGuiTest {
         // Should have no more commands to undo
         commandBox.runCommand("undo");
         assertResultMessage(UndoCommand.MESSAGE_FAIL);
-    }
-
-    @Test
-    public void undo_clear_success() {    
-        // Test CLEAR
-        //verify a non-empty list can be cleared
-        assertClearCommandSuccess();
-
-        assertUndoCommandSuccess(td.getTypicalTasks());
     }
 
     /*

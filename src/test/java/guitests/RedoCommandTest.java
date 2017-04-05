@@ -56,6 +56,15 @@ public class RedoCommandTest extends ToDoAppGuiTest {
     }
 
     @Test
+    public void redo_clear_success() {    
+        // Test CLEAR
+        //verify a non-empty list can be cleared
+        assertClearCommandSuccess();
+        assertUndoCommandSuccess(td.getTypicalTasks());
+        assertRedoCommandSuccess(new TestTask[0]);
+    }
+
+    @Test
     public void redo_nothing_failure() {
         // Test UNDO-ing nothing
         commandBox.runCommand("redo");
@@ -161,6 +170,4 @@ public class RedoCommandTest extends ToDoAppGuiTest {
         assertTrue(taskListPanel.isListMatching(expectedList));
         assertResultMessage(RedoCommand.MESSAGE_SUCCESS);
     }
-    
-    
 }
