@@ -43,6 +43,18 @@ public class RedoCommandTest extends ToDoAppGuiTest {
         assertRedoCommandSuccess(currentList);
     }
 
+    @Test
+    public void redo_delete_success() {
+        // Test DELETE
+        // Try delete first in list
+        TestTask[] currentList = td.getTypicalTasks();
+        int targetIndex = 1;
+        
+        assertDeleteSuccess(targetIndex, currentList);
+        assertUndoCommandSuccess(td.getTypicalTasks());
+        assertRedoCommandSuccess(TestUtil.removeTaskFromList(currentList, targetIndex));
+    }
+    
     /*
      * ASSERTS of typical commands (add,edit,delete...) etc are the same as from the other test files
      * Undo is the same as UndoCommandTest.java
