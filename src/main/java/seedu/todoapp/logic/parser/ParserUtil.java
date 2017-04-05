@@ -121,7 +121,7 @@ public class ParserUtil {
             task.getTags().forEach(tagBuilder::append);
             // Remove square brackets for tags
             builder.append(tagBuilder.toString().replaceAll("\\[", "").replaceAll("\\]", ""));
-        } else if (!isAddCommand){
+        } else if (!isAddCommand) {
             // Return empty tag if it's not add command (i.e edit)
             builder.append(" ");
             builder.append(CliSyntax.PREFIX_TAG.getPrefix());

@@ -48,6 +48,20 @@ public class UndoCommandTest extends ToDoAppGuiTest {
         assertDeleteSuccess(targetIndex, currentList);
 
         assertUndoCommandSuccess(td.getTypicalTasks());
+
+        // Try delete middle in list
+        currentList = td.getTypicalTasks();
+        targetIndex = 4;
+        assertDeleteSuccess(targetIndex, currentList);
+
+        assertUndoCommandSuccess(td.getTypicalTasks());
+
+        // Try delete last in list
+        currentList = td.getTypicalTasks();
+        targetIndex = currentList.length;
+        assertDeleteSuccess(targetIndex, currentList);
+
+        assertUndoCommandSuccess(td.getTypicalTasks());
     }
 
     @Test
