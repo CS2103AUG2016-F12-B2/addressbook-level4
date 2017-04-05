@@ -14,7 +14,7 @@ import seedu.todoapp.testutil.TestUtil;
 public class UndoCommandTest extends ToDoAppGuiTest {
 
     @Test
-    public void undo() {
+    public void undo_add_success() {
         // Test ADD
         TestTask[] currentList = td.getTypicalTasks();
         TestTask taskToAdd = td.hoon;
@@ -22,18 +22,47 @@ public class UndoCommandTest extends ToDoAppGuiTest {
         currentList = TestUtil.addTasksToList(currentList, taskToAdd);
 
         assertUndoCommandSuccess(td.getTypicalTasks());
+    }
 
+    @Test
+    public void undo_delete_success() {
         // Test DELETE
         // Try delete first in list
-        currentList = td.getTypicalTasks();
+        TestTask[] currentList = td.getTypicalTasks();
         int targetIndex = 1;
         assertDeleteSuccess(targetIndex, currentList);
 
         assertUndoCommandSuccess(td.getTypicalTasks());
+    }
 
+    @Test
+    public void undo_nothing_failure() {
+        // Test UNDO-ing nothing
+        TestTask[] currentList = td.getTypicalTasks();
+
+        commandBox.runCommand("undo");
+        assertResultMessage(UndoCommand.MESSAGE_FAIL);
+    }
+
+    @Test
+    public void undo_moreThanComamnds_failure() {
+        TestTask[] currentList = td.getTypicalTasks();
+        TestTask taskToAdd = td.hoon;
+        assertAddSuccess(taskToAdd, currentList);
+        currentList = TestUtil.addTasksToList(currentList, taskToAdd);
+
+        assertUndoCommandSuccess(td.getTypicalTasks());
+
+        // Should have no more commands to undo
+        commandBox.runCommand("undo");
+        assertResultMessage(UndoCommand.MESSAGE_FAIL);
+    }
+
+    @Test
+    public void undo_clear_success() {    
         // Test CLEAR
         //verify a non-empty list can be cleared
-        currentList = td.getTypicalTasks();
+        TestTask[] currentList = td.getTypicalTasks();
         assertClearCommandSuccess();
 
         assertUndoCommandSuccess(td.getTypicalTasks());
