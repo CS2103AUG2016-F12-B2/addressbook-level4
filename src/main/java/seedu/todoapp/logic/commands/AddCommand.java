@@ -66,8 +66,8 @@ public class AddCommand extends Command {
         assert model != null;
         try {
             // Ensure that Deadline is not before Start
-            if (this.toAdd.getStart().hasDate() && this.toAdd.getDeadline().hasDate() &&
-                    this.toAdd.getStart().getDate().after(this.toAdd.getDeadline().getDate())) {
+            if (this.toAdd.getStart().hasDate() && this.toAdd.getDeadline().hasDate()
+                    && this.toAdd.getStart().getDate().after(this.toAdd.getDeadline().getDate())) {
                 throw new UniqueTaskList.TaskInvalidTimestampsException();
             }
             if (this.idx >= 0) {

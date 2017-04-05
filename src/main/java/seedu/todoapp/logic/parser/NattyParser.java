@@ -7,6 +7,9 @@ import java.util.List;
 
 import com.joestelmach.natty.DateGroup;
 
+/**
+ * Parses loose user input for dates into proper date format
+ */
 public class NattyParser {
     private static NattyParser instance = null;
     private static final String EMPTY_VALUE = "-";
