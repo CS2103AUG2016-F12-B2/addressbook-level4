@@ -81,6 +81,10 @@ public class UndoCommandTest extends ToDoAppGuiTest {
         assertUndoCommandSuccess(td.getTypicalTasks());
     }
 
+    /*
+     * ASSERTS of typical commands (add,edit,delete...) etc are the same as from the other test files
+     */
+
     private void assertAddSuccess(TestTask taskToAdd, TestTask... currentList) {
         commandBox.runCommand(taskToAdd.getAddCommand());
 
