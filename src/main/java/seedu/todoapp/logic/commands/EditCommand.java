@@ -141,7 +141,7 @@ public class EditCommand extends Command {
          */
         public boolean isAnyFieldEdited() {
             return CollectionUtil.isAnyPresent(this.name, this.start,
-                    this.deadline, this.priority, this.notes, this.tags);
+                    this.deadline, this.priority, this.notes, this.tags, this.venue);
         }
 
         public void setName(Optional<Name> name) {
