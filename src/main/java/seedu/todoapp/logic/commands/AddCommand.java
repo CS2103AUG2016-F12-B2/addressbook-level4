@@ -14,6 +14,7 @@ import seedu.todoapp.model.person.Priority;
 import seedu.todoapp.model.person.Start;
 import seedu.todoapp.model.person.Task;
 import seedu.todoapp.model.person.UniqueTaskList;
+import seedu.todoapp.model.person.Venue;
 import seedu.todoapp.model.tag.Tag;
 import seedu.todoapp.model.tag.UniqueTagList;
 
@@ -42,7 +43,7 @@ public class AddCommand extends Command {
      * @throws IllegalValueException if any of the raw values are invalid
      */
     public AddCommand(String name, String start, String deadline,
-                        Integer priority, Set<String> tags, String notes, String completion, int idx)
+                        Integer priority, Set<String> tags, String notes, String venue, String completion, int idx)
             throws IllegalValueException {
         final Set<Tag> tagSet = new HashSet<>();
         for (String tagName : tags) {
@@ -55,7 +56,8 @@ public class AddCommand extends Command {
                 new Priority(priority),
                 new UniqueTagList(tagSet),
                 new Notes(notes),
-                new Completion(completion)
+                new Completion(completion),
+                new Venue(venue)
         );
         this.idx = idx;
     }

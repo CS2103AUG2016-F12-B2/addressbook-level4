@@ -19,6 +19,7 @@ import seedu.todoapp.model.person.Start;
 import seedu.todoapp.model.person.Task;
 import seedu.todoapp.model.person.UniqueTaskList;
 import seedu.todoapp.model.person.UniqueTaskList.TaskInvalidTimestampsException;
+import seedu.todoapp.model.person.Venue;
 import seedu.todoapp.model.tag.UniqueTagList;
 
 /**
@@ -101,9 +102,10 @@ public class EditCommand extends Command {
         UniqueTagList updatedTags = editTaskDescriptor.getTags().orElseGet(taskToEdit::getTags);
         Notes updatedNotes = editTaskDescriptor.getNotes().orElseGet(taskToEdit::getNotes);
         Completion updatedCompletion = editTaskDescriptor.getCompletion().orElseGet(taskToEdit::getCompletion);
+        Venue updatedVenue = editTaskDescriptor.getVenue().orElseGet(taskToEdit::getVenue);
 
         return new Task(updatedName, updatedStart, updatedDeadline, updatedPriority, updatedTags, updatedNotes,
-                updatedCompletion);
+                updatedCompletion, updatedVenue);
     }
 
     /**
@@ -118,6 +120,7 @@ public class EditCommand extends Command {
         private Optional<UniqueTagList> tags = Optional.empty();
         private Optional<Notes> notes = Optional.empty();
         private Optional<Completion> completion = Optional.empty();
+        private Optional<Venue> venue = Optional.empty();
 
         public EditTaskDescriptor() {
         }
@@ -130,6 +133,7 @@ public class EditCommand extends Command {
             this.tags = toCopy.getTags();
             this.notes = toCopy.getNotes();
             this.completion = toCopy.getCompletion();
+            this.venue = toCopy.getVenue();
         }
 
         /**
@@ -201,6 +205,15 @@ public class EditCommand extends Command {
 
         public Optional<Completion> getCompletion() {
             return completion;
+        }
+        
+        public void setVenue(Optional<Venue> venue) {
+            assert venue != null;
+            this.venue = venue;
+        }
+        
+        public Optional<Venue> getVenue() {
+            return venue;
         }
     }
 }

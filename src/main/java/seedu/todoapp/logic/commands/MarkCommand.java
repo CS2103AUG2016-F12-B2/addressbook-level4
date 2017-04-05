@@ -80,7 +80,7 @@ public class MarkCommand extends Command {
         assert taskToMark != null;
 
         return new Task(taskToMark.getName(), taskToMark.getStart(), taskToMark.getDeadline(), taskToMark.getPriority(),
-                taskToMark.getTags(), taskToMark.getNotes(), new Completion("true"));
+                taskToMark.getTags(), taskToMark.getNotes(), new Completion("true"), taskToMark.getVenue());
     }
 
     /**
