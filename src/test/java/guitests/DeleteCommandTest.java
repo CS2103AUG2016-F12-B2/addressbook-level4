@@ -1,6 +1,7 @@
 package guitests;
 
 import static org.junit.Assert.assertTrue;
+import static seedu.todoapp.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.todoapp.logic.commands.DeleteCommand.MESSAGE_DELETE_TASK_SUCCESS;
 
 import org.junit.Test;
@@ -18,14 +19,15 @@ public class DeleteCommandTest extends ToDoAppGuiTest {
         //delete the first in the list
         TestTask[] currentList = td.getTypicalTasks();
         int targetIndex = 1;
+        assertDeleteSuccess(targetIndex, currentList);
+        currentList = TestUtil.removeTaskFromList(currentList, targetIndex);
 
         //delete the last in the list
-        currentList = TestUtil.removeTaskFromList(currentList, targetIndex);
         targetIndex = currentList.length;
         assertDeleteSuccess(targetIndex, currentList);
+        currentList = TestUtil.removeTaskFromList(currentList, targetIndex);
 
         //delete from the middle of the list
-        currentList = TestUtil.removeTaskFromList(currentList, targetIndex);
         targetIndex = currentList.length / 2;
         assertDeleteSuccess(targetIndex, currentList);
     }
@@ -42,7 +44,7 @@ public class DeleteCommandTest extends ToDoAppGuiTest {
     public void delete_noIndex_failure() {
         // no index
         commandBox.runCommand("delete");
-        assertResultMessage(DeleteCommand.MESSAGE_USAGE);
+        assertResultMessage(String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
     }
 
     //author
