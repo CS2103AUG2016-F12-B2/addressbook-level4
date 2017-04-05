@@ -31,6 +31,20 @@ public class EditCommandTest extends ToDoAppGuiTest {
         assertEditSuccess(toDoAppIndex, toDoAppIndex, detailsToEdit, editedTask);
     }
 
+    //@@author A0114395E
+    @Test
+    public void edit_moreDetailsFieldsSpecified_success() throws Exception {
+        String detailsToEdit = "Buy a zebra s/Mon Jul 10 12:43:24 2017 d/Wed Jul 12 12:43:24 2017 "
+                + "t/animal p/3 n/find a poacher";
+        int toDoAppIndex = 1;
+
+        TestTask editedTask = new TaskBuilder().withName("Buy a zebra")
+                .withStart("Mon Jul 10 12:43:24 2017").withDeadline("Wed Jul 12 12:43:24 2017")
+                .withPriority(3).withTags("animal").withNotes("find a poacher").build();
+
+        assertEditSuccess(toDoAppIndex, toDoAppIndex, detailsToEdit, editedTask);
+    }
+
     @Test
     public void edit_notAllFieldsSpecified_success() throws Exception {
         String detailsToEdit = "t/sweetie t/bestie";
@@ -99,6 +113,15 @@ public class EditCommandTest extends ToDoAppGuiTest {
         commandBox.runCommand("edit 3 Alice Pauline s/today d/tomorrow "
                                 + "p/1 t/friends");
         assertResultMessage(EditCommand.MESSAGE_DUPLICATE_TASK);
+    }
+
+    //@@author A0114395E
+    @Test
+    public void edit_deadlineBeforeStart_failure() throws Exception {
+        commandBox.runCommand("edit 3 Buy a zebra s/Wed Jul 12 12:43:24 2017 d/Mon Jul 10 12:43:24 2017 "
+                + "t/animal p/3 n/find a poacher");
+
+        assertResultMessage(EditCommand.MESSAGE_INVALID_START_END);
     }
 
     /**

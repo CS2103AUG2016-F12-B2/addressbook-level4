@@ -95,7 +95,7 @@ public class EditCommandParser {
             editBuilder.append(" ");
             editBuilder.append(index.get().toString());
             editBuilder.append(" ");
-            editBuilder.append(ParserUtil.getTaskArgs(taskToEdit));
+            editBuilder.append(ParserUtil.getTaskArgs(taskToEdit, false));
             return parse(editBuilder.toString());
         } else {
             return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));

@@ -39,6 +39,15 @@ public class AddCommandTest extends ToDoAppGuiTest {
         assertResultMessage(Messages.MESSAGE_UNKNOWN_COMMAND);
     }
 
+    //@@author A0114395E
+    @Test
+    public void add_deadlineBeforeStart_failure() throws Exception {
+        commandBox.runCommand("add Buy a zebra s/Wed Jul 12 12:43:24 2017 d/Mon Jul 10 12:43:24 2017 "
+                + "t/animal p/3 n/find a poacher");
+
+        assertResultMessage(AddCommand.MESSAGE_INVALID_START_END);
+    }
+
     private void assertAddSuccess(TestTask taskToAdd, TestTask... currentList) {
         commandBox.runCommand(taskToAdd.getAddCommand());
 
