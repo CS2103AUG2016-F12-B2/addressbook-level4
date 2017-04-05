@@ -27,10 +27,10 @@ public class StateCommandPair {
 
     /**
      * Executes the command previously entered (for redo)
-     * @throws CommandException
-     * @throws IllegalValueException
-     * @throws ParseException
-     * @throws TaskInvalidTimestampsException
+     * @throws CommandException if it's an invalid command
+     * @throws IllegalValueException if any of its value is invalid
+     * @throws ParseException if the start/deadline time is not a date
+     * @throws TaskInvalidTimestampsException if the deadline is before start
      */
     public void executeCommand()
             throws CommandException, IllegalValueException, ParseException, TaskInvalidTimestampsException {
@@ -40,14 +40,13 @@ public class StateCommandPair {
 
     /**
      * Executes the inverse of the command previously entered (for undo)
-     * @throws CommandException
-     * @throws IllegalValueException
-     * @throws ParseException
-     * @throws TaskInvalidTimestampsException
+     * @throws CommandException if it's an invalid command
+     * @throws IllegalValueException if any of its value is invalid
+     * @throws ParseException if the start/deadline time is not a date
+     * @throws TaskInvalidTimestampsException if the deadline is before start
      */
     public void executeInverseCommand()
             throws CommandException, IllegalValueException, ParseException, TaskInvalidTimestampsException {
-        System.out.println("State Pair - executing undo");
         this.undoCommand.setData(model);
         this.undoCommand.execute();
     }
