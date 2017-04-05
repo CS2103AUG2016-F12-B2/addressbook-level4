@@ -8,26 +8,29 @@ import org.junit.Test;
 
 import guitests.guihandles.TaskCardHandle;
 import seedu.todoapp.logic.commands.EditCommand;
+import seedu.todoapp.logic.commands.RedoCommand;
 import seedu.todoapp.logic.commands.UndoCommand;
 import seedu.todoapp.testutil.TaskBuilder;
 import seedu.todoapp.testutil.TestTask;
 import seedu.todoapp.testutil.TestUtil;
 
-public class UndoCommandTest extends ToDoAppGuiTest {
+public class RedoCommandTest extends ToDoAppGuiTest {
 
     @Test
-    public void undo_add_success() {
+    public void redo_add_success() {
         // Test ADD
         TestTask[] currentList = td.getTypicalTasks();
         TestTask taskToAdd = td.hoon;
-        assertAddSuccess(taskToAdd, currentList);
-        currentList = TestUtil.addTasksToList(currentList, taskToAdd);
 
+        assertAddSuccess(taskToAdd, currentList);
         assertUndoCommandSuccess(td.getTypicalTasks());
+        assertRedoCommandSuccess(TestUtil.addTasksToList(currentList, taskToAdd));
     }
 
     @Test
-    public void undo_edit_success() throws Exception {
+    public void redo_edit_success() throws Exception {
+        TestTask[] currentList = td.getTypicalTasks();
+
         String detailsToEdit = "Bobby t/husband";
         int toDoAppIndex = 1;
 
@@ -35,40 +38,51 @@ public class UndoCommandTest extends ToDoAppGuiTest {
                 .withDeadline("Thu Mar 31 12:43:24 2017").withPriority(1).withTags("husband").withNotes("").build();
 
         assertEditSuccess(toDoAppIndex, toDoAppIndex, detailsToEdit, editedTask);
-
         assertUndoCommandSuccess(td.getTypicalTasks());
+        currentList[toDoAppIndex - 1] = editedTask;
+        assertRedoCommandSuccess(currentList);
     }
 
     @Test
-    public void undo_delete_success() {
+    public void redo_delete_success() {
         // Test DELETE
         // Try delete first in list
         TestTask[] currentList = td.getTypicalTasks();
         int targetIndex = 1;
-        assertDeleteSuccess(targetIndex, currentList);
 
+        assertDeleteSuccess(targetIndex, currentList);
         assertUndoCommandSuccess(td.getTypicalTasks());
+        assertRedoCommandSuccess(TestUtil.removeTaskFromList(currentList, targetIndex));
     }
 
     @Test
-    public void undo_clear_success() {
+    public void redo_clear_success() {
         // Test CLEAR
         //verify a non-empty list can be cleared
         assertClearCommandSuccess();
         assertUndoCommandSuccess(td.getTypicalTasks());
+        assertRedoCommandSuccess(new TestTask[0]);
     }
 
     @Test
-    public void undo_mark_success() {
+    public void redo_mark_success() throws Exception {
         // Test mark
-
+        TestTask[] currentList = td.getTypicalTasks();
+        int toDoAppIndex = 1;
         // TODO: move this to assert once mark/unmark tests are ready
         commandBox.runCommand("mark 1");
         assertUndoCommandSuccess(td.getTypicalTasks());
+
+        TestTask markedTask = new TaskBuilder().withName("Alice Pauline")
+                .withStart("Thu Mar 30 12:43:24 2017").withDeadline("Sat Apr 1 12:43:24 2017")
+                .withPriority(1).withTags("friends").withNotes("")
+                .withCompletion("true").build();
+        currentList[toDoAppIndex - 1] = markedTask;
+        assertRedoCommandSuccess(currentList);
     }
 
     @Test
-    public void undo_unmark_success() throws Exception {
+    public void redo_unmark_success() throws Exception {
         // Test unmark
         TestTask[] currentList = td.getTypicalTasks();
         int toDoAppIndex = 1;
@@ -81,24 +95,33 @@ public class UndoCommandTest extends ToDoAppGuiTest {
                 .withCompletion("true").build();
         currentList[toDoAppIndex - 1] = markedTask;
         assertUndoCommandSuccess(currentList);
+        assertRedoCommandSuccess(td.getTypicalTasks());
     }
 
     @Test
-    public void undo_moreThanComamnds_failure() {
+    public void redo_nothing_failure() {
+        // Test REDO-ing nothing
+        commandBox.runCommand("redo");
+        assertResultMessage(RedoCommand.MESSAGE_FAIL);
+    }
+
+    @Test
+    public void redo_moreThanComamnds_failure() {
         TestTask[] currentList = td.getTypicalTasks();
         TestTask taskToAdd = td.hoon;
+
         assertAddSuccess(taskToAdd, currentList);
-        currentList = TestUtil.addTasksToList(currentList, taskToAdd);
-
         assertUndoCommandSuccess(td.getTypicalTasks());
+        assertRedoCommandSuccess(TestUtil.addTasksToList(currentList, taskToAdd));
 
-        // Should have no more commands to undo
-        commandBox.runCommand("undo");
-        assertResultMessage(UndoCommand.MESSAGE_FAIL);
+        // Should have no more commands to redo
+        commandBox.runCommand("redo");
+        assertResultMessage(RedoCommand.MESSAGE_FAIL);
     }
 
     /*
      * ASSERTS of typical commands (add,edit,delete...) etc are the same as from the other test files
+     * Undo is the same as UndoCommandTest.java
      */
 
     private void assertAddSuccess(TestTask taskToAdd, TestTask... currentList) {
@@ -171,5 +194,14 @@ public class UndoCommandTest extends ToDoAppGuiTest {
         commandBox.runCommand("undo");
         assertTrue(taskListPanel.isListMatching(expectedList));
         assertResultMessage(UndoCommand.MESSAGE_SUCCESS);
+    }
+
+    /*
+     * Runs the redo command, and check that the list is back to the previous state
+     */
+    private void assertRedoCommandSuccess(TestTask[] expectedList) {
+        commandBox.runCommand("redo");
+        assertTrue(taskListPanel.isListMatching(expectedList));
+        assertResultMessage(RedoCommand.MESSAGE_SUCCESS);
     }
 }

@@ -159,8 +159,17 @@ public class Parser {
             } else {
                 // Get data of command to be deleted
                 ReadOnlyTask taskToDelete = lastShownList.get(index.get() - 1);
+                String taskArgs = ParserUtil.getTaskArgs(taskToDelete);
+                // For add commands, we do not want the empty t/
+                taskArgs.replaceAll(CliSyntax.PREFIX_TAG.getPrefix(), "");
                 return new AddCommandParser().parse(ParserUtil.getTaskArgs(taskToDelete), index.get() - 1);
             }
+
+        case MarkCommand.COMMAND_WORD:
+            return new UnmarkCommandParser().parse(arguments);
+
+        case UnmarkCommand.COMMAND_WORD:
+            return new MarkCommandParser().parse(arguments);
 
         default:
             return null;
