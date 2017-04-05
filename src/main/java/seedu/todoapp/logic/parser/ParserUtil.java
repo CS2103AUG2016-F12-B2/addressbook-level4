@@ -114,6 +114,11 @@ public class ParserUtil {
             builder.append(CliSyntax.PREFIX_NOTES.getPrefix());
             builder.append(task.getNotes().toString());
         }
+        if (task.getVenue().toString().length() > 0) {
+            builder.append(" ");
+            builder.append(CliSyntax.PREFIX_VENUE.getPrefix());
+            builder.append(task.getVenue().toString());
+        }
         if (task.getTags().asObservableList().size() > 0) {
             builder.append(" ");
             builder.append(CliSyntax.PREFIX_TAG.getPrefix());
@@ -121,11 +126,6 @@ public class ParserUtil {
             task.getTags().forEach(tagBuilder::append);
             // Remove square brackets for tags
             builder.append(tagBuilder.toString().replaceAll("\\[", "").replaceAll("\\]", ""));
-        }
-        if (task.getVenue().toString().length() > 0) {
-            builder.append(" ");
-            builder.append(CliSyntax.PREFIX_VENUE.getPrefix());
-            builder.append(task.getVenue().toString());
         } else {
             // Return empty tag
             builder.append(" ");
