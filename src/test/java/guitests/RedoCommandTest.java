@@ -25,6 +25,7 @@ public class RedoCommandTest extends ToDoAppGuiTest {
         assertAddSuccess(taskToAdd, currentList);
         assertUndoCommandSuccess(td.getTypicalTasks());
         assertRedoCommandSuccess(TestUtil.addTasksToList(currentList, taskToAdd));
+        assertResultMessage(RedoCommand.MESSAGE_SUCCESS);
     }
 
     @Test
@@ -41,6 +42,7 @@ public class RedoCommandTest extends ToDoAppGuiTest {
         assertUndoCommandSuccess(td.getTypicalTasks());
         currentList[toDoAppIndex - 1] = editedTask;
         assertRedoCommandSuccess(currentList);
+        assertResultMessage(RedoCommand.MESSAGE_SUCCESS);
     }
 
     @Test
@@ -53,6 +55,7 @@ public class RedoCommandTest extends ToDoAppGuiTest {
         assertDeleteSuccess(targetIndex, currentList);
         assertUndoCommandSuccess(td.getTypicalTasks());
         assertRedoCommandSuccess(TestUtil.removeTaskFromList(currentList, targetIndex));
+        assertResultMessage(RedoCommand.MESSAGE_SUCCESS);
     }
 
     @Test
@@ -62,6 +65,7 @@ public class RedoCommandTest extends ToDoAppGuiTest {
         assertClearCommandSuccess();
         assertUndoCommandSuccess(td.getTypicalTasks());
         assertRedoCommandSuccess(new TestTask[0]);
+        assertResultMessage(RedoCommand.MESSAGE_SUCCESS);
     }
 
     @Test
@@ -79,6 +83,7 @@ public class RedoCommandTest extends ToDoAppGuiTest {
                 .withCompletion("true").build();
         currentList[toDoAppIndex - 1] = markedTask;
         assertRedoCommandSuccess(currentList);
+        assertResultMessage(RedoCommand.MESSAGE_SUCCESS);
     }
 
     @Test
@@ -96,6 +101,7 @@ public class RedoCommandTest extends ToDoAppGuiTest {
         currentList[toDoAppIndex - 1] = markedTask;
         assertUndoCommandSuccess(currentList);
         assertRedoCommandSuccess(td.getTypicalTasks());
+        assertResultMessage(RedoCommand.MESSAGE_SUCCESS);
     }
 
     @Test

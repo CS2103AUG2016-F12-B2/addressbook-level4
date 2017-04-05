@@ -24,6 +24,7 @@ public class UndoCommandTest extends ToDoAppGuiTest {
         currentList = TestUtil.addTasksToList(currentList, taskToAdd);
 
         assertUndoCommandSuccess(td.getTypicalTasks());
+        assertResultMessage(UndoCommand.MESSAGE_SUCCESS);
     }
 
     @Test
@@ -37,6 +38,7 @@ public class UndoCommandTest extends ToDoAppGuiTest {
         assertEditSuccess(toDoAppIndex, toDoAppIndex, detailsToEdit, editedTask);
 
         assertUndoCommandSuccess(td.getTypicalTasks());
+        assertResultMessage(UndoCommand.MESSAGE_SUCCESS);
     }
 
     @Test
@@ -48,6 +50,7 @@ public class UndoCommandTest extends ToDoAppGuiTest {
         assertDeleteSuccess(targetIndex, currentList);
 
         assertUndoCommandSuccess(td.getTypicalTasks());
+        assertResultMessage(UndoCommand.MESSAGE_SUCCESS);
 
         // Try delete middle in list
         currentList = td.getTypicalTasks();
@@ -55,6 +58,7 @@ public class UndoCommandTest extends ToDoAppGuiTest {
         assertDeleteSuccess(targetIndex, currentList);
 
         assertUndoCommandSuccess(td.getTypicalTasks());
+        assertResultMessage(UndoCommand.MESSAGE_SUCCESS);
 
         // Try delete last in list
         currentList = td.getTypicalTasks();
@@ -62,6 +66,7 @@ public class UndoCommandTest extends ToDoAppGuiTest {
         assertDeleteSuccess(targetIndex, currentList);
 
         assertUndoCommandSuccess(td.getTypicalTasks());
+        assertResultMessage(UndoCommand.MESSAGE_SUCCESS);
     }
 
     @Test
@@ -70,6 +75,7 @@ public class UndoCommandTest extends ToDoAppGuiTest {
         //verify a non-empty list can be cleared
         assertClearCommandSuccess();
         assertUndoCommandSuccess(td.getTypicalTasks());
+        assertResultMessage(UndoCommand.MESSAGE_SUCCESS);
     }
 
     @Test
@@ -79,6 +85,7 @@ public class UndoCommandTest extends ToDoAppGuiTest {
         // TODO: move this to assert once mark/unmark tests are ready
         commandBox.runCommand("mark 1");
         assertUndoCommandSuccess(td.getTypicalTasks());
+        assertResultMessage(UndoCommand.MESSAGE_SUCCESS);
     }
 
     @Test
@@ -95,6 +102,7 @@ public class UndoCommandTest extends ToDoAppGuiTest {
                 .withCompletion("true").build();
         currentList[toDoAppIndex - 1] = markedTask;
         assertUndoCommandSuccess(currentList);
+        assertResultMessage(UndoCommand.MESSAGE_SUCCESS);
     }
 
     @Test
