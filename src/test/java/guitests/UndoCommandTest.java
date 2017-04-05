@@ -7,6 +7,7 @@ import static seedu.todoapp.logic.commands.DeleteCommand.MESSAGE_DELETE_TASK_SUC
 import org.junit.Test;
 
 import guitests.guihandles.TaskCardHandle;
+import seedu.todoapp.commons.exceptions.IllegalValueException;
 import seedu.todoapp.logic.commands.EditCommand;
 import seedu.todoapp.logic.commands.UndoCommand;
 import seedu.todoapp.testutil.TaskBuilder;
@@ -56,6 +57,31 @@ public class UndoCommandTest extends ToDoAppGuiTest {
         //verify a non-empty list can be cleared
         assertClearCommandSuccess();
         assertUndoCommandSuccess(td.getTypicalTasks());
+    }
+
+    @Test
+    public void undo_mark_success() {
+        // Test mark
+
+        // TODO: move this to assert once mark/unmark tests are ready
+        commandBox.runCommand("mark 1");
+        assertUndoCommandSuccess(td.getTypicalTasks());
+    }
+
+    @Test
+    public void undo_unmark_success() throws Exception {
+        // Test unmark
+        TestTask[] currentList = td.getTypicalTasks();
+        int toDoAppIndex = 1;
+        // TODO: move this to assert once mark/unmark tests are ready
+        commandBox.runCommand("mark 1");
+        commandBox.runCommand("unmark 1");
+        TestTask markedTask = new TaskBuilder().withName("Alice Pauline")
+                .withStart("Thu Mar 30 12:43:24 2017").withDeadline("Sat Apr 1 12:43:24 2017")
+                .withPriority(1).withTags("friends").withNotes("")
+                .withCompletion("true").build();
+        currentList[toDoAppIndex - 1] = markedTask;
+        assertUndoCommandSuccess(currentList);
     }
 
     @Test
