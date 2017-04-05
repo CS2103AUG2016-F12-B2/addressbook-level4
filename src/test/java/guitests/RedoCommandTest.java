@@ -1,7 +1,7 @@
 //@@author A0114395E
 package guitests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 import static seedu.todoapp.logic.commands.DeleteCommand.MESSAGE_DELETE_TASK_SUCCESS;
 
 import org.junit.Test;
@@ -21,7 +21,7 @@ public class RedoCommandTest extends ToDoAppGuiTest {
         // Test ADD
         TestTask[] currentList = td.getTypicalTasks();
         TestTask taskToAdd = td.hoon;
-        
+
         assertAddSuccess(taskToAdd, currentList);
         assertUndoCommandSuccess(td.getTypicalTasks());
         assertRedoCommandSuccess(TestUtil.addTasksToList(currentList, taskToAdd));
@@ -30,7 +30,7 @@ public class RedoCommandTest extends ToDoAppGuiTest {
     @Test
     public void redo_edit_success() throws Exception {
         TestTask[] currentList = td.getTypicalTasks();
-        
+
         String detailsToEdit = "Bobby t/husband";
         int toDoAppIndex = 1;
 
@@ -49,14 +49,14 @@ public class RedoCommandTest extends ToDoAppGuiTest {
         // Try delete first in list
         TestTask[] currentList = td.getTypicalTasks();
         int targetIndex = 1;
-        
+
         assertDeleteSuccess(targetIndex, currentList);
         assertUndoCommandSuccess(td.getTypicalTasks());
         assertRedoCommandSuccess(TestUtil.removeTaskFromList(currentList, targetIndex));
     }
 
     @Test
-    public void redo_clear_success() {    
+    public void redo_clear_success() {
         // Test CLEAR
         //verify a non-empty list can be cleared
         assertClearCommandSuccess();
@@ -75,7 +75,7 @@ public class RedoCommandTest extends ToDoAppGuiTest {
     public void redo_moreThanComamnds_failure() {
         TestTask[] currentList = td.getTypicalTasks();
         TestTask taskToAdd = td.hoon;
-        
+
         assertAddSuccess(taskToAdd, currentList);
         assertUndoCommandSuccess(td.getTypicalTasks());
         assertRedoCommandSuccess(TestUtil.addTasksToList(currentList, taskToAdd));

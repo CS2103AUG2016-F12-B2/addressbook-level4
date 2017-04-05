@@ -51,7 +51,7 @@ public class UndoCommandTest extends ToDoAppGuiTest {
     }
 
     @Test
-    public void undo_clear_success() {    
+    public void undo_clear_success() {
         // Test CLEAR
         //verify a non-empty list can be cleared
         assertClearCommandSuccess();
