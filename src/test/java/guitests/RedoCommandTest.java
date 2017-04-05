@@ -65,6 +65,40 @@ public class RedoCommandTest extends ToDoAppGuiTest {
     }
 
     @Test
+    public void redo_mark_success() throws Exception {
+        // Test mark
+        TestTask[] currentList = td.getTypicalTasks();
+        int toDoAppIndex = 1;
+        // TODO: move this to assert once mark/unmark tests are ready
+        commandBox.runCommand("mark 1");
+        assertUndoCommandSuccess(td.getTypicalTasks());
+
+        TestTask markedTask = new TaskBuilder().withName("Alice Pauline")
+                .withStart("Thu Mar 30 12:43:24 2017").withDeadline("Sat Apr 1 12:43:24 2017")
+                .withPriority(1).withTags("friends").withNotes("")
+                .withCompletion("true").build();
+        currentList[toDoAppIndex - 1] = markedTask;
+        assertRedoCommandSuccess(currentList);
+    }
+
+    @Test
+    public void redo_unmark_success() throws Exception {
+        // Test unmark
+        TestTask[] currentList = td.getTypicalTasks();
+        int toDoAppIndex = 1;
+        // TODO: move this to assert once mark/unmark tests are ready
+        commandBox.runCommand("mark 1");
+        commandBox.runCommand("unmark 1");
+        TestTask markedTask = new TaskBuilder().withName("Alice Pauline")
+                .withStart("Thu Mar 30 12:43:24 2017").withDeadline("Sat Apr 1 12:43:24 2017")
+                .withPriority(1).withTags("friends").withNotes("")
+                .withCompletion("true").build();
+        currentList[toDoAppIndex - 1] = markedTask;
+        assertUndoCommandSuccess(currentList);
+        assertRedoCommandSuccess(td.getTypicalTasks());
+    }
+
+    @Test
     public void redo_nothing_failure() {
         // Test UNDO-ing nothing
         commandBox.runCommand("redo");

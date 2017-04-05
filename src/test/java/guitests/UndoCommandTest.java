@@ -7,7 +7,6 @@ import static seedu.todoapp.logic.commands.DeleteCommand.MESSAGE_DELETE_TASK_SUC
 import org.junit.Test;
 
 import guitests.guihandles.TaskCardHandle;
-import seedu.todoapp.commons.exceptions.IllegalValueException;
 import seedu.todoapp.logic.commands.EditCommand;
 import seedu.todoapp.logic.commands.UndoCommand;
 import seedu.todoapp.testutil.TaskBuilder;
