@@ -120,7 +120,7 @@ public class EditCommandParser {
     //@@author A0114395E
     /**
      * Handler for building editTaskDescriptor for Start
-     * @throws IllegalValueException
+     * @throws IllegalValueException if start date is invalid
      */
     private void setStartValueForDescriptor(boolean containsPrefix,
             ArgumentTokenizer argsTokenizer, EditTaskDescriptor editTaskDescriptor) throws IllegalValueException {
@@ -135,7 +135,7 @@ public class EditCommandParser {
 
     /**
      * Handler for building editTaskDescriptor for Deadline
-     * @throws IllegalValueException
+     * @throws IllegalValueException if deadline is invalid
      */
     private void setDeadlineValueForDescriptor(boolean containsPrefix,
             ArgumentTokenizer argsTokenizer, EditTaskDescriptor editTaskDescriptor) throws IllegalValueException {
@@ -150,7 +150,7 @@ public class EditCommandParser {
 
     /**
      * Handler for building editTaskDescriptor for Priority
-     * @throws IllegalValueException
+     * @throws IllegalValueException if priority value is invalid
      */
     private void setPriorityValueForDescriptor(boolean containsPrefix,
             ArgumentTokenizer argsTokenizer, EditTaskDescriptor editTaskDescriptor) throws IllegalValueException {
@@ -165,7 +165,7 @@ public class EditCommandParser {
 
     /**
      * Handler for building editTaskDescriptor for Notes
-     * @throws IllegalValueException
+     * @throws IllegalValueException if notes value is invalid
      */
     private void setNotesValueForDescriptor(boolean containsPrefix,
             ArgumentTokenizer argsTokenizer, EditTaskDescriptor editTaskDescriptor) throws IllegalValueException {
@@ -180,7 +180,7 @@ public class EditCommandParser {
 
     /**
      * Handler for building editTaskDescriptor for Completion
-     * @throws IllegalValueException
+     * @throws IllegalValueException if Completion value is invalid
      */
     private void setCompletionValueForDescriptor(boolean containsPrefix,
             ArgumentTokenizer argsTokenizer, EditTaskDescriptor editTaskDescriptor) throws IllegalValueException {
