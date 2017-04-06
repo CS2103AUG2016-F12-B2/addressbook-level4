@@ -28,7 +28,7 @@ public class Recurring {
      * Supported recurring string types
      */
     private static final Set<String> supportedTypes = new HashSet<String>(Arrays.asList(
-            new String[] {"daily", "weekly", "monthly", "yearly"}
+            new String[] {"-", "daily", "weekly", "monthly", "yearly"}
        ));
 
     public final String value;
