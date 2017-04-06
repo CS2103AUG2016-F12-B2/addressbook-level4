@@ -59,7 +59,7 @@ public class MarkCommandTest extends ToDoAppGuiTest {
     @Test
     public void mark_invalidValues_failure() {
         commandBox.runCommand("mark abc");
-        assertResultMessage(MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
+        assertResultMessage(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MarkCommand.MESSAGE_USAGE));
     }
 
     /**
