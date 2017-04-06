@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import seedu.todoapp.commons.core.Messages;
+import seedu.todoapp.logic.commands.SelectCommand;
 import seedu.todoapp.model.person.ReadOnlyTask;
 
 public class SelectCommandTest extends ToDoAppGuiTest {
@@ -33,6 +35,14 @@ public class SelectCommandTest extends ToDoAppGuiTest {
         assertListSize(0);
         assertSelectionInvalid(1); //invalid index
     }
+
+    //@@author A0114395E
+    @Test
+    public void select_badFormat_failure() {
+        commandBox.runCommand("select asd");
+        assertResultMessage(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, SelectCommand.MESSAGE_USAGE));
+    }
+    //@@author
 
     private void assertSelectionInvalid(int index) {
         commandBox.runCommand("select " + index);
