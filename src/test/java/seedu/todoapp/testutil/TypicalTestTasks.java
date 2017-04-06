@@ -16,24 +16,24 @@ public class TypicalTestTasks {
         try {
             alice = new TaskBuilder().withName("Alice Pauline")
                     .withStart("Thu Mar 30 12:43:24 2017").withDeadline("Sat Apr 1 12:43:24 2017")
-                    .withPriority(1).withTags("friends").withNotes("person").withVenue("NUS")
+                    .withPriority(5).withTags("friends").withNotes("person").withVenue("NUS")
                     .withCompletion("false").build();
             benson = new TaskBuilder().withName("Benson Meier")
                     .withStart("Thu Mar 30 12:43:24 2017").withDeadline("Sat Apr 1 12:43:24 2017")
                     .withTags("owesMoney", "friends")
-                    .withPriority(1).withNotes("-").withVenue("-")
+                    .withPriority(5).withNotes("-").withVenue("-")
                     .withCompletion("false").build();
             carl = new TaskBuilder().withName("Carl Kurz")
                     .withStart("Thu Mar 30 12:43:24 2017").withDeadline("Sat Apr 1 12:43:24 2017")
-                    .withPriority(1).withNotes("-").withVenue("-").withCompletion("false").build();
+                    .withPriority(5).withNotes("-").withVenue("-").withCompletion("false").build();
             daniel = new TaskBuilder().withName("Daniel Meier")
                     .withStart("Thu Mar 30 12:43:24 2017").withDeadline("Sat Apr 1 12:43:24 2017")
-                    .withPriority(1).withNotes("-").withVenue("Tampines").withCompletion("false").build();
+                    .withPriority(5).withNotes("-").withVenue("Tampines").withCompletion("false").build();
             elle = new TaskBuilder().withName("Elle Meyer")
-                    .withStart("Thu Mar 30 12:43:24 2017").withDeadline("Sat Apr 1 12:43:24 2017")
-                    .withPriority(1).withNotes("-").withVenue("-").withCompletion("false").build();
+                    .withStart("Wed Mar 29 12:43:24 2017").withDeadline("Sat Apr 1 12:43:24 2017")
+                    .withPriority(5).withNotes("-").withVenue("-").withCompletion("false").build();
             fiona = new TaskBuilder().withName("Fiona Kunz")
-                    .withStart("Thu Mar 30 12:43:24 2017").withDeadline("Sat Apr 1 12:43:24 2017")
+                    .withStart("Thu Mar 30 12:43:24 2017").withDeadline("Sat Apr 1 15:43:24 2017")
                     .withPriority(1).withNotes("person").withVenue("NUH").withCompletion("false").build();
             george = new TaskBuilder().withName("George Best")
                     .withStart("Thu Mar 30 12:43:24 2017").withDeadline("Sat Apr 1 12:43:24 2017")
