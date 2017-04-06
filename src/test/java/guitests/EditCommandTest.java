@@ -51,7 +51,7 @@ public class EditCommandTest extends ToDoAppGuiTest {
     @Test
     public void edit_notAllFieldsSpecified_success() throws Exception {
         String detailsToEdit = "t/sweetie t/bestie";
-        
+
         int toDoAppIndex = 2;
 
         TestTask personToEdit = expectedTasksList[toDoAppIndex - 1];
