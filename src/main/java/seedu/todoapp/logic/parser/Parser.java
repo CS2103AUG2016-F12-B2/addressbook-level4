@@ -26,6 +26,7 @@ import seedu.todoapp.logic.commands.SpecifyPathCommand;
 import seedu.todoapp.logic.commands.UndoCommand;
 import seedu.todoapp.logic.commands.UnmarkCommand;
 import seedu.todoapp.model.Model;
+import seedu.todoapp.model.RecurrentTaskManager;
 import seedu.todoapp.model.StateManager;
 import seedu.todoapp.model.person.ReadOnlyTask;
 
@@ -58,8 +59,12 @@ public class Parser {
      * Parses user input into command for execution.
      * @param userInput full user input string
      * @return the command based on the user input
+     * @throws Exception if RecurrentTaskManager throws an error due to date parsing
      */
-    public Command parseCommand(String userInput) {
+    public Command parseCommand(String userInput) throws Exception {
+        // Whenever there's a new command - we update all recurring dates if it's expired
+        RecurrentTaskManager.getInstance().updateRecurring();
+        // Start Parsing
         final Matcher matcher = BASIC_COMMAND_FORMAT.matcher(userInput.trim());
         if (!matcher.matches()) {
             return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));

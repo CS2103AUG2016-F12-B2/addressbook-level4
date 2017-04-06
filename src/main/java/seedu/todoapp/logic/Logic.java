@@ -23,9 +23,10 @@ public interface Logic {
      * @throws IllegalValueException
      * @throws ParseException
      * @throws TaskInvalidTimestampsException
+     * @throws Exception
      */
     CommandResult execute(String commandText)
-            throws CommandException, IllegalValueException, ParseException, TaskInvalidTimestampsException;
+            throws CommandException, IllegalValueException, ParseException, TaskInvalidTimestampsException, Exception;
 
     /** Returns the filtered list of persons */
     ObservableList<ReadOnlyTask> getFilteredTaskList();

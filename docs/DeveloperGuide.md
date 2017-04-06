@@ -136,19 +136,25 @@ _Figure 2.1.3b : Component interactions for `delete 1` command (part 2)_
   coupling between components.
 
 <!-- @@author A0114395E -->
+The Activity Diagram below shows the flow when a Recurring Task exists in ToDoApp<br><br>
+<img src="images/ToDoApp_Recurring-Activity-Diagram.png" width="600"><br>
+_Figure 2.1.5 : Component interactions for commands_
+> Note how if a command has tags `daily`, `weekly`, `monthly`, `yearly`, it will qualify as a recurrent task.
+> RecurrentTaskManager, implemented as a singleton, will check the whole list whenever there's a new command, and move expired task to its' next expected schedule.
+
 The Activity Diagram below shows the flow when a Command is being executed in ToDoApp<br><br>
 <img src="images/ToDoApp_Activity-Diagram.png" width="600"><br>
-_Figure 2.1.4 : Component interactions for commands_
+_Figure 2.1.6 : Component interactions for commands_
 
 The Sequence Diagram below shows the flow when `add`, `delete`, `edit`, `mark`, `unmark`, `clear`  Command is being executed in ToDoApp<br><br>
 <img src="images/ToDoApp_Seq-Diag-AddDelEdit.png" width="800"><br>
-_Figure 2.1.5 : Sequence diagram for commands_
+_Figure 2.1.7 : Sequence diagram for commands_
 
-> Note how if a comand is `add`, `delete`, `edit`, `mark`, `unmark`, `clear` we will parse the inverse of it's command to be stored as well.
+> Note how if a command is `add`, `delete`, `edit`, `mark`, `unmark`, `clear` we will parse the inverse of it's command to be stored as well.
 
 The Sequence Diagram below shows how ToDoApp handles `undo` and `redo` requests from the user.<br><br>
 <img src="images/ToDoApp_Seq-Diag-UndoRedo.png" width="800"><br>
-_Figure 2.1.6 : Sequence diagram for `undo` & `redo` commands_
+_Figure 2.1.8 : Sequence diagram for `undo` & `redo` commands_
 
 > Note how `StateManager` is implemented as a Singleton. This is by design, as we do not want more than one instance of a `StateManager` to handle undo/redo states. The `StateManager` consists of 2 stacks - `undoStack` & `redoStack`, holding a `StateCommandPair` object. <br>
 > The `StateCommandPair` class contains of 2 commands. The Command itself, and the inverse of it's Command. The inverse command is evaluated during the parsing of the actual command. <br><br>
