@@ -7,6 +7,7 @@ import org.junit.Test;
 import guitests.guihandles.TaskCardHandle;
 import seedu.todoapp.commons.core.Messages;
 import seedu.todoapp.logic.commands.AddCommand;
+import seedu.todoapp.testutil.TaskBuilder;
 import seedu.todoapp.testutil.TestTask;
 import seedu.todoapp.testutil.TestUtil;
 
@@ -37,6 +38,27 @@ public class AddCommandTest extends ToDoAppGuiTest {
         //invalid command
         commandBox.runCommand("adds Johnny");
         assertResultMessage(Messages.MESSAGE_UNKNOWN_COMMAND);
+    }
+
+    //@@author A0114395E
+    @Test
+    public void add_barebones_success() throws Exception {
+        final String bareboneTaskName = "Buy tofu";
+        //add an only-name task
+        TestTask[] currentList = td.getTypicalTasks();
+        TestTask barebonesTask = new TaskBuilder().withName(bareboneTaskName).build();
+
+        commandBox.runCommand("add ".concat(bareboneTaskName));
+        TestTask[] expectedList = TestUtil.addTasksToList(currentList, barebonesTask);
+        assertTrue(taskListPanel.isListMatching(expectedList));
+    }
+
+    @Test
+    public void add_deadlineBeforeStart_failure() throws Exception {
+        commandBox.runCommand("add Buy a zebra s/Wed Jul 12 12:43:24 2017 d/Mon Jul 10 12:43:24 2017 "
+                + "t/animal p/3 n/find a poacher");
+
+        assertResultMessage(AddCommand.MESSAGE_INVALID_START_END);
     }
 
     private void assertAddSuccess(TestTask taskToAdd, TestTask... currentList) {

@@ -7,6 +7,7 @@ import seedu.todoapp.model.person.Name;
 import seedu.todoapp.model.person.Notes;
 import seedu.todoapp.model.person.Priority;
 import seedu.todoapp.model.person.Start;
+import seedu.todoapp.model.person.Venue;
 import seedu.todoapp.model.tag.Tag;
 import seedu.todoapp.model.tag.UniqueTagList;
 
@@ -68,6 +69,11 @@ public class TaskBuilder {
 
     public TestTask build() {
         return this.task;
+    }
+
+    public TaskBuilder withVenue(String venue) throws IllegalValueException {
+        this.task.setVenue(new Venue(venue));
+        return this;
     }
 
 }

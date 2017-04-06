@@ -94,15 +94,12 @@ public class StateManager {
      */
     public void undo()
             throws CommandException, IllegalValueException, ParseException, TaskInvalidTimestampsException {
-        if (undoStack.isEmpty()) {
-            System.out.println("No undo commands found");
-        } else {
-            // Moving command from undo to redo
-            StateCommandPair currentCommand = undoStack.pop();
-            redoStack.push(currentCommand);
-            // Executing undo command
-            currentCommand.executeInverseCommand();
-        }
+        assert(!undoStack.isEmpty());
+        // Moving command from undo to redo
+        StateCommandPair currentCommand = undoStack.pop();
+        redoStack.push(currentCommand);
+        // Executing undo command
+        currentCommand.executeInverseCommand();
     }
 
     /**
@@ -115,15 +112,12 @@ public class StateManager {
      */
     public void redo()
             throws CommandException, IllegalValueException, ParseException, TaskInvalidTimestampsException {
-        if (redoStack.isEmpty()) {
-            System.out.println("No redo commands found");
-        } else {
-            // Moving command from redo to undo
-            StateCommandPair currentCommand = redoStack.pop();
-            undoStack.push(currentCommand);
-            // Executing redo command
-            currentCommand.executeCommand();
-        }
+        assert(!redoStack.isEmpty());
+        // Moving command from redo to undo
+        StateCommandPair currentCommand = redoStack.pop();
+        undoStack.push(currentCommand);
+        // Executing redo command
+        currentCommand.executeCommand();
     }
 
     /**
@@ -133,11 +127,9 @@ public class StateManager {
      * @throws IllegalValueException
      */
     public void restoreData() throws CommandException, IllegalValueException {
-        if (previousDataStack.isEmpty()) {
-            System.out.println("No previous data found");
-        } else {
-            ReadOnlyToDoApp previousData = previousDataStack.pop();
-            this.model.resetData(previousData);
-        }
+        assert(!previousDataStack.isEmpty());
+        System.out.println("No previous data found");
+        ReadOnlyToDoApp previousData = previousDataStack.pop();
+        this.model.resetData(previousData);
     }
 }

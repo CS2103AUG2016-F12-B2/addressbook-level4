@@ -87,10 +87,10 @@ public class ParserUtil {
     //@@author A0114395E
     /*
      * Helper method to parse a ReadOnlyTask into an command-line statement to be stored.
-     * @param ReadOnlyTask
+     * @param ReadOnlyTask, boolean isAddCommand
      * @returns String consisting of how a user would have typed the original command
      */
-    public static String getTaskArgs(ReadOnlyTask task) {
+    public static String getTaskArgs(ReadOnlyTask task, boolean isAddCommand) {
         // Build arguments
         final StringBuilder builder = new StringBuilder();
         builder.append(task.getName());
@@ -114,6 +114,11 @@ public class ParserUtil {
             builder.append(CliSyntax.PREFIX_NOTES.getPrefix());
             builder.append(task.getNotes().toString());
         }
+        if (task.getVenue().toString().length() > 0) {
+            builder.append(" ");
+            builder.append(CliSyntax.PREFIX_VENUE.getPrefix());
+            builder.append(task.getVenue().toString());
+        }
         if (task.getTags().asObservableList().size() > 0) {
             builder.append(" ");
             builder.append(CliSyntax.PREFIX_TAG.getPrefix());
@@ -121,8 +126,8 @@ public class ParserUtil {
             task.getTags().forEach(tagBuilder::append);
             // Remove square brackets for tags
             builder.append(tagBuilder.toString().replaceAll("\\[", "").replaceAll("\\]", ""));
-        } else {
-            // Return empty tag
+        } else if (!isAddCommand) {
+            // Return empty tag if it's not add command (i.e edit)
             builder.append(" ");
             builder.append(CliSyntax.PREFIX_TAG.getPrefix());
         }

@@ -7,6 +7,9 @@ import java.util.List;
 
 import com.joestelmach.natty.DateGroup;
 
+/**
+ * Parses loose user input for dates into proper date format
+ */
 public class NattyParser {
     private static NattyParser instance = null;
     private static final String EMPTY_VALUE = "-";
@@ -38,11 +41,21 @@ public class NattyParser {
         List<DateGroup> groups = nParser.parse(argsString);
         String output = "";
         for (DateGroup group : groups) {
-            // Remove timezone string
-            List<String> outputArr = new ArrayList<>(Arrays.asList(group.getDates().get(0).toString().split(" ")));
-            outputArr.remove(TIMEZONE_IDX);
-            output = String.join(" ", outputArr);
+            List<String> dateRepArr = this.getDateFromString(group);
+            output = String.join(" ", dateRepArr);
         }
         return output;
+    }
+
+    /*
+     * Helper function for parsing NLP date
+     * @param Takes in a dategroup object parsed from Natty Library
+     * @return List<String> excluding timezone
+     */
+    private List<String> getDateFromString(DateGroup group) {
+        List<String> outputArr = new ArrayList<>(Arrays.asList(group.getDates().get(0).toString().split(" ")));
+        // Remove time-zone string
+        outputArr.remove(TIMEZONE_IDX);
+        return outputArr;
     }
 }
