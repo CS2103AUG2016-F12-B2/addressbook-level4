@@ -23,6 +23,7 @@ import seedu.todoapp.logic.LogicManager;
 import seedu.todoapp.model.Model;
 import seedu.todoapp.model.ModelManager;
 import seedu.todoapp.model.ReadOnlyToDoApp;
+import seedu.todoapp.model.RecurrentTaskManager;
 import seedu.todoapp.model.StateManager;
 import seedu.todoapp.model.ToDoApp;
 import seedu.todoapp.model.UserPrefs;
@@ -64,6 +65,9 @@ public class MainApp extends Application {
 
         StateManager.getInstance().setModel(model);
 
+        RecurrentTaskManager.getInstance().setModel(model);
+        RecurrentTaskManager.getInstance().startRunning();
+        
         logic = new LogicManager(model, storage);
 
         ui = new UiManager(logic, config, userPrefs);
