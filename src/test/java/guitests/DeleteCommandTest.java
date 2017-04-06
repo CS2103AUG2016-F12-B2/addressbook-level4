@@ -46,8 +46,8 @@ public class DeleteCommandTest extends ToDoAppGuiTest {
         commandBox.runCommand("delete");
         assertResultMessage(String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
     }
+    //@@author
 
-    //author
     /**
      * Runs the delete command to delete the task at specified index and confirms the result is correct.
      * @param targetIndexOneIndexed e.g. index 1 to delete the first task in the list,

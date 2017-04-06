@@ -34,20 +34,24 @@ public class EditCommandTest extends ToDoAppGuiTest {
     //@@author A0114395E
     @Test
     public void edit_moreDetailsFieldsSpecified_success() throws Exception {
-        String detailsToEdit = "Buy a zebra s/Mon Jul 10 12:43:24 2017 d/Wed Jul 12 12:43:24 2017 "
-                + "t/animal p/3 n/find a poacher";
+        String detailsToEdit = "Buy a zebra s/Mon Jul 10 12:43:24 2017 d/Wed Jul 12 12:43:24 20"
+                + "17 "
+                + "t/animal p/3 n/find a poacher v/Jurong East";
         int toDoAppIndex = 1;
 
         TestTask editedTask = new TaskBuilder().withName("Buy a zebra")
                 .withStart("Mon Jul 10 12:43:24 2017").withDeadline("Wed Jul 12 12:43:24 2017")
-                .withPriority(3).withTags("animal").withNotes("find a poacher").build();
+                .withPriority(3).withTags("animal").withNotes("find a poacher").withVenue("Jurong East")
+                .build();
 
         assertEditSuccess(toDoAppIndex, toDoAppIndex, detailsToEdit, editedTask);
     }
+    //@@author
 
     @Test
     public void edit_notAllFieldsSpecified_success() throws Exception {
         String detailsToEdit = "t/sweetie t/bestie";
+        
         int toDoAppIndex = 2;
 
         TestTask personToEdit = expectedTasksList[toDoAppIndex - 1];
