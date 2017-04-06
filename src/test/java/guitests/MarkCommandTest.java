@@ -26,8 +26,9 @@ public class MarkCommandTest extends ToDoAppGuiTest {
     public void mark_unmarkedTask_success() throws Exception {
         int toDoAppIndex = 1;
 
-        TestTask editedTask = new TaskBuilder().withName("Bobby").withStart("Thu Mar 30 12:43:24 2017")
-                .withDeadline("Thu Mar 31 12:43:24 2017").withPriority(1).withTags("husband").withNotes("")
+        TestTask editedTask = new TaskBuilder().withName("Alice Pauline")
+                .withStart("Thu Mar 30 12:43:24 2017").withDeadline("Sat Apr 1 12:43:24 2017")
+                .withPriority(1).withTags("friends").withNotes("")
                 .withCompletion("true").build();
 
         assertMarkSuccess(toDoAppIndex, toDoAppIndex, editedTask);
@@ -37,12 +38,14 @@ public class MarkCommandTest extends ToDoAppGuiTest {
     public void mark_markedTask_success() throws Exception {
         int toDoAppIndex = 1;
 
-        TestTask editedTask = new TaskBuilder().withName("Bobby").withStart("Thu Mar 30 12:43:24 2017")
-                .withDeadline("Thu Mar 31 12:43:24 2017").withPriority(1).withTags("husband").withNotes("")
+        TestTask editedTask = new TaskBuilder().withName("Alice Pauline")
+                .withStart("Thu Mar 30 12:43:24 2017").withDeadline("Sat Apr 1 12:43:24 2017")
+                .withPriority(1).withTags("friends").withNotes("")
                 .withCompletion("true").build();
 
         assertMarkSuccess(toDoAppIndex, toDoAppIndex, editedTask);
     }
+    
     @Test
     public void mark_missingTaskIndex_failure() {
         commandBox.runCommand("mark");
