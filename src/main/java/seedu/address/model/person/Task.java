@@ -1,3 +1,5 @@
+// @@author A0124591H
+
 package seedu.address.model.person;
 
 import java.util.Objects;
@@ -18,13 +20,14 @@ public class Task implements ReadOnlyTask {
     private UniqueTagList tags;
     private Notes notes;
     private Completion completion;
+    private UniqueBlockList block;
 
     /**
      * Every field must be present and not null.
      */
     public Task(Name name, Start start, Deadline deadline, Priority priority, UniqueTagList tags, Notes notes,
-            Completion completion) {
-        assert !CollectionUtil.isAnyNull(name, start, deadline, tags, notes);
+            Completion completion, UniqueBlockList block) {
+        assert !CollectionUtil.isAnyNull(name, start, deadline, tags, notes, block);
         this.name = name;
         this.start = start;
         this.deadline = deadline;
@@ -33,6 +36,7 @@ public class Task implements ReadOnlyTask {
                                              // changes in the arg list
         this.notes = notes;
         this.completion = completion;
+        this.block = new UniqueBlockList(block);
     }
 
     /**
@@ -40,7 +44,7 @@ public class Task implements ReadOnlyTask {
      */
     public Task(ReadOnlyTask source) {
         this(source.getName(), source.getStart(), source.getDeadline(), source.getPriority(), source.getTags(),
-                source.getNotes(), source.getCompletion());
+                source.getNotes(), source.getCompletion(), source.getBlocks());
     }
 
     public void setName(Name name) {
@@ -115,6 +119,19 @@ public class Task implements ReadOnlyTask {
         this.completion = completion;
     }
 
+    @Override
+    public UniqueBlockList getBlocks() {
+        return new UniqueBlockList(block);
+    }
+
+    /**
+     * Replaces this person's tags with the tags in the argument tag list.
+     */
+    public void setBlocks(UniqueBlockList replacement) {
+        block.setBlocks(replacement);
+    }
+
+
     /**
      * Updates this person with the details of {@code replacement}.
      */
@@ -128,6 +145,7 @@ public class Task implements ReadOnlyTask {
         this.setTags(replacement.getTags());
         this.setNotes(replacement.getNotes());
         this.setCompletion(replacement.getCompletion());
+        this.setBlocks(replacement.getBlocks());
     }
 
     @Override

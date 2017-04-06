@@ -6,6 +6,7 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlElement;
 
 import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.model.person.Block;
 import seedu.address.model.person.Completion;
 import seedu.address.model.person.Deadline;
 import seedu.address.model.person.Name;
@@ -14,6 +15,7 @@ import seedu.address.model.person.Priority;
 import seedu.address.model.person.ReadOnlyTask;
 import seedu.address.model.person.Start;
 import seedu.address.model.person.Task;
+import seedu.address.model.person.UniqueBlockList;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.tag.UniqueTagList;
 
@@ -22,6 +24,7 @@ import seedu.address.model.tag.UniqueTagList;
  */
 public class XmlAdaptedTask {
 
+    // @@author A0124591H
     @XmlElement(required = true)
     private String name;
     @XmlElement
@@ -36,6 +39,8 @@ public class XmlAdaptedTask {
     private String notes;
     @XmlElement
     private String completion;
+    @XmlElement
+    private List<XmlAdaptedBlock> blocked = new ArrayList<>();
 
     /**
      * Constructs an XmlAdaptedTask.
@@ -60,6 +65,10 @@ public class XmlAdaptedTask {
         }
         notes = source.getNotes().value;
         completion = String.valueOf(source.getCompletion().value);
+        blocked = new ArrayList<>();
+        for (Block block : source.getBlocks()) {
+            blocked.add(new XmlAdaptedBlock(block));
+        }
     }
 
     /**
@@ -72,6 +81,10 @@ public class XmlAdaptedTask {
         for (XmlAdaptedTag tag : tagged) {
             taskTags.add(tag.toModelType());
         }
+        final List<Block> taskBlocks = new ArrayList<>();
+        for (XmlAdaptedBlock block : blocked) {
+            taskBlocks.add(block.toModelType());
+        }
         final Name name = new Name(this.name);
         final Start start = new Start(this.start);
         final Deadline deadline = new Deadline(this.deadline);
@@ -79,6 +92,7 @@ public class XmlAdaptedTask {
         final UniqueTagList tags = new UniqueTagList(taskTags);
         final Notes notes = new Notes(this.notes);
         final Completion completion = new Completion(this.completion);
-        return new Task(name, start, deadline, priority, tags, notes, completion);
+        final UniqueBlockList blocks = new UniqueBlockList(taskBlocks);
+        return new Task(name, start, deadline, priority, tags, notes, completion, blocks);
     }
 }

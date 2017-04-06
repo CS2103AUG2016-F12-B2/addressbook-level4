@@ -6,6 +6,7 @@ import java.util.Set;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.person.Block;
 import seedu.address.model.person.Completion;
 import seedu.address.model.person.Deadline;
 import seedu.address.model.person.Name;
@@ -13,6 +14,7 @@ import seedu.address.model.person.Notes;
 import seedu.address.model.person.Priority;
 import seedu.address.model.person.Start;
 import seedu.address.model.person.Task;
+import seedu.address.model.person.UniqueBlockList;
 import seedu.address.model.person.UniqueTaskList;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.tag.UniqueTagList;
@@ -25,8 +27,7 @@ public class AddCommand extends Command {
     public static final String COMMAND_WORD = "add";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a task to the ToDoApp. "
-            + "Parameters: NAME [d/DEADLINE] [p/PRIORITY] [t/TAG] [n/NOTES]...\n"
-            + "Example: " + COMMAND_WORD
+            + "Parameters: NAME [d/DEADLINE] [p/PRIORITY] [t/TAG] [n/NOTES]...\n" + "Example: " + COMMAND_WORD
             + " Buy Printer";
 
     public static final String MESSAGE_SUCCESS = "New task added: %1$s";
@@ -36,27 +37,23 @@ public class AddCommand extends Command {
     private final Task toAdd;
     private final int idx; // Optional adding of index
 
+    // @@author A0124591H
     /**
      * Creates an AddCommand using raw values.
-     *
      * @throws IllegalValueException if any of the raw values are invalid
      */
-    public AddCommand(String name, String start, String deadline,
-                        Integer priority, Set<String> tags, String notes, String completion, int idx)
-            throws IllegalValueException {
+    public AddCommand(String name, String start, String deadline, Integer priority, Set<String> tags, String notes,
+            String completion, Set<String> blocks, int idx) throws IllegalValueException {
         final Set<Tag> tagSet = new HashSet<>();
         for (String tagName : tags) {
             tagSet.add(new Tag(tagName));
         }
-        this.toAdd = new Task(
-                new Name(name),
-                new Start(start),
-                new Deadline(deadline),
-                new Priority(priority),
-                new UniqueTagList(tagSet),
-                new Notes(notes),
-                new Completion(completion)
-        );
+        final Set<Block> blockSet = new HashSet<>();
+        for (String blockName : blocks) {
+            blockSet.add(new Block(blockName));
+        }
+        this.toAdd = new Task(new Name(name), new Start(start), new Deadline(deadline), new Priority(priority),
+                new UniqueTagList(tagSet), new Notes(notes), new Completion(completion), new UniqueBlockList(blockSet));
         this.idx = idx;
     }
 

@@ -23,7 +23,7 @@ public class Start {
      * The first character of the start must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
-    public static final String DEADLINE_VALIDATION_REGEX = "([^\\s])+";
+    public static final String START_VALIDATION_REGEX = "[A-Za-z0-9 ]+";
 
     public final String value;
 
@@ -34,7 +34,7 @@ public class Start {
      */
     public Start(String start) throws IllegalValueException {
         assert start != null;
-        if (!isValidStart(start)) {
+        if (!isValidStart(start) && start.length() > 0) {
             throw new IllegalValueException(MESSAGE_START_CONSTRAINTS);
         }
         this.value = start;
@@ -44,7 +44,7 @@ public class Start {
      * Returns true if a given string is a valid start.
      */
     public static boolean isValidStart(String test) {
-        return true;
+        return test.matches(START_VALIDATION_REGEX);
     }
 
     //@@author A0114395E

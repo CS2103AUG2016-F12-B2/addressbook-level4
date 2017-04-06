@@ -1,3 +1,5 @@
+// @@author A0124591H
+
 package seedu.address.testutil;
 
 import seedu.address.model.person.Completion;
@@ -7,6 +9,7 @@ import seedu.address.model.person.Notes;
 import seedu.address.model.person.Priority;
 import seedu.address.model.person.ReadOnlyTask;
 import seedu.address.model.person.Start;
+import seedu.address.model.person.UniqueBlockList;
 import seedu.address.model.tag.UniqueTagList;
 
 /**
@@ -21,6 +24,7 @@ public class TestTask implements ReadOnlyTask {
     private UniqueTagList tags;
     private Notes notes;
     private Completion completion;
+    private UniqueBlockList blocks;
 
     public TestTask() {
         tags = new UniqueTagList();
@@ -37,6 +41,7 @@ public class TestTask implements ReadOnlyTask {
         this.tags = taskToCopy.getTags();
         this.notes = taskToCopy.getNotes();
         this.completion = taskToCopy.getCompletion();
+        this.blocks = taskToCopy.getBlocks();
     }
 
     public void setName(Name name) {
@@ -65,6 +70,10 @@ public class TestTask implements ReadOnlyTask {
 
     public void setCompletion(Completion completion) {
         this.completion = completion;
+    }
+
+    public void setBlocks(UniqueBlockList blocks) {
+        this.blocks = blocks;
     }
 
     @Override
@@ -103,6 +112,11 @@ public class TestTask implements ReadOnlyTask {
     }
 
     @Override
+    public UniqueBlockList getBlocks() {
+        return blocks;
+    }
+
+    @Override
     public String toString() {
         return getAsText();
     }
@@ -116,6 +130,7 @@ public class TestTask implements ReadOnlyTask {
         this.getTags().asObservableList().stream().forEach(s -> sb.append("t/" + s.tagName + " "));
         sb.append("n/" + this.getNotes().value + " ");
         sb.append("c/" + String.valueOf(this.getCompletion().value) + " ");
+        this.getBlocks().asObservableList().stream().forEach(b -> sb.append("b/" + b.blockPeriodWhole + " "));
         return sb.toString();
     }
 }

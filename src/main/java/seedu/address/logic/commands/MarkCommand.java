@@ -17,6 +17,7 @@ import seedu.address.model.person.Priority;
 import seedu.address.model.person.ReadOnlyTask;
 import seedu.address.model.person.Start;
 import seedu.address.model.person.Task;
+import seedu.address.model.person.UniqueBlockList;
 import seedu.address.model.person.UniqueTaskList;
 import seedu.address.model.tag.UniqueTagList;
 
@@ -39,10 +40,9 @@ public class MarkCommand extends Command {
     private final int filteredTaskListIndex;
 
     /**
-     * @param filteredTaskListIndex
-     *            the index of the person in the filtered person list to mark
-     * @param markTaskDescriptor
-     *            details to mark the person with
+     * @param filteredTaskListIndex the index of the person in the filtered
+     *            person list to mark
+     * @param markTaskDescriptor details to mark the person with
      */
     public MarkCommand(int filteredTaskListIndex) {
         assert filteredTaskListIndex > 0;
@@ -80,7 +80,7 @@ public class MarkCommand extends Command {
         assert taskToMark != null;
 
         return new Task(taskToMark.getName(), taskToMark.getStart(), taskToMark.getDeadline(), taskToMark.getPriority(),
-                taskToMark.getTags(), taskToMark.getNotes(), new Completion("true"));
+                taskToMark.getTags(), taskToMark.getNotes(), new Completion("true"), taskToMark.getBlocks());
     }
 
     /**
@@ -95,6 +95,7 @@ public class MarkCommand extends Command {
         private Optional<UniqueTagList> tags = Optional.empty();
         private Optional<Notes> notes = Optional.empty();
         private Optional<Completion> completion = Optional.empty();
+        private Optional<UniqueBlockList> blocks = Optional.empty();
 
         public MarkTaskDescriptor() {
         }
@@ -107,6 +108,7 @@ public class MarkCommand extends Command {
             this.tags = toCopy.getTags();
             this.notes = toCopy.getNotes();
             this.completion = toCopy.getCompletion();
+            this.blocks = toCopy.getBlocks();
         }
 
         /**
@@ -159,6 +161,15 @@ public class MarkCommand extends Command {
 
         public Optional<UniqueTagList> getTags() {
             return tags;
+        }
+
+        public void setBlocks(Optional<UniqueBlockList> blocks) {
+            assert blocks != null;
+            this.blocks = blocks;
+        }
+
+        public Optional<UniqueBlockList> getBlocks() {
+            return blocks;
         }
 
         public void setNotes(Optional<Notes> notes) {
