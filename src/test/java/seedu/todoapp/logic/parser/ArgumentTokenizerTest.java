@@ -18,7 +18,6 @@ public class ArgumentTokenizerTest {
     @Test
     public void accessors_notTokenizedYet() {
         ArgumentTokenizer tokenizer = new ArgumentTokenizer(slashP);
-        assertPreambleAbsent(tokenizer);
         assertArgumentAbsent(tokenizer, slashP);
     }
 
@@ -28,16 +27,11 @@ public class ArgumentTokenizerTest {
         String argsString = "  ";
         tokenizer.tokenize(argsString);
 
-        assertPreambleAbsent(tokenizer);
         assertArgumentAbsent(tokenizer, slashP);
     }
 
     private void assertPreamblePresent(ArgumentTokenizer argsTokenizer, String expectedPreamble) {
         assertEquals(expectedPreamble, argsTokenizer.getPreamble().get());
-    }
-
-    private void assertPreambleAbsent(ArgumentTokenizer argsTokenizer) {
-        assertFalse(argsTokenizer.getPreamble().isPresent());
     }
 
     private void assertArgumentPresent(ArgumentTokenizer argsTokenizer, Prefix prefix, String... expectedValues) {
@@ -80,7 +74,6 @@ public class ArgumentTokenizerTest {
 
         // No preamble
         tokenizer.tokenize(" /p   Argument value ");
-        assertPreambleAbsent(tokenizer);
         assertArgumentPresent(tokenizer, slashP, "Argument value");
 
     }
@@ -110,7 +103,6 @@ public class ArgumentTokenizerTest {
         // Reuse tokenizer on an empty string to ensure state is correctly reset
         //   (i.e. no stale values from the previous tokenizing remain in the state)
         tokenizer.tokenize("");
-        assertPreambleAbsent(tokenizer);
         assertArgumentAbsent(tokenizer, slashP);
 
         /** Also covers: testing for prefixes not specified as a prefix **/
