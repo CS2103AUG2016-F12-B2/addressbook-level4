@@ -22,6 +22,7 @@ import seedu.todoapp.logic.commands.MarkCommand;
 import seedu.todoapp.logic.commands.RedoCommand;
 import seedu.todoapp.logic.commands.RestoreModelCommand;
 import seedu.todoapp.logic.commands.SelectCommand;
+import seedu.todoapp.logic.commands.SortCommand;
 import seedu.todoapp.logic.commands.SpecifyPathCommand;
 import seedu.todoapp.logic.commands.UndoCommand;
 import seedu.todoapp.logic.commands.UnmarkCommand;
@@ -114,6 +115,9 @@ public class Parser {
         case SpecifyPathCommand.COMMAND_WORD:
             return new SpecifyPathCommand(arguments);
         // @@author
+            
+        case SortCommand.COMMAND_WORD:
+            return new SortCommandParser().parse(arguments);
 
         default:
             return new IncorrectCommand(MESSAGE_UNKNOWN_COMMAND);

@@ -143,6 +143,13 @@ public class ModelManager extends ComponentManager implements Model {
         filteredTasks.setPredicate(expression::satisfies);
     }
 
+    //@@author A0124153U
+    @Override
+    private void updateSortedTaskList(String keyword) {
+        
+    }
+    //@@author
+
     // ========== Inner classes/interfaces used for filtering
     // =================================================
 
@@ -292,5 +299,30 @@ public class ModelManager extends ComponentManager implements Model {
             return "completion=" + String.join(", ", completionValue);
         }
     }
+    
+    // ========== Inner classes/interfaces used for sorting
+    // ====================================================
+    
+    interface Sorting {
+        boolean run(ReadOnlyTask task);
 
+        String toString();
+    }
+    
+    private class PrioritySorting implements Sorting {
+        
+        PrioritySorting() {
+            
+        }
+        
+        @Override
+        public boolean run(ReadOnlyTask task) {
+            return true;
+        }
+        
+        @Override
+        public String toString() {
+            return "Sorting base on priority";
+        }
+    }
 }
