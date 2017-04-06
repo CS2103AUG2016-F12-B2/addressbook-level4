@@ -94,31 +94,81 @@ public class ParserUtil {
         // Build arguments
         final StringBuilder builder = new StringBuilder();
         builder.append(task.getName());
+        buildCommandForStart(builder, task);
+        buildCommandForDeadline(builder, task);
+        buildCommandForPriority(builder, task);
+        buildCommandForNotes(builder, task);
+        buildCommandForVenue(builder, task);
+        buildCommandForTags(builder, task, isAddCommand);
+
+        return builder.toString();
+    }
+
+    /*
+     * Helper function to get command for Start
+     * @return String
+     */
+    private static void buildCommandForStart(StringBuilder builder, ReadOnlyTask task) {
         if (task.getStart().toString().length() > 0) {
             builder.append(" ");
             builder.append(CliSyntax.PREFIX_START.getPrefix());
             builder.append(task.getStart().toString());
         }
+    }
+
+    /*
+     * Helper function to get command for Deadline
+     * @return String
+     */
+    private static void buildCommandForDeadline(StringBuilder builder, ReadOnlyTask task) {
         if (task.getDeadline().toString().length() > 0) {
             builder.append(" ");
             builder.append(CliSyntax.PREFIX_DEADLINE.getPrefix());
             builder.append(task.getDeadline().toString());
         }
+    }
+
+    /*
+     * Helper function to get command for Priority
+     * @return String
+     */
+    private static void buildCommandForPriority(StringBuilder builder, ReadOnlyTask task) {
         if (task.getPriority().toString().length() > 0) {
             builder.append(" ");
             builder.append(CliSyntax.PREFIX_PRIORITY.getPrefix());
             builder.append(task.getPriority().toString());
         }
+    }
+
+    /*
+     * Helper function to get command for Notes
+     * @return String
+     */
+    private static void buildCommandForNotes(StringBuilder builder, ReadOnlyTask task) {
         if (task.getNotes().toString().length() > 0) {
             builder.append(" ");
             builder.append(CliSyntax.PREFIX_NOTES.getPrefix());
             builder.append(task.getNotes().toString());
         }
+    }
+
+    /*
+     * Helper function to get command for Venue
+     * @return String
+     */
+    private static void buildCommandForVenue(StringBuilder builder, ReadOnlyTask task) {
         if (task.getVenue().toString().length() > 0) {
             builder.append(" ");
             builder.append(CliSyntax.PREFIX_VENUE.getPrefix());
             builder.append(task.getVenue().toString());
         }
+    }
+
+    /*
+     * Helper function to get command for Tags
+     * @return String
+     */
+    private static void buildCommandForTags(StringBuilder builder, ReadOnlyTask task, boolean isAddCommand) {
         if (task.getTags().asObservableList().size() > 0) {
             builder.append(" ");
             builder.append(CliSyntax.PREFIX_TAG.getPrefix());
@@ -131,6 +181,5 @@ public class ParserUtil {
             builder.append(" ");
             builder.append(CliSyntax.PREFIX_TAG.getPrefix());
         }
-        return builder.toString();
     }
 }
