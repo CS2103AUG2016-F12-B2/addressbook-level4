@@ -61,6 +61,46 @@ public class AddCommandTest extends ToDoAppGuiTest {
         assertResultMessage(AddCommand.MESSAGE_INVALID_START_END);
     }
 
+    @Test
+    public void add_recurringYearly_success() throws Exception {
+        commandBox.runCommand("add Buy a zebra s/Wed Jan 11 12:43:24 2017 d/Thu Jan 12 12:43:24 2017 "
+                + "t/yearly p/3 n/find a poacher");
+
+        TestTask taskToAdd = new TaskBuilder().withName("Buy a zebra")
+                .withStart("Thu Jan 11 12:43:24 2018").withDeadline("Fri Jan 12 12:43:24 2018").withTags("yearly")
+                .withPriority(3).withNotes("find a poacher").withVenue("-").withCompletion("false").build();
+        commandBox.runCommand("list");
+        TaskCardHandle addedCard = taskListPanel.navigateToTask("Buy a zebra");
+        assertMatching(taskToAdd, addedCard);
+    }
+
+    @Test
+    public void add_recurringYearlyDeadline_success() throws Exception {
+        commandBox.runCommand("add Buy a zebra d/Thu Jan 12 12:43:24 2017 "
+                + "t/yearly p/3 n/find a poacher");
+
+        TestTask taskToAdd = new TaskBuilder().withName("Buy a zebra")
+                .withStart("-").withDeadline("Fri Jan 12 12:43:24 2018").withTags("yearly")
+                .withPriority(3).withNotes("find a poacher").withVenue("-").withCompletion("false").build();
+        commandBox.runCommand("list");
+        TaskCardHandle addedCard = taskListPanel.navigateToTask("Buy a zebra");
+        assertMatching(taskToAdd, addedCard);
+    }
+
+    @Test
+    public void add_recurringYearlyStart_success() throws Exception {
+        commandBox.runCommand("add Buy a zebra s/Thu Jan 12 12:43:24 2017 "
+                + "t/yearly p/3 n/find a poacher");
+
+        TestTask taskToAdd = new TaskBuilder().withName("Buy a zebra")
+                .withStart("Fri Jan 12 12:43:24 2018").withDeadline("-").withTags("yearly")
+                .withPriority(3).withNotes("find a poacher").withVenue("-").withCompletion("false").build();
+        commandBox.runCommand("list");
+        TaskCardHandle addedCard = taskListPanel.navigateToTask("Buy a zebra");
+        assertMatching(taskToAdd, addedCard);
+    }
+    //@@author
+
     private void assertAddSuccess(TestTask taskToAdd, TestTask... currentList) {
         commandBox.runCommand(taskToAdd.getAddCommand());
 

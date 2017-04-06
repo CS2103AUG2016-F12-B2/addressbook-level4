@@ -1,6 +1,5 @@
 package seedu.todoapp.ui;
 
-import java.text.ParseException;
 import java.util.logging.Logger;
 
 import javafx.fxml.FXML;
@@ -10,12 +9,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 import seedu.todoapp.commons.core.LogsCenter;
 import seedu.todoapp.commons.events.ui.NewResultAvailableEvent;
-import seedu.todoapp.commons.exceptions.IllegalValueException;
 import seedu.todoapp.commons.util.FxViewUtil;
 import seedu.todoapp.logic.Logic;
 import seedu.todoapp.logic.commands.CommandResult;
 import seedu.todoapp.logic.commands.exceptions.CommandException;
-import seedu.todoapp.model.person.UniqueTaskList.TaskInvalidTimestampsException;
 
 public class CommandBox extends UiPart<Region> {
     private final Logger logger = LogsCenter.getLogger(CommandBox.class);
