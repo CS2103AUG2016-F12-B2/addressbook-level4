@@ -12,7 +12,8 @@ We are a team based in the [School of Computing, National University of Singapor
 * Features implemented:
    * [Undo/Redo](https://github.com/CS2103JAN2017-F12-B2/main/blob/master/docs/UserGuide.md#undo)
    * [Edit](https://github.com/se-edu/CS2103JAN2017-F12-B2/main/blob/master/docs/UserGuide.md#edit)
-   * [Rich Parsing](https://github.com/CS2103JAN2017-F12-B2/main/blob/master/docs/UserGuide.md#add)   
+   * [Rich Parsing](https://github.com/CS2103JAN2017-F12-B2/main/blob/master/docs/UserGuide.md#add)
+   * [Recurring tasks](https://github.com/CS2103JAN2017-F12-B2/main/blob/master/docs/UserGuide.md#add)   
 
 * Code written: [[Functional Code](https://github.com/CS2103JAN2017-F12-B2/main/blob/master/collated/main/A0114395E.md)][[test code](https://github.com/CS2103JAN2017-F12-B2/main/blob/master/collated/test/A0114395E.md)]
 * Other major contributions:
