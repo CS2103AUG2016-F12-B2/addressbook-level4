@@ -49,19 +49,19 @@ public class UnmarkCommandTest extends ToDoAppGuiTest {
     @Test
     public void unmark_missingTaskIndex_failure() {
         commandBox.runCommand("unmark");
-        assertResultMessage(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MarkCommand.MESSAGE_USAGE));
+        assertResultMessage(String.format(MESSAGE_INVALID_COMMAND_FORMAT, UnmarkCommand.MESSAGE_USAGE));
     }
 
     @Test
     public void unmark_invalidTaskIndex_failure() {
-        commandBox.runCommand("unmark " + expectedTasksList.length);
+        commandBox.runCommand("unmark " + (expectedTasksList.length + 1));
         assertResultMessage(MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
     }
 
     @Test
     public void unmark_invalidValues_failure() {
         commandBox.runCommand("unmark abc");
-        assertResultMessage(MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
+        assertResultMessage(String.format(MESSAGE_INVALID_COMMAND_FORMAT, UnmarkCommand.MESSAGE_USAGE));
     }
 
     /**
