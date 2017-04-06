@@ -11,17 +11,13 @@ import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import seedu.todoapp.commons.exceptions.IllegalValueException;
-import seedu.todoapp.model.person.Completion;
 import seedu.todoapp.model.person.Deadline;
-import seedu.todoapp.model.person.Name;
-import seedu.todoapp.model.person.Notes;
-import seedu.todoapp.model.person.Priority;
 import seedu.todoapp.model.person.ReadOnlyTask;
 import seedu.todoapp.model.person.Start;
 import seedu.todoapp.model.person.Task;
-import seedu.todoapp.model.person.Venue;
 import seedu.todoapp.model.tag.UniqueTagList;
 
 /**
@@ -33,7 +29,7 @@ public class RecurrentTaskManager {
     private Model model = null;
     private boolean isRunning = false;
     private Timer timer = new Timer();
-    private final long interval = 5 * 1000; // Currently 30secs interval
+    private final long interval = 30 * 1000; // Currently 30secs interval
 
     private static final String DAILY_INTERVAL = "daily";
     private static final String WEEKLY_INTERVAL = "weekly";
@@ -43,9 +39,8 @@ public class RecurrentTaskManager {
     /*
     * Supported recurring string types
     */
-   private static final Set<String> supportedTypes = new HashSet<String>(Arrays.asList(
-           new String[] {DAILY_INTERVAL, WEEKLY_INTERVAL, MONTHLY_INTERVAL, YEARLY_INTERVAL}
-           ));
+    private static final Set<String> supportedTypes = new HashSet<String>(Arrays.asList(
+           new String[] {DAILY_INTERVAL, WEEKLY_INTERVAL, MONTHLY_INTERVAL, YEARLY_INTERVAL}));
 
 
     /**
@@ -81,20 +76,22 @@ public class RecurrentTaskManager {
         // Set manager as running
         this.isRunning = true;
         this.updateAllRecurringTimestamps();
-        /*
+
         // Run interval to update recurrent tasks start/deadline
         this.timer.schedule(new TimerTask() {
             public void run() {
-                // TODO: Update tasks
-                try {
-                    updateAllRecurringTimestamps();
-                } catch (Exception e) {
-                    // Exception caught
-                    e.printStackTrace();
-                }
+                Platform.runLater(new Runnable() {
+                    public void run() {
+                        try {
+                            updateAllRecurringTimestamps();
+                        } catch (Exception e) {
+                            // TODO Auto-generated catch block
+                            e.printStackTrace();
+                        }
+                    }
+                });
             }
         }, 0, this.interval);
-        */
     }
 
     /*
@@ -115,7 +112,7 @@ public class RecurrentTaskManager {
      */
     private void updateTask(int idx, ReadOnlyTask task) throws Exception {
         UniqueTagList tagList = task.getTags();
-        for (int j = 0 ; j < tagList.asObservableList().size(); j++) {
+        for (int j = 0; j < tagList.asObservableList().size(); j++) {
             if (supportedTypes.contains(tagList.asObservableList().get(j).tagName)) {
                 // Recurrent tag detected
                 Task newTask = this.updateTask(task, tagList.asObservableList().get(j).tagName);
@@ -145,7 +142,7 @@ public class RecurrentTaskManager {
                 // Make new start/end classes
                 Start newStart = new Start(df.format(newStartDate));
                 Deadline newDeadline = new Deadline(df.format(newDeadlineDate));
-                return new Task(oldTask.getName(), newStart, newDeadline, 
+                return new Task(oldTask.getName(), newStart, newDeadline,
                         oldTask.getPriority(), oldTask.getTags(), oldTask.getNotes(),
                         oldTask.getCompletion(), oldTask.getVenue());
             }
@@ -157,7 +154,7 @@ public class RecurrentTaskManager {
                 Date newStartDate = getNextRecurrentDate(currentTime, c, oldStart, recurrentType);
                 // Make new start/end classes
                 Start newStart = new Start(df.format(newStartDate));
-                return new Task(oldTask.getName(), newStart, oldTask.getDeadline(), 
+                return new Task(oldTask.getName(), newStart, oldTask.getDeadline(),
                         oldTask.getPriority(), oldTask.getTags(), oldTask.getNotes(),
                         oldTask.getCompletion(), oldTask.getVenue());
             }
@@ -185,20 +182,20 @@ public class RecurrentTaskManager {
         c.setTime(oldDate);
         // Update the time till it's after current time
         switch (recurrentType) {
-            case DAILY_INTERVAL:
-                while (c.getTime().before(currentTime)) c.add(Calendar.DATE, 1);
-                break;
-            case WEEKLY_INTERVAL:
-                while (c.getTime().before(currentTime)) c.add(Calendar.DATE, 7);
-                break;
-            case MONTHLY_INTERVAL:
-                while (c.getTime().before(currentTime)) c.add(Calendar.MONTH, 1);
-                break;
-            case YEARLY_INTERVAL:
-                while (c.getTime().before(currentTime)) c.add(Calendar.YEAR, 1);
-                break;
-            default:
-                break;
+        case DAILY_INTERVAL:
+            while (c.getTime().before(currentTime)) c.add(Calendar.DATE, 1);
+            break;
+        case WEEKLY_INTERVAL:
+            while (c.getTime().before(currentTime)) c.add(Calendar.DATE, 7);
+            break;
+        case MONTHLY_INTERVAL:
+            while (c.getTime().before(currentTime)) c.add(Calendar.MONTH, 1);
+            break;
+        case YEARLY_INTERVAL:
+            while (c.getTime().before(currentTime)) c.add(Calendar.YEAR, 1);
+            break;
+        default:
+            break;
         }
         return c.getTime();
     }

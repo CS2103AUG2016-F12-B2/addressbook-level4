@@ -67,7 +67,7 @@ public class MainApp extends Application {
 
         RecurrentTaskManager.getInstance().setModel(model);
         RecurrentTaskManager.getInstance().startRunning();
-        
+
         logic = new LogicManager(model, storage);
 
         ui = new UiManager(logic, config, userPrefs);
