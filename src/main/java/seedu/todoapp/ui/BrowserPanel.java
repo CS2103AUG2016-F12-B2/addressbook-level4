@@ -44,7 +44,7 @@ public class BrowserPanel extends UiPart<Region> {
      * Helper function to hotfix the fonts (Open Sans) which are failing on MacOS.
      * See Issue : https://github.com/se-edu/addressbook-level4/issues/374
      * Solution: Wait for browser to load before executing JS
-     * This still doesn't work.. unfortunately
+     * TODO: This still doesn't work.. unfortunately :( . Works on browsers outside of java though.
      */
     private void fontFix() {
         // on ready function
@@ -71,7 +71,6 @@ public class BrowserPanel extends UiPart<Region> {
                 
                 // Run javascript function
                 browser.getEngine().executeScript(javascriptFunction);
-                // System.out.println(javascriptFunction);
                 browser.getEngine().executeScript("setTimeout(changeStyle, 2000);");
             }
         });
