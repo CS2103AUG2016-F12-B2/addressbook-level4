@@ -14,6 +14,7 @@ import seedu.todoapp.model.person.Priority;
 import seedu.todoapp.model.person.ReadOnlyTask;
 import seedu.todoapp.model.person.Start;
 import seedu.todoapp.model.person.Task;
+import seedu.todoapp.model.person.Venue;
 import seedu.todoapp.model.tag.Tag;
 import seedu.todoapp.model.tag.UniqueTagList;
 
@@ -36,6 +37,8 @@ public class XmlAdaptedTask {
     private String notes;
     @XmlElement
     private String completion;
+    @XmlElement
+    private String venue;
 
     /**
      * Constructs an XmlAdaptedTask.
@@ -60,6 +63,7 @@ public class XmlAdaptedTask {
         }
         notes = source.getNotes().value;
         completion = String.valueOf(source.getCompletion().value);
+        venue = source.getVenue().value;
     }
 
     /**
@@ -79,6 +83,7 @@ public class XmlAdaptedTask {
         final UniqueTagList tags = new UniqueTagList(taskTags);
         final Notes notes = new Notes(this.notes);
         final Completion completion = new Completion(this.completion);
-        return new Task(name, start, deadline, priority, tags, notes, completion);
+        final Venue venue = new Venue(this.venue);
+        return new Task(name, start, deadline, priority, tags, notes, completion, venue);
     }
 }
