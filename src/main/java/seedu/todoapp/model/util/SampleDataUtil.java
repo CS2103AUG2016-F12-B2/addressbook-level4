@@ -18,9 +18,10 @@ public class SampleDataUtil {
     public static Task[] getSampleTasks() {
         try {
             return new Task[] {
-                new Task(new Name("Buy printer"), new Start("Thu Mar 30 12:43:24 2017"), new Deadline("Sat Apr 1 12:43:24 2017"), new Priority(1),
-                        new UniqueTagList("shopping"), new Notes("this is a note"), new Completion("true"),
-                        new Venue("Kent Ridge")),
+                new Task(new Name("Buy printer"),
+                        new Start("Thu Mar 30 12:43:24 2017"), new Deadline("Sat Apr 1 12:43:24 2017"),
+                        new Priority(1), new UniqueTagList("shopping"), new Notes("this is a note"),
+                        new Completion("true"), new Venue("Kent Ridge")),
                 new Task(new Name("Go to the gym"), new Start("-"), new Deadline("-"), new Priority(0),
                         new UniqueTagList("exercise"), new Notes("-"), new Completion("-"),
                         new Venue("NUS")),
