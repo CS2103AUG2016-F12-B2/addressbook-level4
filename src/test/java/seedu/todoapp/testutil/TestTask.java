@@ -7,6 +7,7 @@ import seedu.todoapp.model.person.Notes;
 import seedu.todoapp.model.person.Priority;
 import seedu.todoapp.model.person.ReadOnlyTask;
 import seedu.todoapp.model.person.Start;
+import seedu.todoapp.model.person.Venue;
 import seedu.todoapp.model.tag.UniqueTagList;
 
 /**
@@ -21,6 +22,7 @@ public class TestTask implements ReadOnlyTask {
     private UniqueTagList tags;
     private Notes notes;
     private Completion completion;
+    private Venue venue;
 
     public TestTask() {
         tags = new UniqueTagList();
@@ -37,6 +39,7 @@ public class TestTask implements ReadOnlyTask {
         this.tags = taskToCopy.getTags();
         this.notes = taskToCopy.getNotes();
         this.completion = taskToCopy.getCompletion();
+        this.venue = taskToCopy.getVenue();
     }
 
     public void setName(Name name) {
@@ -65,6 +68,10 @@ public class TestTask implements ReadOnlyTask {
 
     public void setCompletion(Completion completion) {
         this.completion = completion;
+    }
+
+    public void setVenue(Venue venue) {
+        this.venue = venue;
     }
 
     @Override
@@ -103,6 +110,11 @@ public class TestTask implements ReadOnlyTask {
     }
 
     @Override
+    public Venue getVenue() {
+        return venue;
+    }
+
+    @Override
     public String toString() {
         return getAsText();
     }
@@ -116,6 +128,7 @@ public class TestTask implements ReadOnlyTask {
         this.getTags().asObservableList().stream().forEach(s -> sb.append("t/" + s.tagName + " "));
         sb.append("n/" + this.getNotes().value + " ");
         sb.append("c/" + String.valueOf(this.getCompletion().value) + " ");
+        sb.append("v/" + this.getVenue().value + " ");
         return sb.toString();
     }
 }

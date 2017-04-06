@@ -11,6 +11,7 @@ import seedu.todoapp.model.person.Priority;
 import seedu.todoapp.model.person.Start;
 import seedu.todoapp.model.person.Task;
 import seedu.todoapp.model.person.UniqueTaskList.DuplicateTaskException;
+import seedu.todoapp.model.person.Venue;
 import seedu.todoapp.model.tag.UniqueTagList;
 
 public class SampleDataUtil {
@@ -18,9 +19,11 @@ public class SampleDataUtil {
         try {
             return new Task[] {
                 new Task(new Name("Buy printer"), new Start("today"), new Deadline("tomorrow"), new Priority(1),
-                        new UniqueTagList("shopping"), new Notes("this is a note"), new Completion("true")),
+                        new UniqueTagList("shopping"), new Notes("this is a note"), new Completion("true"),
+                        new Venue("Kent Ridge")),
                 new Task(new Name("Go to the gym"), new Start(""), new Deadline(""), new Priority(0),
-                        new UniqueTagList("exercise"), new Notes(""), new Completion("")), };
+                        new UniqueTagList("exercise"), new Notes(""), new Completion(""),
+                        new Venue("NUS")), };
         } catch (IllegalValueException e) {
             throw new AssertionError("sample data cannot be invalid", e);
         }

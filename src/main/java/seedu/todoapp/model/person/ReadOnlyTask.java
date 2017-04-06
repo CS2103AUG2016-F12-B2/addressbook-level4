@@ -14,6 +14,7 @@ public interface ReadOnlyTask {
     Priority getPriority();
     Notes getNotes();
     Completion getCompletion();
+    Venue getVenue();
 
     /**
      * The returned TagList is a deep copy of the internal TagList,
