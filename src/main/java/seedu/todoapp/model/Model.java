@@ -45,7 +45,7 @@ public interface Model {
     /** Updates the filter of the filtered person list to filter by the given keywords*/
     void updateFilteredTaskList(String[] keywords);
 
-    //@@author A0124153
+    //@@author A0124153U
     /** Update the filter of the filtered person list to sort by the given keyword*/ 
     void updateSortedTaskList(String keywords);
     //@@author

@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 
 import com.google.common.base.Joiner;
 
+import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.todoapp.commons.core.ComponentManager;
 import seedu.todoapp.commons.core.LogsCenter;
@@ -16,6 +17,8 @@ import seedu.todoapp.commons.events.model.ToDoAppChangedEvent;
 import seedu.todoapp.commons.exceptions.IllegalValueException;
 import seedu.todoapp.commons.util.CollectionUtil;
 import seedu.todoapp.commons.util.StringUtil;
+import seedu.todoapp.logic.commands.Command;
+import seedu.todoapp.logic.commands.exceptions.CommandException;
 import seedu.todoapp.logic.parser.NattyParser;
 import seedu.todoapp.model.person.Deadline;
 import seedu.todoapp.model.person.ReadOnlyTask;
@@ -144,9 +147,11 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     //@@author A0124153U
-    @Override
-    private void updateSortedTaskList(String keyword) {
-        
+
+    public void updateSortedTaskList(String keyword) {
+        if(keyword.equals("priority")) {
+            PrioritySorting();
+        }    
     }
     //@@author
 
@@ -300,29 +305,40 @@ public class ModelManager extends ComponentManager implements Model {
         }
     }
     
-    // ========== Inner classes/interfaces used for sorting
+    // ========== Inner method used for sorting
     // ====================================================
     
-    interface Sorting {
-        boolean run(ReadOnlyTask task);
+    private void PrioritySorting() {
+        int maxPriority;
+        ObservableList<ReadOnlyTask> list;
 
-        String toString();
-    }
-    
-    private class PrioritySorting implements Sorting {
-        
-        PrioritySorting() {
+        list = toDoApp.getTaskList();
+        maxPriority = getHighestPriority();
+        filteredTasks.clear();
             
+        for(int i=maxPriority; i>=0; i--) {
+            for(ReadOnlyTask task : list) {
+                if(task.getPriority().value == i) {
+                    filteredTasks.add(task);
+
+                }
+
+            }
+
         }
-        
-        @Override
-        public boolean run(ReadOnlyTask task) {
-            return true;
-        }
-        
-        @Override
-        public String toString() {
-            return "Sorting base on priority";
-        }
+
     }
+        
+    private int getHighestPriority() {
+        ObservableList<ReadOnlyTask> list = toDoApp.getTaskList();
+        int max = list.get(0).getPriority().value;
+            
+        for(ReadOnlyTask task : list) {
+            if(task.getPriority().value > max) {
+                max = task.getPriority().value;
+                }
+            }
+            
+        return max;
+        }
 }

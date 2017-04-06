@@ -6,6 +6,7 @@ import java.text.ParseException;
 
 import seedu.todoapp.commons.exceptions.IllegalValueException;
 import seedu.todoapp.logic.commands.exceptions.CommandException;
+import seedu.todoapp.model.person.Task;
 import seedu.todoapp.model.person.UniqueTaskList.TaskInvalidTimestampsException;
 
 /**
@@ -26,6 +27,7 @@ public class SortCommand extends Command {
     public SortCommand(String keyword) {
         this.keyword = keyword;
     }
+
 
     @Override
     public CommandResult execute()
