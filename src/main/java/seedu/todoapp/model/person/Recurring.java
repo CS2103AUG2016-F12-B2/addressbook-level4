@@ -23,7 +23,7 @@ public class Recurring {
      * otherwise " " (a blank string) becomes a valid input.
      */
     public static final String RECURRING_VALIDATION_REGEX = "([^\\s])+";
-    
+
     /*
      * Supported recurring string types
      */
