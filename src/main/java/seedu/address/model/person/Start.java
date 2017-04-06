@@ -3,6 +3,10 @@
 
 package seedu.address.model.person;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import seedu.address.commons.exceptions.IllegalValueException;
 
 /**
@@ -42,6 +46,27 @@ public class Start {
     public static boolean isValidStart(String test) {
         return test.matches(START_VALIDATION_REGEX);
     }
+
+    //@@author A0114395E
+    /**
+     * Get the date object of Start
+     * @throws ParseException
+     * @returns the date object
+     */
+    public Date getDate() throws ParseException {
+        SimpleDateFormat df = new SimpleDateFormat("EEE MMM dd kk:mm:ss yyyy");
+        Date date = df.parse(this.value);
+        return date;
+    }
+
+    /**
+    * Check if Start has a date value
+    * @returns boolean
+    */
+    public boolean hasDate() {
+        return !(this.value.equals("-") || this.value.length() == 0);
+    }
+    //@@author
 
     @Override
     public String toString() {

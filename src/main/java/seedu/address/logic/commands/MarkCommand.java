@@ -1,4 +1,4 @@
-// @@author A0124591H
+//@@author A0124591H
 
 package seedu.address.logic.commands;
 

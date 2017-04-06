@@ -141,4 +141,8 @@ public class UniqueTaskList implements Iterable<Task> {
      */
     public static class TaskNotFoundException extends Exception {}
 
+    /**
+     * Signals that the start time is after the deadline
+     */
+    public static class TaskInvalidTimestampsException extends Exception {}
 }

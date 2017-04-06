@@ -1,10 +1,12 @@
 //@@author A0114395E
 package seedu.address.model;
 
+import java.text.ParseException;
 import java.util.Stack;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.person.UniqueTaskList.TaskInvalidTimestampsException;
 
 /**
  * Singleton class to handle Undo/Redo commands
@@ -12,21 +14,35 @@ import seedu.address.logic.commands.exceptions.CommandException;
 public class StateManager {
 
     private static StateManager instance = null;
+    private Model model = null;
     private Stack<StateCommandPair> undoStack;
     private Stack<StateCommandPair> redoStack;
+    private Stack<ReadOnlyToDoApp> previousDataStack;
 
-    // Exists only to defeat instantiation.
+    /**
+     * Exists only to defeat instantiation.
+     */
     protected StateManager() {
         undoStack = new Stack<StateCommandPair>();
         redoStack = new Stack<StateCommandPair>();
+        previousDataStack = new Stack<ReadOnlyToDoApp>();
     }
 
-    // Returns the singleton instance
+    /**
+     * @return the singleton instance
+     */
     public static StateManager getInstance() {
         if (instance == null) {
             instance = new StateManager();
         }
         return instance;
+    }
+
+    /*
+     * Updates the Model in StateManager
+     */
+    public void setModel(Model model) {
+        this.model = model;
     }
 
     /**
@@ -44,6 +60,13 @@ public class StateManager {
     }
 
     /**
+     * Check if stack exist for models
+     */
+    public boolean previousDataStackHasCommands() {
+        return !previousDataStack.isEmpty();
+    }
+
+    /**
      * On each new command, add a new command onto the undo stack to track its
      * history and clear the redo history stack
      */
@@ -53,14 +76,25 @@ public class StateManager {
     }
 
     /**
+     * On each clear command, we store the current model,
+     * in case the user wants to undo that clear command
+     */
+    public void onClearCommand(ReadOnlyToDoApp data) {
+        ToDoApp currentData = new ToDoApp(data);
+        this.previousDataStack.push(currentData);
+    }
+
+    /**
      * Undo the most recent command, then store that undo command in a redo
      * stack
      * @throws CommandException
      * @throws IllegalValueException
+     * @throws ParseException
+     * @throws TaskInvalidTimestampsException
      */
-    public void undo() throws CommandException, IllegalValueException {
+    public void undo()
+            throws CommandException, IllegalValueException, ParseException, TaskInvalidTimestampsException {
         if (undoStack.isEmpty()) {
-            // Can't undo as no history
             System.out.println("No undo commands found");
         } else {
             // Moving command from undo to redo
@@ -76,10 +110,12 @@ public class StateManager {
      * the undo stack
      * @throws CommandException
      * @throws IllegalValueException
+     * @throws ParseException
+     * @throws TaskInvalidTimestampsException
      */
-    public void redo() throws CommandException, IllegalValueException {
+    public void redo()
+            throws CommandException, IllegalValueException, ParseException, TaskInvalidTimestampsException {
         if (redoStack.isEmpty()) {
-            // Can't redo as no history
             System.out.println("No redo commands found");
         } else {
             // Moving command from redo to undo
@@ -87,6 +123,21 @@ public class StateManager {
             undoStack.push(currentCommand);
             // Executing redo command
             currentCommand.executeCommand();
+        }
+    }
+
+    /**
+     * Restores previous data (i.e undo a clear command )
+     *
+     * @throws CommandException
+     * @throws IllegalValueException
+     */
+    public void restoreData() throws CommandException, IllegalValueException {
+        if (previousDataStack.isEmpty()) {
+            System.out.println("No previous data found");
+        } else {
+            ReadOnlyToDoApp previousData = previousDataStack.pop();
+            this.model.resetData(previousData);
         }
     }
 }

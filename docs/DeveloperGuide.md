@@ -51,7 +51,7 @@ By : `CS2103JAN2017-F12-B2`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `Mar 2017`  &nbsp;&
 ### 1.3. Configuring Checkstyle
 1. Click `Project` -> `Properties` -> `Checkstyle` -> `Local Check Configurations` -> `New...`
 2. Choose `External Configuration File` under `Type`
-3. Enter an arbitrary configuration name e.g. addressbook
+3. Enter an arbitrary configuration name e.g. ToDoApp
 4. Import checkstyle configuration file found at `config/checkstyle/checkstyle.xml`
 5. Click OK once, go to the `Main` tab, use the newly imported check configuration.
 6. Tick and select `files from packages`, click `Change...`, and select the `resources` package
@@ -123,7 +123,7 @@ command `delete 1`.
 <img src="images\SDforDeletePerson.png" width="800"><br>
 _Figure 2.1.3a : Component interactions for `delete 1` command (part 1)_
 
->Note how the `Model` simply raises a `AddressBookChangedEvent` when the Address Book data are changed,
+>Note how the `Model` simply raises a `ToDoAppChangedEvent` when the Address Book data are changed,
  instead of asking the `Storage` to save the updates to the hard disk.
 
 The diagram below shows how the `EventsCenter` reacts to that event, which eventually results in the updates
@@ -140,11 +140,11 @@ The Activity Diagram below shows the flow when a Command is being executed in To
 <img src="images/ToDoApp_Activity-Diagram.png" width="600"><br>
 _Figure 2.1.4 : Component interactions for commands_
 
-The Sequence Diagram below shows the flow when `add`, `edit`, `delete` Command is being executed in ToDoApp<br><br>
+The Sequence Diagram below shows the flow when `add`, `delete`, `edit`, `mark`, `unmark`, `clear`  Command is being executed in ToDoApp<br><br>
 <img src="images/ToDoApp_Seq-Diag-AddDelEdit.png" width="800"><br>
 _Figure 2.1.5 : Sequence diagram for commands_
 
-> Note how if a comand is `add`, `delete`, or `edit`, we will parse the inverse of it's command to be stored as well.
+> Note how if a comand is `add`, `delete`, `edit`, `mark`, `unmark`, `clear` we will parse the inverse of it's command to be stored as well.
 
 The Sequence Diagram below shows how ToDoApp handles `undo` and `redo` requests from the user.<br><br>
 <img src="images/ToDoApp_Seq-Diag-UndoRedo.png" width="800"><br>
@@ -155,7 +155,7 @@ _Figure 2.1.6 : Sequence diagram for `undo` & `redo` commands_
 > When `undo` command is invoked, we pop the `StateCommandPair` from `undoStack` and put it on `redoStack`. We invoke the `undoCommand` from the `StateCommandPair`. <br>
 > Vice versa, when `redo` command is invoked, we pop the `StateCommandPair` from `redoStack` and put it on the `undoStack`. We then invoke the `executeCommand` from `StateCommandPair`. <br><br>
 > When the user performs any action, the redo stack is cleared. <br>
-> Undoability and Redoability are defined by whether either stack is empty, as well as if an action is undo-able, i.e only `add`, `edit`, `delete`, `mark`, `unmark` commands.
+> Undoability and Redoability are defined by whether either stack is empty, as well as if an action is undo-able, i.e only `add`, `edit`, `delete`, `mark`, `unmark`, `clear` commands.
 <!-- @@author -->
 
 The sections below give more details of each component.
@@ -235,7 +235,7 @@ The `Storage` component,
 
 ### 2.6. Common classes
 
-Classes used by multiple components are in the `seedu.addressbook.commons` package.
+Classes used by multiple components are in the `seedu.address.commons` package.
 
 ## 3. Implementation
 
@@ -345,7 +345,7 @@ Here are the steps to convert the project documentation files to PDF format.
  1. Make sure you have set up GitHub Pages as described in [UsingGithubPages.md](UsingGithubPages.md#setting-up).
  1. Using Chrome, go to the [GitHub Pages version](UsingGithubPages.md#viewing-the-project-site) of the
     documentation file. <br>
-    e.g. For [UserGuide.md](UserGuide.md), the URL will be `https://<your-username-or-organization-name>.github.io/addressbook-level4/docs/UserGuide.html`.
+    e.g. For [UserGuide.md](UserGuide.md), the URL will be `https://CS2103JAN2017-F12-B2.github.io/addressbook-level4/docs/UserGuide.html`.
  1. Click on the `Print` option in Chrome's menu.
  1. Set the destination to `Save as PDF`, then click `Save` to save a copy of the file in PDF format. <br>
     For best results, use the settings indicated in the screenshot below. <br>
@@ -578,7 +578,7 @@ Use case resumes at step 2
 
 **MSS**
 
-1. User does `add`, `edit`, `delete`, `mark`, `unmark` command
+1. User does `add`, `edit`, `delete`, `mark`, `unmark`, `clear` command
 2. TodoApp executes command
 3. User wants to undo previous command, executes `undo`
 4. ToDoApp reverts the command

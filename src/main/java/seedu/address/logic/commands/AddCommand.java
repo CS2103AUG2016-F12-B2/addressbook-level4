@@ -1,5 +1,6 @@
 package seedu.address.logic.commands;
 
+import java.text.ParseException;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -31,6 +32,7 @@ public class AddCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "New task added: %1$s";
     public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the ToDoApp";
+    public static final String MESSAGE_INVALID_START_END = "The task deadline cannot be before the start time";
 
     private final Task toAdd;
     private final int idx; // Optional adding of index
@@ -55,10 +57,16 @@ public class AddCommand extends Command {
         this.idx = idx;
     }
 
+    //@@author A0114395E
     @Override
-    public CommandResult execute() throws CommandException {
+    public CommandResult execute() throws CommandException, ParseException {
         assert model != null;
         try {
+            // Ensure that Deadline is not before Start
+            if (this.toAdd.getStart().hasDate() && this.toAdd.getDeadline().hasDate() &&
+                    this.toAdd.getStart().getDate().after(this.toAdd.getDeadline().getDate())) {
+                throw new UniqueTaskList.TaskInvalidTimestampsException();
+            }
             if (this.idx >= 0) {
                 model.addTask(toAdd, idx);
             } else {
@@ -67,6 +75,8 @@ public class AddCommand extends Command {
             return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
         } catch (UniqueTaskList.DuplicateTaskException e) {
             throw new CommandException(MESSAGE_DUPLICATE_TASK);
+        } catch (UniqueTaskList.TaskInvalidTimestampsException e) {
+            throw new CommandException(MESSAGE_INVALID_START_END);
         }
 
     }

@@ -150,7 +150,7 @@ Retrieve all tasks with the deadline at 5pm.
 Undo the most recent command<br>
 Format: `undo`
 
-> * Can undo commands `add`, `delete`, `edit`, `mark`, `unmark`
+> * Can undo commands `add`, `delete`, `edit`, `mark`, `unmark`, `clear`
 
 ### 2.10. Redo a recent command: `redo`
 
