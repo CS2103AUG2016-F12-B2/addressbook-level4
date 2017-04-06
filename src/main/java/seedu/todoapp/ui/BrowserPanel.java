@@ -56,9 +56,10 @@ public class BrowserPanel extends UiPart<Region> {
                 final String javascriptTagCode = "var css = 'body { font-family: \\'arial,sans-serif\\'; }';";
                 final String javascriptHeadCode = "head = document.head || document.getElementsByTagName('head')[0];";
                 final String javascriptSetTagType = "style.type = 'text/css';";
-                final String javascriptAddCSSToStyleTag = "(style.styleSheet) ? style.styleSheet.cssText = css : style.appendChild(document.createTextNode(css));";
+                final String javascriptAddCSSToStyleTag = "(style.styleSheet) ? "
+                        + "style.styleSheet.cssText = css : style.appendChild(document.createTextNode(css));";
                 final String javascriptAppendStyleToHead = "head.appendChild(style);";
-                
+
                 // Create javascript function
                 final String javascriptFunction = "var changeStyle = function() {"
                         .concat(javascriptCSSCode)
@@ -68,7 +69,7 @@ public class BrowserPanel extends UiPart<Region> {
                         .concat(javascriptAddCSSToStyleTag)
                         .concat(javascriptAppendStyleToHead)
                         .concat(" }");
-                
+
                 // Run javascript function
                 browser.getEngine().executeScript(javascriptFunction);
                 browser.getEngine().executeScript("setTimeout(changeStyle, 2000);");
