@@ -8,10 +8,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.Timer;
-import java.util.TimerTask;
 
-import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import seedu.todoapp.commons.exceptions.IllegalValueException;
 import seedu.todoapp.model.person.Deadline;
@@ -27,9 +24,6 @@ public class RecurrentTaskManager {
 
     private static RecurrentTaskManager instance = null;
     private Model model = null;
-    private boolean isRunning = false;
-    private Timer timer = new Timer();
-    private final long interval = 30 * 1000; // Currently 30secs interval
 
     private static final String DAILY_INTERVAL = "daily";
     private static final String WEEKLY_INTERVAL = "weekly";
@@ -69,29 +63,8 @@ public class RecurrentTaskManager {
     /*
      * Start Running to update all timestamps
      */
-    public void startRunning() throws Exception {
-        // Don't do anything if we are already updating timestamps
-        if (this.isRunning) return;
-
-        // Set manager as running
-        this.isRunning = true;
+    public void updateRecurring() throws Exception {
         this.updateAllRecurringTimestamps();
-
-        // Run interval to update recurrent tasks start/deadline
-        this.timer.schedule(new TimerTask() {
-            public void run() {
-                Platform.runLater(new Runnable() {
-                    public void run() {
-                        try {
-                            updateAllRecurringTimestamps();
-                        } catch (Exception e) {
-                            // TODO Auto-generated catch block
-                            e.printStackTrace();
-                        }
-                    }
-                });
-            }
-        }, 0, this.interval);
     }
 
     /*

@@ -1,21 +1,17 @@
 package seedu.todoapp.logic;
 
-import java.text.ParseException;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
 import seedu.todoapp.commons.core.ComponentManager;
 import seedu.todoapp.commons.core.LogsCenter;
-import seedu.todoapp.commons.exceptions.IllegalValueException;
 import seedu.todoapp.logic.commands.Command;
 import seedu.todoapp.logic.commands.CommandResult;
-import seedu.todoapp.logic.commands.exceptions.CommandException;
 import seedu.todoapp.logic.parser.Parser;
 import seedu.todoapp.model.Model;
 import seedu.todoapp.model.StateCommandPair;
 import seedu.todoapp.model.StateManager;
 import seedu.todoapp.model.person.ReadOnlyTask;
-import seedu.todoapp.model.person.UniqueTaskList.TaskInvalidTimestampsException;
 import seedu.todoapp.storage.Storage;
 
 /**
@@ -34,8 +30,7 @@ public class LogicManager extends ComponentManager implements Logic {
     }
 
     @Override
-    public CommandResult execute(String commandText)
-            throws CommandException, IllegalValueException, ParseException, TaskInvalidTimestampsException {
+    public CommandResult execute(String commandText) throws Exception {
         logger.info("----------------[USER COMMAND][" + commandText + "]");
         Command command = parser.parseCommand(commandText);
         command.setData(model);

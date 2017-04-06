@@ -66,7 +66,7 @@ public class MainApp extends Application {
         StateManager.getInstance().setModel(model);
 
         RecurrentTaskManager.getInstance().setModel(model);
-        RecurrentTaskManager.getInstance().startRunning();
+        RecurrentTaskManager.getInstance().updateRecurring();
 
         logic = new LogicManager(model, storage);
 

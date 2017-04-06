@@ -41,8 +41,7 @@ public class CommandBox extends UiPart<Region> {
     }
 
     @FXML
-    private void handleCommandInputChanged()
-            throws IllegalValueException, ParseException, TaskInvalidTimestampsException {
+    private void handleCommandInputChanged() throws Exception {
         try {
             CommandResult commandResult = logic.execute(commandTextField.getText());
 
