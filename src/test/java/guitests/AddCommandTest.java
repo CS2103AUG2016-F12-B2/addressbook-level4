@@ -42,6 +42,12 @@ public class AddCommandTest extends ToDoAppGuiTest {
 
     //@@author A0114395E
     @Test
+    public void add_noName_failure() throws Exception {
+        commandBox.runCommand("add s/");
+        assertResultMessage(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
+    }
+
+    @Test
     public void add_barebones_success() throws Exception {
         final String bareboneTaskName = "Buy tofu";
         //add an only-name task
