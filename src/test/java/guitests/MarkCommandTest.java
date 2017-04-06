@@ -52,7 +52,7 @@ public class MarkCommandTest extends ToDoAppGuiTest {
 
     @Test
     public void mark_invalidTaskIndex_failure() {
-        commandBox.runCommand("mark " + expectedTasksList.length);
+        commandBox.runCommand("mark " + (expectedTasksList.length + 1));
         assertResultMessage(MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
     }
 
