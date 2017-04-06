@@ -74,13 +74,14 @@ public class RecurrentTaskManager {
     /*
      * Start Running to update all timestamps
      */
-    public void startRunning() {
+    public void startRunning() throws Exception {
         // Don't do anything if we are already updating timestamps
         if (this.isRunning) return;
 
         // Set manager as running
         this.isRunning = true;
-
+        this.updateAllRecurringTimestamps();
+        /*
         // Run interval to update recurrent tasks start/deadline
         this.timer.schedule(new TimerTask() {
             public void run() {
@@ -93,6 +94,7 @@ public class RecurrentTaskManager {
                 }
             }
         }, 0, this.interval);
+        */
     }
 
     /*
@@ -138,8 +140,8 @@ public class RecurrentTaskManager {
 
             // Update only if past deadline
             if (currentTime.after(oldDeadline)) {
-                Date newStartDate = getNextRecurrentDate(c, oldStart, recurrentType);
-                Date newDeadlineDate = getNextRecurrentDate(c, oldDeadline, recurrentType);
+                Date newStartDate = getNextRecurrentDate(currentTime, c, oldStart, recurrentType);
+                Date newDeadlineDate = getNextRecurrentDate(currentTime, c, oldDeadline, recurrentType);
                 // Make new start/end classes
                 Start newStart = new Start(df.format(newStartDate));
                 Deadline newDeadline = new Deadline(df.format(newDeadlineDate));
@@ -152,7 +154,7 @@ public class RecurrentTaskManager {
             Date oldStart = oldTask.getStart().getDate();
             // Update only if past start date
             if (currentTime.after(oldStart)) {
-                Date newStartDate = getNextRecurrentDate(c, oldStart, recurrentType);
+                Date newStartDate = getNextRecurrentDate(currentTime, c, oldStart, recurrentType);
                 // Make new start/end classes
                 Start newStart = new Start(df.format(newStartDate));
                 return new Task(oldTask.getName(), newStart, oldTask.getDeadline(), 
@@ -164,7 +166,7 @@ public class RecurrentTaskManager {
             Date oldDeadline = oldTask.getDeadline().getDate();
             // Update only if past start date
             if (currentTime.after(oldDeadline)) {
-                Date newDeadlineDate = getNextRecurrentDate(c, oldDeadline, recurrentType);
+                Date newDeadlineDate = getNextRecurrentDate(currentTime, c, oldDeadline, recurrentType);
                 // Make new start/end classes
                 Deadline newDeadline = new Deadline(df.format(newDeadlineDate));
                 return new Task(oldTask.getName(), oldTask.getStart(), newDeadline,
@@ -173,27 +175,27 @@ public class RecurrentTaskManager {
             }
         }
         // No dates: No difference - return old task
-        System.out.println("no dates");
         return null;
     }
 
     /*
      * Helper function to move date forward by recurrent amount
      */
-    private Date getNextRecurrentDate(Calendar c, Date oldDate, String recurrentType) {
+    private Date getNextRecurrentDate(Date currentTime, Calendar c, Date oldDate, String recurrentType) {
         c.setTime(oldDate);
+        // Update the time till it's after current time
         switch (recurrentType) {
             case DAILY_INTERVAL:
-                c.add(Calendar.DATE, 1);
+                while (c.getTime().before(currentTime)) c.add(Calendar.DATE, 1);
                 break;
             case WEEKLY_INTERVAL:
-                c.add(Calendar.DATE, 7);
+                while (c.getTime().before(currentTime)) c.add(Calendar.DATE, 7);
                 break;
             case MONTHLY_INTERVAL:
-                c.add(Calendar.MONTH, 1);
+                while (c.getTime().before(currentTime)) c.add(Calendar.MONTH, 1);
                 break;
             case YEARLY_INTERVAL:
-                c.add(Calendar.YEAR, 1);
+                while (c.getTime().before(currentTime)) c.add(Calendar.YEAR, 1);
                 break;
             default:
                 break;
