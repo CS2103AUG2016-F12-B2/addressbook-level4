@@ -8,7 +8,6 @@ import java.util.Optional;
 
 import seedu.todoapp.logic.commands.Command;
 import seedu.todoapp.logic.commands.IncorrectCommand;
-import seedu.todoapp.logic.commands.SelectCommand;
 import seedu.todoapp.logic.commands.UnmarkCommand;
 
 /**
@@ -23,7 +22,7 @@ public class UnmarkCommandParser {
     public Command parse(String args) {
         Optional<Integer> index = ParserUtil.parseIndex(args);
         if (!index.isPresent()) {
-            return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, SelectCommand.MESSAGE_USAGE));
+            return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, UnmarkCommand.MESSAGE_USAGE));
         }
 
         return new UnmarkCommand(index.get());
