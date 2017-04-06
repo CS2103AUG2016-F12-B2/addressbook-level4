@@ -18,6 +18,7 @@ public class CliSyntax {
     public static final Prefix PREFIX_TAG = new Prefix("t/");
     public static final Prefix PREFIX_NOTES = new Prefix("n/");
     public static final Prefix PREFIX_COMPLETION = new Prefix("c/");
+    public static final Prefix PREFIX_VENUE = new Prefix("v/");
 
     /* Patterns definitions */
     public static final Pattern KEYWORDS_ARGS_FORMAT =

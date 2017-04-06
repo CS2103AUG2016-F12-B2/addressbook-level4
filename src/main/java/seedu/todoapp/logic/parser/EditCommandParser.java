@@ -7,6 +7,7 @@ import static seedu.todoapp.logic.parser.CliSyntax.PREFIX_NOTES;
 import static seedu.todoapp.logic.parser.CliSyntax.PREFIX_PRIORITY;
 import static seedu.todoapp.logic.parser.CliSyntax.PREFIX_START;
 import static seedu.todoapp.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.todoapp.logic.parser.CliSyntax.PREFIX_VENUE;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -27,6 +28,7 @@ import seedu.todoapp.model.person.Notes;
 import seedu.todoapp.model.person.Priority;
 import seedu.todoapp.model.person.ReadOnlyTask;
 import seedu.todoapp.model.person.Start;
+import seedu.todoapp.model.person.Venue;
 import seedu.todoapp.model.tag.UniqueTagList;
 
 /**
@@ -43,7 +45,7 @@ public class EditCommandParser {
         assert args != null;
         ArgumentTokenizer argsTokenizer =
                 new ArgumentTokenizer(PREFIX_START, PREFIX_DEADLINE, PREFIX_PRIORITY,
-                                        PREFIX_TAG, PREFIX_NOTES, PREFIX_COMPLETION);
+                                        PREFIX_TAG, PREFIX_NOTES, PREFIX_COMPLETION, PREFIX_VENUE);
         argsTokenizer.tokenize(args);
         List<Optional<String>> preambleFields = ParserUtil.splitPreamble(argsTokenizer.getPreamble().orElse(""), 2);
 
@@ -66,6 +68,7 @@ public class EditCommandParser {
             setNotesValueForDescriptor(args.contains(PREFIX_NOTES.prefix), argsTokenizer, editTaskDescriptor);
             setCompletionValueForDescriptor(args.contains(PREFIX_COMPLETION.prefix), argsTokenizer, editTaskDescriptor);
             //@@author
+            setVenueValueForDescriptor(args.contains(PREFIX_VENUE.prefix), argsTokenizer, editTaskDescriptor);
         } catch (IllegalValueException ive) {
             return new IncorrectCommand(ive.getMessage());
         }
@@ -190,6 +193,25 @@ public class EditCommandParser {
             editTaskDescriptor.setCompletion((Optional.of(new Completion(String.valueOf(completionBool)))));
         } else if (containsPrefix) {
             editTaskDescriptor.setCompletion((Optional.of(new Completion("false"))));
+        }
+    }
+
+    //@@author A0124153U
+    /**
+     * Handler for building editTaskDescriptor for completion
+     * @throws IllegalValueException
+     * @param argsTokenizer
+     * @param editTaskDescriptor
+     * @throws IllegalValueException
+     */
+    private void setVenueValueForDescriptor(boolean containsPrefix,
+            ArgumentTokenizer argsTokenizer, EditTaskDescriptor editTaskDescriptor) throws IllegalValueException {
+        // Check venue
+        String venueStr = argsTokenizer.getValue(PREFIX_VENUE).orElse("");
+        if (venueStr.length() > 0) {
+            editTaskDescriptor.setVenue(Optional.of(new Venue(venueStr)));
+        } else if (containsPrefix) {
+            editTaskDescriptor.setVenue(Optional.of(new Venue("-")));
         }
     }
 }

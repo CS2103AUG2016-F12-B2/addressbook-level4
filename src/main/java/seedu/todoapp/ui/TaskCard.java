@@ -29,6 +29,8 @@ public class TaskCard extends UiPart<Region> {
     private Label notes;
     @FXML
     private Label completion;
+    @FXML
+    private Label venue;
 
     public TaskCard(ReadOnlyTask task, int displayedIndex) {
         super(FXML);
@@ -46,6 +48,7 @@ public class TaskCard extends UiPart<Region> {
 
         notes.setText("Notes: " + task.getNotes().value);
         completion.setText("Completion: " + task.getCompletion().value);
+        venue.setText("Venue: " + task.getVenue().value);
     }
 
     private void initTags(ReadOnlyTask task) {

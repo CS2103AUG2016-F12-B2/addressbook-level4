@@ -18,12 +18,13 @@ public class Task implements ReadOnlyTask {
     private UniqueTagList tags;
     private Notes notes;
     private Completion completion;
+    private Venue venue;
 
     /**
      * Every field must be present and not null.
      */
     public Task(Name name, Start start, Deadline deadline, Priority priority, UniqueTagList tags, Notes notes,
-            Completion completion) {
+            Completion completion, Venue venue) {
         assert !CollectionUtil.isAnyNull(name, start, deadline, tags, notes);
         this.name = name;
         this.start = start;
@@ -33,6 +34,7 @@ public class Task implements ReadOnlyTask {
                                              // changes in the arg list
         this.notes = notes;
         this.completion = completion;
+        this.venue = venue;
     }
 
     /**
@@ -40,7 +42,7 @@ public class Task implements ReadOnlyTask {
      */
     public Task(ReadOnlyTask source) {
         this(source.getName(), source.getStart(), source.getDeadline(), source.getPriority(), source.getTags(),
-                source.getNotes(), source.getCompletion());
+                source.getNotes(), source.getCompletion(), source.getVenue());
     }
 
     public void setName(Name name) {
@@ -115,6 +117,16 @@ public class Task implements ReadOnlyTask {
         this.completion = completion;
     }
 
+    @Override
+    public Venue getVenue() {
+        return venue;
+    }
+
+    public void setVenue(Venue venue) {
+        assert venue != null;
+        this.venue = venue;
+    }
+
     /**
      * Updates this person with the details of {@code replacement}.
      */
@@ -128,6 +140,7 @@ public class Task implements ReadOnlyTask {
         this.setTags(replacement.getTags());
         this.setNotes(replacement.getNotes());
         this.setCompletion(replacement.getCompletion());
+        this.setVenue(replacement.getVenue());
     }
 
     @Override
