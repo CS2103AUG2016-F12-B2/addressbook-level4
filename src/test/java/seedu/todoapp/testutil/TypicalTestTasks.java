@@ -21,7 +21,7 @@ public class TypicalTestTasks {
             benson = new TaskBuilder().withName("Benson Meier")
                     .withStart("Thu Mar 30 12:43:24 2017").withDeadline("Sat Apr 1 12:43:24 2017")
                     .withTags("owesMoney", "friends")
-                    .withPriority(5).withNotes("").withVenue("")
+                    .withPriority(5).withNotes("-").withVenue("-")
                     .withCompletion("false").build();
             carl = new TaskBuilder().withName("Carl Kurz")
                     .withStart("Thu Mar 30 12:43:24 2017").withDeadline("Sat Apr 1 12:43:24 2017")
