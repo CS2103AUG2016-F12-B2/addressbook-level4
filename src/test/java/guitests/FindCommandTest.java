@@ -38,6 +38,7 @@ public class FindCommandTest extends ToDoAppGuiTest {
         assertFindResult("find c/ true"); // no results
 
         // find after deleting one result
+        commandBox.runCommand("list");
         commandBox.runCommand("mark 1");
         assertFindResult("find c/ true", td.alice);
     }
