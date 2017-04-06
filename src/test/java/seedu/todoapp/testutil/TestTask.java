@@ -69,7 +69,7 @@ public class TestTask implements ReadOnlyTask {
     public void setCompletion(Completion completion) {
         this.completion = completion;
     }
-    
+
     public void setVenue(Venue venue) {
         this.venue = venue;
     }
@@ -108,7 +108,7 @@ public class TestTask implements ReadOnlyTask {
     public Completion getCompletion() {
         return completion;
     }
-    
+
     @Override
     public Venue getVenue() {
         return venue;

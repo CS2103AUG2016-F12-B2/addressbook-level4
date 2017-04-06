@@ -80,7 +80,8 @@ public class UnmarkCommand extends Command {
         assert taskToUnmark != null;
 
         return new Task(taskToUnmark.getName(), taskToUnmark.getStart(), taskToUnmark.getDeadline(),
-                taskToUnmark.getPriority(), taskToUnmark.getTags(), taskToUnmark.getNotes(), new Completion("false"), taskToUnmark.getVenue());
+                taskToUnmark.getPriority(), taskToUnmark.getTags(), taskToUnmark.getNotes(),
+                new Completion("false"), taskToUnmark.getVenue());
     }
 
     /**

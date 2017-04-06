@@ -116,12 +116,12 @@ public class Task implements ReadOnlyTask {
         assert completion != null;
         this.completion = completion;
     }
-    
+
     @Override
     public Venue getVenue() {
         return venue;
     }
-    
+
     public void setVenue(Venue venue) {
         assert venue != null;
         this.venue = venue;

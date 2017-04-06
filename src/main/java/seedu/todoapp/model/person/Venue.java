@@ -5,7 +5,7 @@ package seedu.todoapp.model.person;
 import seedu.todoapp.commons.exceptions.IllegalValueException;
 
 /**
- * Represent the venue of the task(if exist) as a string 
+ * Represent the venue of the task(if exist) as a string
  * Guarantees: immutable; is valid as declared in {@link #isValidNotes(String)}
  */
 

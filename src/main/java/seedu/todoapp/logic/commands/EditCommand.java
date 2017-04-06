@@ -141,7 +141,8 @@ public class EditCommand extends Command {
          */
         public boolean isAnyFieldEdited() {
             return CollectionUtil.isAnyPresent(this.name, this.start,
-                    this.deadline, this.priority, this.notes, this.tags, this.venue);
+                    this.deadline, this.priority, this.notes, this.tags,
+                    this.venue);
         }
 
         public void setName(Optional<Name> name) {
@@ -206,12 +207,12 @@ public class EditCommand extends Command {
         public Optional<Completion> getCompletion() {
             return completion;
         }
-        
+
         public void setVenue(Optional<Venue> venue) {
             assert venue != null;
             this.venue = venue;
         }
-        
+
         public Optional<Venue> getVenue() {
             return venue;
         }

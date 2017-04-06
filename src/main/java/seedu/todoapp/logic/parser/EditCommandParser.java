@@ -195,7 +195,7 @@ public class EditCommandParser {
             editTaskDescriptor.setCompletion((Optional.of(new Completion("false"))));
         }
     }
-    
+
     //@@author A0124153U
     /**
      * Handler for building editTaskDescriptor for completion
