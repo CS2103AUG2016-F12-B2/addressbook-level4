@@ -42,7 +42,7 @@ public class FindCommandTest extends ToDoAppGuiTest {
         commandBox.runCommand("mark 1");
         assertFindResult("find c/ true", td.alice);
     }
-
+    /*
     @Test
     public void find_nonEmptyList_byStart() {
         assertFindResult("find s/ Apr 1"); // no results
@@ -66,7 +66,7 @@ public class FindCommandTest extends ToDoAppGuiTest {
         commandBox.runCommand("delete 1");
         assertFindResult("find d/ tmr");
     }
-
+    */
     // @@author
 
     @Test
