@@ -9,7 +9,6 @@ import static seedu.todoapp.commons.core.Messages.MESSAGE_INVALID_TASK_DISPLAYED
 import org.junit.Test;
 
 import guitests.guihandles.TaskCardHandle;
-import seedu.todoapp.logic.commands.MarkCommand;
 import seedu.todoapp.logic.commands.UnmarkCommand;
 import seedu.todoapp.testutil.TaskBuilder;
 import seedu.todoapp.testutil.TestTask;

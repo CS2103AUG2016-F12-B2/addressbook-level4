@@ -8,7 +8,6 @@ import java.util.Optional;
 
 import seedu.todoapp.logic.commands.Command;
 import seedu.todoapp.logic.commands.IncorrectCommand;
-import seedu.todoapp.logic.commands.SelectCommand;
 import seedu.todoapp.logic.commands.UnmarkCommand;
 
 /**
