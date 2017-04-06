@@ -26,10 +26,9 @@ public class MarkCommandTest extends ToDoAppGuiTest {
     public void mark_unmarkedTask_success() throws Exception {
         int toDoAppIndex = 1;
 
-        TestTask editedTask = new TaskBuilder().withName("Alice Pauline")
-                .withStart("Thu Mar 30 12:43:24 2017").withDeadline("Sat Apr 1 12:43:24 2017")
-                .withPriority(1).withTags("friends").withNotes("person").withVenue("NUS")
-                .withCompletion("true").build();
+        TestTask editedTask = new TaskBuilder().withName("Alice Pauline").withStart("Thu Mar 30 12:43:24 2017")
+                .withDeadline("Sat Apr 1 12:43:24 2017").withPriority(1).withTags("friends").withNotes("person")
+                .withVenue("NUS").withCompletion("true").build();
 
         assertMarkSuccess(toDoAppIndex, toDoAppIndex, editedTask);
     }
@@ -38,10 +37,9 @@ public class MarkCommandTest extends ToDoAppGuiTest {
     public void mark_markedTask_success() throws Exception {
         int toDoAppIndex = 1;
 
-        TestTask editedTask = new TaskBuilder().withName("Alice Pauline")
-                .withStart("Thu Mar 30 12:43:24 2017").withDeadline("Sat Apr 1 12:43:24 2017")
-                .withPriority(1).withTags("friends").withNotes("person").withVenue("NUS")
-                .withCompletion("true").build();
+        TestTask editedTask = new TaskBuilder().withName("Alice Pauline").withStart("Thu Mar 30 12:43:24 2017")
+                .withDeadline("Sat Apr 1 12:43:24 2017").withPriority(1).withTags("friends").withNotes("person")
+                .withVenue("NUS").withCompletion("true").build();
 
         assertMarkSuccess(toDoAppIndex, toDoAppIndex, editedTask);
     }

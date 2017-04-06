@@ -27,10 +27,9 @@ public class UnmarkCommandTest extends ToDoAppGuiTest {
     public void unmark_unmarkedTask_success() throws Exception {
         int toDoAppIndex = 1;
 
-        TestTask editedTask = new TaskBuilder().withName("Alice Pauline")
-                .withStart("Thu Mar 30 12:43:24 2017").withDeadline("Sat Apr 1 12:43:24 2017")
-                .withPriority(1).withTags("friends").withNotes("person").withVenue("NUS")
-                .withCompletion("false").build();
+        TestTask editedTask = new TaskBuilder().withName("Alice Pauline").withStart("Thu Mar 30 12:43:24 2017")
+                .withDeadline("Sat Apr 1 12:43:24 2017").withPriority(1).withTags("friends").withNotes("person")
+                .withVenue("NUS").withCompletion("false").build();
 
         assertUnmarkSuccess(toDoAppIndex, toDoAppIndex, editedTask);
     }
@@ -40,13 +39,13 @@ public class UnmarkCommandTest extends ToDoAppGuiTest {
         int toDoAppIndex = 1;
         commandBox.runCommand("mark 1");
 
-        TestTask editedTask = new TaskBuilder().withName("Alice Pauline")
-                .withStart("Thu Mar 30 12:43:24 2017").withDeadline("Sat Apr 1 12:43:24 2017")
-                .withPriority(1).withTags("friends").withNotes("person").withVenue("NUS")
-                .withCompletion("false").build();
-        
+        TestTask editedTask = new TaskBuilder().withName("Alice Pauline").withStart("Thu Mar 30 12:43:24 2017")
+                .withDeadline("Sat Apr 1 12:43:24 2017").withPriority(1).withTags("friends").withNotes("person")
+                .withVenue("NUS").withCompletion("false").build();
+
         assertUnmarkSuccess(toDoAppIndex, toDoAppIndex, editedTask);
     }
+
     @Test
     public void unmark_missingTaskIndex_failure() {
         commandBox.runCommand("unmark");
