@@ -367,6 +367,13 @@ is better than these alternatives.<br>
 a. Include those libraries in the repo (this bloats the repo size)<br>
 b. Require developers to download those libraries manually (this creates extra work for developers)<br>
 
+<!-- @@author A0114395E -->
+### 5.7. Git Workflow
+Before each sprint, a staging branch will be prepared, named in the form of `master_V[VERSION_NUMBER]`. <br/>
+New features will be worked on in a new branch, named in the manner `features/FEATURE_DESCRIPTION`. When complete, the developers will do a pull request into `master_V[VERSION_NUMBER]`, e.g. `master_V0.5`. <br/>
+For release into production - we will merge `master_V[VERSION_NUMBER]` into `master` branch, and tag it as `V[VERSION_NUMBER]`.
+<!-- @@author -->
+
 ## Appendix A : User Stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have)  - `* *`,  Low (unlikely to have) - `*`
