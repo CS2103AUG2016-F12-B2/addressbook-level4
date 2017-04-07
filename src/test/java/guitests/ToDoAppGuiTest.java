@@ -21,13 +21,13 @@ import guitests.guihandles.TaskCardHandle;
 import guitests.guihandles.TaskListPanelHandle;
 import javafx.application.Platform;
 import javafx.stage.Stage;
-import seedu.address.TestApp;
-import seedu.address.commons.core.EventsCenter;
-import seedu.address.commons.events.BaseEvent;
-import seedu.address.model.ToDoApp;
-import seedu.address.model.person.ReadOnlyTask;
-import seedu.address.testutil.TestUtil;
-import seedu.address.testutil.TypicalTestTasks;
+import seedu.todoapp.TestApp;
+import seedu.todoapp.commons.core.EventsCenter;
+import seedu.todoapp.commons.events.BaseEvent;
+import seedu.todoapp.model.ToDoApp;
+import seedu.todoapp.model.person.ReadOnlyTask;
+import seedu.todoapp.testutil.TestUtil;
+import seedu.todoapp.testutil.TypicalTestTasks;
 
 /**
  * A GUI Test class for ToDoApp.

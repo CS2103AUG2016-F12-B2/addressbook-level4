@@ -2,19 +2,21 @@
 package guitests;
 
 import static org.junit.Assert.assertTrue;
-import static seedu.address.logic.commands.DeleteCommand.MESSAGE_DELETE_TASK_SUCCESS;
+import static seedu.todoapp.logic.commands.DeleteCommand.MESSAGE_DELETE_TASK_SUCCESS;
 
 import org.junit.Test;
 
 import guitests.guihandles.TaskCardHandle;
-import seedu.address.logic.commands.UndoCommand;
-import seedu.address.testutil.TestTask;
-import seedu.address.testutil.TestUtil;
+import seedu.todoapp.logic.commands.EditCommand;
+import seedu.todoapp.logic.commands.UndoCommand;
+import seedu.todoapp.testutil.TaskBuilder;
+import seedu.todoapp.testutil.TestTask;
+import seedu.todoapp.testutil.TestUtil;
 
 public class UndoCommandTest extends ToDoAppGuiTest {
 
     @Test
-    public void undo() {
+    public void undo_add_success() {
         // Test ADD
         TestTask[] currentList = td.getTypicalTasks();
         TestTask taskToAdd = td.hoon;
@@ -22,22 +24,104 @@ public class UndoCommandTest extends ToDoAppGuiTest {
         currentList = TestUtil.addTasksToList(currentList, taskToAdd);
 
         assertUndoCommandSuccess(td.getTypicalTasks());
+        assertResultMessage(UndoCommand.MESSAGE_SUCCESS);
+    }
 
+    @Test
+    public void undo_edit_success() throws Exception {
+        String detailsToEdit = "Bobby t/husband";
+        int toDoAppIndex = 1;
+
+        TestTask editedTask = new TaskBuilder().withName("Bobby").withStart("Thu Mar 30 12:43:24 2017")
+                .withDeadline("Thu Mar 31 12:43:24 2017").withPriority(1).withTags("husband").withNotes("").build();
+
+        assertEditSuccess(toDoAppIndex, toDoAppIndex, detailsToEdit, editedTask);
+
+        assertUndoCommandSuccess(td.getTypicalTasks());
+        assertResultMessage(UndoCommand.MESSAGE_SUCCESS);
+    }
+
+    @Test
+    public void undo_delete_success() {
         // Test DELETE
         // Try delete first in list
-        currentList = td.getTypicalTasks();
+        TestTask[] currentList = td.getTypicalTasks();
         int targetIndex = 1;
         assertDeleteSuccess(targetIndex, currentList);
 
         assertUndoCommandSuccess(td.getTypicalTasks());
+        assertResultMessage(UndoCommand.MESSAGE_SUCCESS);
 
-        // Test CLEAR
-        //verify a non-empty list can be cleared
+        // Try delete middle in list
         currentList = td.getTypicalTasks();
-        assertClearCommandSuccess();
+        targetIndex = 4;
+        assertDeleteSuccess(targetIndex, currentList);
 
         assertUndoCommandSuccess(td.getTypicalTasks());
+        assertResultMessage(UndoCommand.MESSAGE_SUCCESS);
+
+        // Try delete last in list
+        currentList = td.getTypicalTasks();
+        targetIndex = currentList.length;
+        assertDeleteSuccess(targetIndex, currentList);
+
+        assertUndoCommandSuccess(td.getTypicalTasks());
+        assertResultMessage(UndoCommand.MESSAGE_SUCCESS);
     }
+
+    @Test
+    public void undo_clear_success() {
+        // Test CLEAR
+        //verify a non-empty list can be cleared
+        assertClearCommandSuccess();
+        assertUndoCommandSuccess(td.getTypicalTasks());
+        assertResultMessage(UndoCommand.MESSAGE_SUCCESS);
+    }
+
+    @Test
+    public void undo_mark_success() {
+        // Test mark
+
+        // TODO: move this to assert once mark/unmark tests are ready
+        commandBox.runCommand("mark 1");
+        assertUndoCommandSuccess(td.getTypicalTasks());
+        assertResultMessage(UndoCommand.MESSAGE_SUCCESS);
+    }
+
+    @Test
+    public void undo_unmark_success() throws Exception {
+        // Test unmark
+        TestTask[] currentList = td.getTypicalTasks();
+        int toDoAppIndex = 1;
+        // TODO: move this to assert once mark/unmark tests are ready
+        commandBox.runCommand("mark 1");
+        commandBox.runCommand("unmark 1");
+        TestTask markedTask = new TaskBuilder().withName("Alice Pauline")
+                .withStart("Thu Mar 30 12:43:24 2017").withDeadline("Sat Apr 1 12:43:24 2017")
+                .withPriority(1).withTags("friends").withNotes("")
+                .withCompletion("true").build();
+        currentList[toDoAppIndex - 1] = markedTask;
+        assertUndoCommandSuccess(currentList);
+        assertResultMessage(UndoCommand.MESSAGE_SUCCESS);
+    }
+
+    @Test
+    public void undo_moreThanComamnds_failure() {
+        TestTask[] currentList = td.getTypicalTasks();
+        TestTask taskToAdd = td.hoon;
+        assertAddSuccess(taskToAdd, currentList);
+        currentList = TestUtil.addTasksToList(currentList, taskToAdd);
+
+        assertUndoCommandSuccess(td.getTypicalTasks());
+
+        // Should have no more commands to undo
+        commandBox.runCommand("undo");
+        assertResultMessage(UndoCommand.MESSAGE_FAIL);
+    }
+
+    /*
+     * ASSERTS of typical commands (add,edit,delete...) etc are the same as from the other test files
+     */
 
     private void assertAddSuccess(TestTask taskToAdd, TestTask... currentList) {
         commandBox.runCommand(taskToAdd.getAddCommand());
@@ -76,6 +160,30 @@ public class UndoCommandTest extends ToDoAppGuiTest {
         commandBox.runCommand("clear");
         assertListSize(0);
         assertResultMessage("ToDoApp has been cleared!");
+    }
+
+    /**
+     * Checks whether the edited person has the correct updated details.
+     *
+     * @param filteredTaskListIndex index of person to edit in filtered list
+     * @param toDoAppIndex index of person to edit in the address book.
+     *      Must refer to the same person as {@code filteredTaskListIndex}
+     * @param detailsToEdit details to edit the person with as input to the edit command
+     * @param editedTask the expected person after editing the person's details
+     */
+    private void assertEditSuccess(int filteredTaskListIndex, int toDoAppIndex,
+                                    String detailsToEdit, TestTask editedTask) {
+        commandBox.runCommand("edit " + filteredTaskListIndex + " " + detailsToEdit);
+
+        // confirm the new card contains the right data
+        TaskCardHandle editedCard = taskListPanel.navigateToTask(editedTask.getName().fullName);
+        assertMatching(editedTask, editedCard);
+
+        // confirm the list now contains all previous persons plus the person with updated details
+        TestTask[] expectedTasksList = td.getTypicalTasks();
+        expectedTasksList[toDoAppIndex - 1] = editedTask;
+        assertTrue(taskListPanel.isListMatching(expectedTasksList));
+        assertResultMessage(String.format(EditCommand.MESSAGE_EDIT_TASK_SUCCESS, editedTask));
     }
 
     /*

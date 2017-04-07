@@ -50,7 +50,7 @@ Format: `help`
 ### 2.2. Adding a task: `add`
 
 Adds a task to the task list<br>
-Format: `add NAME [s/START_TIME] [d/DEADLINE] [p/PRIORITY] [t/TAG] [n/NOTES] [c/COMPLETION]...`
+Format: `add NAME [s/START_TIME] [d/DEADLINE] [p/PRIORITY] [t/TAG] [n/NOTES] [v/VENUE] [c/COMPLETION]...`
 
 > * Task can have a start time
 > * Task can have a deadline
@@ -58,12 +58,16 @@ Format: `add NAME [s/START_TIME] [d/DEADLINE] [p/PRIORITY] [t/TAG] [n/NOTES] [c/
 > * Task can have any number of tags (including 0)
 > * Task can be completed or uncompleted
 > * Task can have a note
+> * Task can have a venue
+> * Task can be recurring if it has a tag `daily` / `weekly` / `monthly` / `yearly`
 
 Examples:
 
 * `add Buy Printer`
 * `add Do CS2103 Homework p/1 t/CS2103 n/Buy from Challenger.`
 * `add Do CS2101 Homework s/tomorrow d/next week.`
+* `add Do CS2010 Homework v/NUS`
+* `add Go CS2103 Tutorial s/friday 12pm d/friday 1pm t/weekly v/NUS`
 
 ### 2.3. Listing out uncomplete tasks : `list`
 
@@ -179,8 +183,8 @@ There is no need to save manually.
 
 ## 4. Command Summary
 
-* **Add**  `add NAME [d/DEADLINE] [p/PRIORITY] [t/TAG] [n/NOTES]` <br>
-  e.g. `add Do CS2103 Homework p/1 t/CS2103 n/Buy from Challenger.`
+* **Add**  `add NAME [d/DEADLINE] [p/PRIORITY] [t/TAG] [n/NOTES] [v/VENUE]` <br>
+  e.g. `add Do CS2103 Homework p/1 t/CS2103 n/Buy from Challenger. v/Challenger`
 
 * **Edit**  `edit INDEX [NAME] [d/DEADLINE] [p/PRIORITY] [t/TAG] [n/NOTES]` <br>
   e.g. `edit 1 Finish CS2103 work`

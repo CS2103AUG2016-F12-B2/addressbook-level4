@@ -8,11 +8,13 @@ We are a team based in the [School of Computing, National University of Singapor
 <img src="images/jjingrong.png" width="150"><br>
 
 * Components in charge of: [Parsing](https://github.com/CS2103JAN2017-F12-B2/main/blob/master/docs/DeveloperGuide.md#parsing-component)
-* Aspects/tools in charge of: Git, Project Management, Issue tracking, CI
+[RecurrentTasks](https://github.com/CS2103JAN2017-F12-B2/main/blob/master/docs/DeveloperGuide.md#recurrenttasks)
+* Aspects/tools in charge of: Git, Project Management, Issue tracking, all CI, Testing, Checkstyles, Weekly Sanity Checks
 * Features implemented:
    * [Undo/Redo](https://github.com/CS2103JAN2017-F12-B2/main/blob/master/docs/UserGuide.md#undo)
    * [Edit](https://github.com/se-edu/CS2103JAN2017-F12-B2/main/blob/master/docs/UserGuide.md#edit)
-   * [Rich Parsing](https://github.com/CS2103JAN2017-F12-B2/main/blob/master/docs/UserGuide.md#add)   
+   * [Rich Parsing](https://github.com/CS2103JAN2017-F12-B2/main/blob/master/docs/UserGuide.md#add)
+   * [Recurring tasks](https://github.com/CS2103JAN2017-F12-B2/main/blob/master/docs/UserGuide.md#add)   
 
 * Code written: [[Functional Code](https://github.com/CS2103JAN2017-F12-B2/main/blob/master/collated/main/A0114395E.md)][[test code](https://github.com/CS2103JAN2017-F12-B2/main/blob/master/collated/test/A0114395E.md)]
 * Other major contributions:
@@ -21,6 +23,7 @@ We are a team based in the [School of Computing, National University of Singapor
   * Fixed the initial refactoring for Find/Edit commands
   * Fixed most initial checkstyle issues during refactor
   * Tagging and write-up for releases every week
+  * Tagging and write-up for all pre-releases
   * Changed color scheme of the application
 
 ----

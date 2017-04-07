@@ -5,10 +5,11 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import guitests.guihandles.TaskCardHandle;
-import seedu.address.commons.core.Messages;
-import seedu.address.logic.commands.AddCommand;
-import seedu.address.testutil.TestTask;
-import seedu.address.testutil.TestUtil;
+import seedu.todoapp.commons.core.Messages;
+import seedu.todoapp.logic.commands.AddCommand;
+import seedu.todoapp.testutil.TaskBuilder;
+import seedu.todoapp.testutil.TestTask;
+import seedu.todoapp.testutil.TestUtil;
 
 public class AddCommandTest extends ToDoAppGuiTest {
 
@@ -38,6 +39,99 @@ public class AddCommandTest extends ToDoAppGuiTest {
         commandBox.runCommand("adds Johnny");
         assertResultMessage(Messages.MESSAGE_UNKNOWN_COMMAND);
     }
+
+    //@@author A0114395E
+    @Test
+    public void add_noName_failure() throws Exception {
+        commandBox.runCommand("add s/");
+        assertResultMessage(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
+    }
+
+    @Test
+    public void add_barebones_success() throws Exception {
+        final String bareboneTaskName = "Buy tofu";
+        //add an only-name task
+        TestTask[] currentList = td.getTypicalTasks();
+        TestTask barebonesTask = new TaskBuilder().withName(bareboneTaskName).build();
+
+        commandBox.runCommand("add ".concat(bareboneTaskName));
+        TestTask[] expectedList = TestUtil.addTasksToList(currentList, barebonesTask);
+        assertTrue(taskListPanel.isListMatching(expectedList));
+    }
+
+    @Test
+    public void add_deadlineBeforeStart_failure() throws Exception {
+        commandBox.runCommand("add Buy a zebra s/Wed Jul 12 12:43:24 2017 d/Mon Jul 10 12:43:24 2017 "
+                + "t/animal p/3 n/find a poacher");
+
+        assertResultMessage(AddCommand.MESSAGE_INVALID_START_END);
+    }
+
+    @Test
+    public void add_recurringWeekly_success() throws Exception {
+        commandBox.runCommand("add Buy a zebra s/Thu Apr 6 12:43:24 2017 d/Fri Apr 7 12:43:24 2017 "
+                + "t/weekly p/3 n/find a poacher");
+
+        TestTask taskToAdd = new TaskBuilder().withName("Buy a zebra")
+                .withStart("Thu Apr 13 12:43:24 2017").withDeadline("Fri Apr 14 12:43:24 2017").withTags("weekly")
+                .withPriority(3).withNotes("find a poacher").withVenue("-").withCompletion("false").build();
+        commandBox.runCommand("list");
+        TaskCardHandle addedCard = taskListPanel.navigateToTask("Buy a zebra");
+        assertMatching(taskToAdd, addedCard);
+    }
+
+    @Test
+    public void add_recurringMonthly_success() throws Exception {
+        commandBox.runCommand("add Buy a zebra s/Wed Jan 11 12:43:24 2017 d/Thu Jan 12 12:43:24 2017 "
+                + "t/monthly p/3 n/find a poacher");
+
+        TestTask taskToAdd = new TaskBuilder().withName("Buy a zebra")
+                .withStart("Thu May 11 12:43:24 2017").withDeadline("Fri May 12 12:43:24 2017").withTags("monthly")
+                .withPriority(3).withNotes("find a poacher").withVenue("-").withCompletion("false").build();
+        commandBox.runCommand("list");
+        TaskCardHandle addedCard = taskListPanel.navigateToTask("Buy a zebra");
+        assertMatching(taskToAdd, addedCard);
+    }
+
+    @Test
+    public void add_recurringYearly_success() throws Exception {
+        commandBox.runCommand("add Buy a zebra s/Wed Jan 11 12:43:24 2017 d/Thu Jan 12 12:43:24 2017 "
+                + "t/yearly p/3 n/find a poacher");
+
+        TestTask taskToAdd = new TaskBuilder().withName("Buy a zebra")
+                .withStart("Thu Jan 11 12:43:24 2018").withDeadline("Fri Jan 12 12:43:24 2018").withTags("yearly")
+                .withPriority(3).withNotes("find a poacher").withVenue("-").withCompletion("false").build();
+        commandBox.runCommand("list");
+        TaskCardHandle addedCard = taskListPanel.navigateToTask("Buy a zebra");
+        assertMatching(taskToAdd, addedCard);
+    }
+
+    @Test
+    public void add_recurringYearlyDeadline_success() throws Exception {
+        commandBox.runCommand("add Buy a zebra d/Thu Jan 12 12:43:24 2017 "
+                + "t/yearly p/3 n/find a poacher");
+
+        TestTask taskToAdd = new TaskBuilder().withName("Buy a zebra")
+                .withStart("-").withDeadline("Fri Jan 12 12:43:24 2018").withTags("yearly")
+                .withPriority(3).withNotes("find a poacher").withVenue("-").withCompletion("false").build();
+        commandBox.runCommand("list");
+        TaskCardHandle addedCard = taskListPanel.navigateToTask("Buy a zebra");
+        assertMatching(taskToAdd, addedCard);
+    }
+
+    @Test
+    public void add_recurringYearlyStart_success() throws Exception {
+        commandBox.runCommand("add Buy a zebra s/Thu Jan 12 12:43:24 2017 "
+                + "t/yearly p/3 n/find a poacher");
+
+        TestTask taskToAdd = new TaskBuilder().withName("Buy a zebra")
+                .withStart("Fri Jan 12 12:43:24 2018").withDeadline("-").withTags("yearly")
+                .withPriority(3).withNotes("find a poacher").withVenue("-").withCompletion("false").build();
+        commandBox.runCommand("list");
+        TaskCardHandle addedCard = taskListPanel.navigateToTask("Buy a zebra");
+        assertMatching(taskToAdd, addedCard);
+    }
+    //@@author
 
     private void assertAddSuccess(TestTask taskToAdd, TestTask... currentList) {
         commandBox.runCommand(taskToAdd.getAddCommand());

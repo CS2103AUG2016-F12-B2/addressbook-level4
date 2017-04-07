@@ -1,17 +1,17 @@
 package guitests;
 
 import static org.junit.Assert.assertTrue;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX;
+import static seedu.todoapp.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.todoapp.commons.core.Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX;
 
 import org.junit.Test;
 
 import guitests.guihandles.TaskCardHandle;
-import seedu.address.logic.commands.EditCommand;
-import seedu.address.model.person.Name;
-import seedu.address.model.tag.Tag;
-import seedu.address.testutil.TaskBuilder;
-import seedu.address.testutil.TestTask;
+import seedu.todoapp.logic.commands.EditCommand;
+import seedu.todoapp.model.person.Name;
+import seedu.todoapp.model.tag.Tag;
+import seedu.todoapp.testutil.TaskBuilder;
+import seedu.todoapp.testutil.TestTask;
 
 // TODO: reduce GUI tests by transferring some tests to be covered by lower level tests.
 public class EditCommandTest extends ToDoAppGuiTest {
@@ -31,9 +31,27 @@ public class EditCommandTest extends ToDoAppGuiTest {
         assertEditSuccess(toDoAppIndex, toDoAppIndex, detailsToEdit, editedTask);
     }
 
+    //@@author A0114395E
+    @Test
+    public void edit_moreDetailsFieldsSpecified_success() throws Exception {
+        String detailsToEdit = "Buy a zebra s/Mon Jul 10 12:43:24 2017 d/Wed Jul 12 12:43:24 20"
+                + "17 "
+                + "t/animal p/3 n/find a poacher v/Jurong East";
+        int toDoAppIndex = 1;
+
+        TestTask editedTask = new TaskBuilder().withName("Buy a zebra")
+                .withStart("Mon Jul 10 12:43:24 2017").withDeadline("Wed Jul 12 12:43:24 2017")
+                .withPriority(3).withTags("animal").withNotes("find a poacher").withVenue("Jurong East")
+                .build();
+
+        assertEditSuccess(toDoAppIndex, toDoAppIndex, detailsToEdit, editedTask);
+    }
+    //@@author
+
     @Test
     public void edit_notAllFieldsSpecified_success() throws Exception {
         String detailsToEdit = "t/sweetie t/bestie";
+
         int toDoAppIndex = 2;
 
         TestTask personToEdit = expectedTasksList[toDoAppIndex - 1];
@@ -99,6 +117,15 @@ public class EditCommandTest extends ToDoAppGuiTest {
         commandBox.runCommand("edit 3 Alice Pauline s/today d/tomorrow "
                                 + "p/1 t/friends");
         assertResultMessage(EditCommand.MESSAGE_DUPLICATE_TASK);
+    }
+
+    //@@author A0114395E
+    @Test
+    public void edit_deadlineBeforeStart_failure() throws Exception {
+        commandBox.runCommand("edit 3 Buy a zebra s/Wed Jul 12 12:43:24 2017 d/Mon Jul 10 12:43:24 2017 "
+                + "t/animal p/3 n/find a poacher");
+
+        assertResultMessage(EditCommand.MESSAGE_INVALID_START_END);
     }
 
     /**

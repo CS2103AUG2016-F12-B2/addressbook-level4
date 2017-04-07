@@ -8,8 +8,8 @@ import javafx.scene.Node;
 import javafx.scene.control.Labeled;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
-import seedu.address.model.person.ReadOnlyTask;
-import seedu.address.model.tag.UniqueTagList;
+import seedu.todoapp.model.person.ReadOnlyTask;
+import seedu.todoapp.model.tag.UniqueTagList;
 
 /**
  * Provides a handle to a task card in the task list panel.
