@@ -26,7 +26,6 @@ public class ImportCommand extends Command {
     public ImportCommand(String filePath) {
         this.filePath = filePath;
     }
-    
 
     @Override
     public CommandResult execute() {
