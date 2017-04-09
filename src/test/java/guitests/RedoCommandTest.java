@@ -36,7 +36,7 @@ public class RedoCommandTest extends ToDoAppGuiTest {
         int toDoAppIndex = 1;
 
         TestTask editedTask = new TaskBuilder().withName("Bobby").withStart("Thu Mar 30 12:43:24 2017")
-                .withDeadline("Thu Mar 31 12:43:24 2017").withPriority(1).withTags("husband").withNotes("").build();
+                .withDeadline("Thu Mar 31 12:43:24 2017").withPriority(1).withTags("husband").withNotes("-").build();
 
         assertEditSuccess(toDoAppIndex, toDoAppIndex, detailsToEdit, editedTask);
         assertUndoCommandSuccess(td.getTypicalTasks());
@@ -79,7 +79,7 @@ public class RedoCommandTest extends ToDoAppGuiTest {
 
         TestTask markedTask = new TaskBuilder().withName("Alice Pauline")
                 .withStart("Thu Mar 30 12:43:24 2017").withDeadline("Sat Apr 1 12:43:24 2017")
-                .withPriority(1).withTags("friends").withNotes("")
+                .withPriority(1).withTags("friends").withNotes("-")
                 .withCompletion("true").build();
         currentList[toDoAppIndex - 1] = markedTask;
         assertRedoCommandSuccess(currentList);
@@ -96,7 +96,7 @@ public class RedoCommandTest extends ToDoAppGuiTest {
         commandBox.runCommand("unmark 1");
         TestTask markedTask = new TaskBuilder().withName("Alice Pauline")
                 .withStart("Thu Mar 30 12:43:24 2017").withDeadline("Sat Apr 1 12:43:24 2017")
-                .withPriority(1).withTags("friends").withNotes("")
+                .withPriority(1).withTags("friends").withNotes("-")
                 .withCompletion("true").build();
         currentList[toDoAppIndex - 1] = markedTask;
         assertUndoCommandSuccess(currentList);
