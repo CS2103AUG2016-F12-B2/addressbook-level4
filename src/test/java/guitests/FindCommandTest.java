@@ -42,12 +42,14 @@ public class FindCommandTest extends ToDoAppGuiTest {
         commandBox.runCommand("mark 1");
         assertFindResult("find c/ true", td.alice);
     }
-    
+
     public void find_nonEmptyList_byStart() {
         commandBox.runCommand("list");
         assertFindResult("find s/ Apr 1"); // no results
-        assertFindResult("find s/ Wed Mar 29 12:43:24 2017", td.elle); // one result
-        assertFindResult("find s/ Thu Mar 30 2:43:24 2017", td.hoon, td.ida); // multiple results
+        assertFindResult("find s/ Wed Mar 29 12:43:24 2017", td.elle); // one
+                                                                       // result
+        assertFindResult("find s/ Thu Mar 30 2:43:24 2017", td.hoon, td.ida); // multiple
+                                                                              // results
 
         // find after deleting one result
         commandBox.runCommand("delete 2");
