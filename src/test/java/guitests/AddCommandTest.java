@@ -123,7 +123,7 @@ public class AddCommandTest extends ToDoAppGuiTest {
     public void add_recurringAndCompletedYearlyDeadline_doesNotUpdate() throws Exception {
         commandBox.runCommand("add Buy a zebra d/Thu Jan 12 12:43:24 2017 "
                 + "t/yearly p/3 n/find a poacher c/true");
-        // Should not update recurring deadline if it's completed 
+        // Should not update recurring deadline if it's completed
         TestTask taskToAdd = new TaskBuilder().withName("Buy a zebra")
                 .withStart("-").withDeadline("Thu Jan 12 12:43:24 2017").withTags("yearly")
                 .withPriority(3).withNotes("find a poacher").withVenue("-").withCompletion("true").build();
