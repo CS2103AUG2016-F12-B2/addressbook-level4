@@ -16,6 +16,7 @@ import seedu.todoapp.logic.commands.EditCommand;
 import seedu.todoapp.logic.commands.ExitCommand;
 import seedu.todoapp.logic.commands.FindCommand;
 import seedu.todoapp.logic.commands.HelpCommand;
+import seedu.todoapp.logic.commands.ImportCommand;
 import seedu.todoapp.logic.commands.IncorrectCommand;
 import seedu.todoapp.logic.commands.ListCommand;
 import seedu.todoapp.logic.commands.MarkCommand;
@@ -57,12 +58,16 @@ public class Parser {
 
     /**
      * Parses user input into command for execution.
-     * @param userInput full user input string
+     * 
+     * @param userInput
+     *            full user input string
      * @return the command based on the user input
-     * @throws Exception if RecurrentTaskManager throws an error due to date parsing
+     * @throws Exception
+     *             if RecurrentTaskManager throws an error due to date parsing
      */
     public Command parseCommand(String userInput) throws Exception {
-        // Whenever there's a new command - we update all recurring dates if it's expired
+        // Whenever there's a new command - we update all recurring dates if
+        // it's expired
         RecurrentTaskManager.getInstance().updateRecurring();
         // Start Parsing
         final Matcher matcher = BASIC_COMMAND_FORMAT.matcher(userInput.trim());
@@ -118,6 +123,9 @@ public class Parser {
         // @@author A0124591H
         case SpecifyPathCommand.COMMAND_WORD:
             return new SpecifyPathCommand(arguments);
+
+        case ImportCommand.COMMAND_WORD:
+            return new ImportCommand(arguments);
         // @@author
 
         default:
@@ -129,7 +137,9 @@ public class Parser {
     /**
      * Parses user input into its inverse command for undo command. Only
      * supports inverse of Add, Delete, Edit.
-     * @param userInput full user input string
+     * 
+     * @param userInput
+     *            full user input string
      * @return the inverse of the command based on the user input
      */
     public Command parseInverseCommand(String userInput, Model model) {
