@@ -12,13 +12,15 @@ public class NotesTest {
     @Test
     public void isValidNotes() {
 
-        //invalid notes
+        // invalid notes
         assertFalse(Notes.isValidNotes("")); // empty string
         assertFalse(Notes.isValidNotes(" ")); // space
-        //valid notes
+        // valid notes
         assertTrue(Notes.isValidNotes("new")); // string
         assertTrue(Notes.isValidNotes("very important")); // string with space
-        assertTrue(Notes.isValidNotes("must done by 17 Mar"));  // string with space and integer
+        assertTrue(Notes.isValidNotes("must done by 17 Mar")); // string with
+                                                               // space and
+                                                               // integer
         assertTrue(Notes.isValidNotes("member: peter")); // string with symbol
     }
 }

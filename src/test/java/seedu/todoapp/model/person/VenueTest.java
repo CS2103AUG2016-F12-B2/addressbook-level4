@@ -12,13 +12,15 @@ public class VenueTest {
     @Test
     public void isValidVenue() {
 
-        //invalid notes
+        // invalid notes
         assertFalse(Venue.isValidVenue("")); // empty string
         assertFalse(Venue.isValidVenue(" ")); // space
-        //valid notes
+        // valid notes
         assertTrue(Venue.isValidVenue("nus")); // string
         assertTrue(Venue.isValidVenue("science canteen")); // string with space
-        assertTrue(Venue.isValidVenue("com2"));  // string with space and integer
-        assertTrue(Venue.isValidVenue("Singapore #123-567"));  // string with space and integer
+        assertTrue(Venue.isValidVenue("com2")); // string with space and integer
+        assertTrue(Venue.isValidVenue("Singapore #123-567")); // string with
+                                                              // space and
+                                                              // integer
     }
 }

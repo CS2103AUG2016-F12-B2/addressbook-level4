@@ -11,12 +11,11 @@ public class CompletionTest {
 
     @Test
     public void isValidCompletion() {
-
-        //invalid notes
-    	assertFalse(Completion.isValidCompletion("")); // empty string
-    	assertFalse(Completion.isValidCompletion(" ")); // empty string
-    	assertFalse(Completion.isValidCompletion("! ")); // empty string
-        //valid notes
+        // invalid notes
+        assertFalse(Completion.isValidCompletion("")); // empty string
+        assertFalse(Completion.isValidCompletion(" ")); // empty string
+        assertFalse(Completion.isValidCompletion("! ")); // empty string
+        // valid notes
         assertTrue(Completion.isValidCompletion("true")); // true value
         assertTrue(Completion.isValidCompletion("false")); // false value
         assertTrue(Completion.isValidCompletion("f")); // false value
