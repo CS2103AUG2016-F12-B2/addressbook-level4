@@ -43,7 +43,11 @@ public class Start {
      * Returns true if a given string is a valid start.
      */
     public static boolean isValidStart(String test) {
+        if (test.equals("")) {
+            return true;
+        } else {
         return test.matches(START_VALIDATION_REGEX);
+        }
     }
 
     // @@author A0114395E
