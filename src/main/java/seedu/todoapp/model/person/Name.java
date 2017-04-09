@@ -8,7 +8,7 @@ import seedu.todoapp.commons.exceptions.IllegalValueException;
  */
 public class Name {
 
-    public static final String MESSAGE_NAME_CONSTRAINTS = 
+    public static final String MESSAGE_NAME_CONSTRAINTS =
             "Task names should only contain alphanumeric characters and spaces, and it should not be blank";
 
     /*

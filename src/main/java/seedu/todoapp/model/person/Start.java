@@ -49,7 +49,7 @@ public class Start {
     // @@author A0114395E
     /**
      * Get the date object of Start
-     * 
+     *
      * @throws ParseException
      * @returns the date object
      */
@@ -61,7 +61,7 @@ public class Start {
 
     /**
      * Check if Start has a date value
-     * 
+     *
      * @returns boolean
      */
     public boolean hasDate() {
