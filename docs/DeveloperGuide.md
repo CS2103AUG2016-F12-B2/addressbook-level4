@@ -162,6 +162,11 @@ _Figure 2.1.8 : Sequence diagram for `undo` & `redo` commands_
 > Vice versa, when `redo` command is invoked, we pop the `StateCommandPair` from `redoStack` and put it on the `undoStack`. We then invoke the `executeCommand` from `StateCommandPair`. <br><br>
 > When the user performs any action, the redo stack is cleared. <br>
 > Undoability and Redoability are defined by whether either stack is empty, as well as if an action is undo-able, i.e only `add`, `edit`, `delete`, `mark`, `unmark`, `clear` commands.
+
+he Sequence Diagram below shows how ToDoApp handles the event where a user `select` or clicks on a task <br><br>
+<img src="images/ToDoApp_Seq-Diag-GMaps.png" width="800"><br>
+_Figure 2.1.9 : Sequence diagram for `select` / click on task_
+> On user interaction, whether it being a click or a `select` command, `BrowserPanel` will retrieve the venue from the Task, and does a Google search for the location of the venue and render the webpage accordingly.
 <!-- @@author -->
 
 The sections below give more details of each component.
