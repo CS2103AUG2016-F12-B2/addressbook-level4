@@ -15,8 +15,7 @@ import seedu.todoapp.commons.exceptions.IllegalValueException;
  */
 public class Start {
 
-    public static final String MESSAGE_START_CONSTRAINTS = 
-            "Task's start time should not start with a whitespace.";
+    public static final String MESSAGE_START_CONSTRAINTS = "Task's start time should not start with a whitespace.";
 
     /*
      * The first character of the start must not be a whitespace, otherwise " "

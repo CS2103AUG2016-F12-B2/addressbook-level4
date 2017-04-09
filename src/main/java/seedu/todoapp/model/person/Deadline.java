@@ -48,7 +48,6 @@ public class Deadline {
     // @@author A0114395E
     /**
      * Get the date object of Deadline
-     * 
      * @throws ParseException
      * @returns the date object
      */
@@ -60,7 +59,6 @@ public class Deadline {
 
     /**
      * Check if Deadline has a date value
-     * 
      * @returns boolean
      */
     public boolean hasDate() {

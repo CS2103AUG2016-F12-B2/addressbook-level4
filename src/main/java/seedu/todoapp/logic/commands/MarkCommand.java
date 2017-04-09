@@ -3,22 +3,14 @@
 package seedu.todoapp.logic.commands;
 
 import java.util.List;
-import java.util.Optional;
 
 import seedu.todoapp.commons.core.Messages;
 import seedu.todoapp.commons.exceptions.IllegalValueException;
-import seedu.todoapp.commons.util.CollectionUtil;
 import seedu.todoapp.logic.commands.exceptions.CommandException;
 import seedu.todoapp.model.person.Completion;
-import seedu.todoapp.model.person.Deadline;
-import seedu.todoapp.model.person.Name;
-import seedu.todoapp.model.person.Notes;
-import seedu.todoapp.model.person.Priority;
 import seedu.todoapp.model.person.ReadOnlyTask;
-import seedu.todoapp.model.person.Start;
 import seedu.todoapp.model.person.Task;
 import seedu.todoapp.model.person.UniqueTaskList;
-import seedu.todoapp.model.tag.UniqueTagList;
 
 /**
  * Marks the details of an existing person in the address book.
