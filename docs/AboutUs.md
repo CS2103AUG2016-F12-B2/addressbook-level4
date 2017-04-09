@@ -47,13 +47,15 @@ We are a team based in the [School of Computing, National University of Singapor
 #### [Wong Woon Fui @benwongwf](http://github.com/benwongwf)
 <img src="images/benwongwf.png" width="150"><br>
 
-* Components in charge of:
-* Aspects/tools in charge of: Testing
+* Components in charge of: 
+* Aspects/tools in charge of: Testing, Documentation, Debugging
 * Features implemented:
 <!-- todo code written -->
 * Code written: [[Functional Code](https://github.com/CS2103JAN2017-F12-B2/main/blob/master/collated/main/A0124153U.md)][[Test Code](https://github.com/CS2103JAN2017-F12-B2/main/blob/master/collated/test/A0124153U.md)]
 * Other major contributions:
   * Collate tool
+  * Peer reviewing
+  * Add in the venue attribute
 
 -----
 
