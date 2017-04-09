@@ -14,7 +14,7 @@ We are a team based in the [School of Computing, National University of Singapor
    * [Undo/Redo](https://github.com/CS2103JAN2017-F12-B2/main/blob/master/docs/UserGuide.md#undo)
    * [Edit](https://github.com/se-edu/CS2103JAN2017-F12-B2/main/blob/master/docs/UserGuide.md#edit)
    * [Rich Parsing](https://github.com/CS2103JAN2017-F12-B2/main/blob/master/docs/UserGuide.md#add)
-   * [Recurring tasks](https://github.com/CS2103JAN2017-F12-B2/main/blob/master/docs/UserGuide.md#add)   
+   * [Recurring tasks](https://github.com/CS2103JAN2017-F12-B2/main/blob/master/docs/UserGuide.md#add)
 
 * Code written: [[Functional Code](https://github.com/CS2103JAN2017-F12-B2/main/blob/master/collated/main/A0114395E.md)][[test code](https://github.com/CS2103JAN2017-F12-B2/main/blob/master/collated/test/A0114395E.md)]
 * Other major contributions:
@@ -36,7 +36,7 @@ We are a team based in the [School of Computing, National University of Singapor
 * Features implemented:
    * [Mark/Unmark](https://github.com/CS2103JAN2017-F12-B2/main/blob/master/docs/UserGuide.md#mark)
    * [Finding by start, deadline, priority, completion](https://github.com/se-edu/addressbook-level4/blob/master/docs/UserGuide.md#find)
-   * [Specify Path](https://github.com/se-edu/addressbook-level4/blob/master/docs/UserGuide.md#specifypath)   
+   * [Specify Path](https://github.com/se-edu/addressbook-level4/blob/master/docs/UserGuide.md#specifypath)
 <!-- todo code written -->
 * Code written: [[Functional Code](https://github.com/CS2103JAN2017-F12-B2/main/blob/master/collated/main/A0124591H.md)][[Test Code](https://github.com/CS2103JAN2017-F12-B2/main/blob/master/collated/test/A0124591H.md)]
 * Other major contributions:
