@@ -10,9 +10,9 @@ public class PriorityTest {
 
     @Test
     public void isValidPriority() {
-        //valid priority
-        assertTrue(Priority.isValidPriority(0)); //zero
-        assertTrue(Priority.isValidPriority(10)); //integer
+        // valid priority
+        assertTrue(Priority.isValidPriority(0)); // zero
+        assertTrue(Priority.isValidPriority(10)); // integer
 
     }
 }
