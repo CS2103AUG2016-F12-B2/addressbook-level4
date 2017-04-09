@@ -46,7 +46,7 @@ public class Start {
         if (test.equals("")) {
             return true;
         } else {
-        return test.matches(START_VALIDATION_REGEX);
+            return test.matches(START_VALIDATION_REGEX);
         }
     }
 
