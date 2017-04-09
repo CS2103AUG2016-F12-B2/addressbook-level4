@@ -140,13 +140,13 @@ All tasks in the ToDoApp will be deleted.
 ### 2.8. Find specific tasks
 
 Retrieve tasks based on various conditions.<br>
-Format: `find [name NAME] [deadline DEADLINE] [priority PRIORITY] [completion COMPLETION]`
+Format: `find [n/ NAME] [s/ START] [d/ DEADLINE] [p/ PRIORITY] [c/ COMPLETION]`
 
 > * Lists all tasks with the specific optional fields.
 
 Examples:
 
-* `find deadline 5 pm`<br>
+* `find d/ 5 pm`<br>
 Retrieve all tasks with the deadline at 5pm.
 
 ### 2.9. Undo a recent command: `undo`
@@ -163,6 +163,13 @@ Format: `redo`
 
 > * Can redo commands that were most recently undone
 > * Inputting a new undo-able command clears the redo state history
+
+### 2.10. Specify path of ToDoApp: `cd`
+
+Change the working file path of the current ToDoApp<br>
+Format: `cd FILEPATH`
+
+> * Will make a clone of current ToDoApp in newly specified file path
 
 
 ### 2.11. Exiting the program : `exit`
@@ -203,6 +210,9 @@ There is no need to save manually.
 
 * **Unmark** : `unmark INDEX` <br>
   e.g.`unmark 2`
+
+* **Specify Path** : `cd FILEPATH` <br>
+  e.g.`cd todoapp/newToDoApp.xml`
 
 * **List** : `list` <br>
   e.g. `list`

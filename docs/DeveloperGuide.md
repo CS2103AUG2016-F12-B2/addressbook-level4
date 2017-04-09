@@ -120,7 +120,7 @@ _Figure 2.1.2 : Class Diagram of the Logic Component_
 The _Sequence Diagram_ below shows how the components interact for the scenario where the user issues the
 command `delete 1`.
 
-<img src="images\SDforDeletePerson.png" width="800"><br>
+<img src="images\SDforDeleteTask.png" width="800"><br>
 _Figure 2.1.3a : Component interactions for `delete 1` command (part 1)_
 
 >Note how the `Model` simply raises a `ToDoAppChangedEvent` when the ToDoApp data are changed,
@@ -128,7 +128,7 @@ _Figure 2.1.3a : Component interactions for `delete 1` command (part 1)_
 
 The diagram below shows how the `EventsCenter` reacts to that event, which eventually results in the updates
 being saved to the hard disk and the status bar of the UI being updated to reflect the 'Last Updated' time. <br>
-<img src="images\SDforDeletePersonEventHandling.png" width="800"><br>
+<img src="images\SDforDeleteTaskEventHandling.png" width="800"><br>
 _Figure 2.1.3b : Component interactions for `delete 1` command (part 2)_
 
 > Note how the event is propagated through the `EventsCenter` to the `Storage` and `UI` without `Model` having
@@ -168,8 +168,6 @@ The sections below give more details of each component.
 
 ### 2.2. UI component
 
-Author: Alice Bee
-
 <img src="images/UiClassDiagram.png" width="800"><br>
 _Figure 2.2.1 : Structure of the UI Component_
 
@@ -190,8 +188,6 @@ The `UI` component,
 * Responds to events raised from various parts of the App and updates the UI accordingly.
 
 ### 2.3. Logic component
-
-Author: Bernard Choo
 
 <img src="images/LogicClassDiagram.png" width="800"><br>
 _Figure 2.3.1 : Structure of the Logic Component_
@@ -382,37 +378,38 @@ Priorities: High (must have) - `* * *`, Medium (nice to have)  - `* *`,  Low (un
 Priority | As a ... | I want to ... | So that I can...
 -------- | :-------- | :--------- | :-----------
 `* * *` | new user | see usage instructions | refer to instructions when I forget how to use the App
-`* * *` | user | add a new task |
-`* * *` | user | edit a new task | change information of a task
+`* * *` | user | add a new floating task |
+`* * *` | user | add a new task with start and deadline |
+`* * *` | user | edit a task | change information of a task
 `* * *` | user | delete a task | remove tasks that I no longer need to track
 `* * *` | user | list out all uncompleted tasks | To view outstanding tasks
 `* * *` | user | block out a period of time | keep a period of time unavailable
 `* * *` | user | release a blocked period of time | make a period of time available again
-`* * *` | user | find upcoming tasks by date | can track of what is dued soon
 `* * *` | user | mark a task as completed | differentiate between completed and uncompleted tasks
 `* * *` | user | unmark a task as undone | differentiate between completed and uncompleted tasks
 `* * *` | user | set a deadline to a task | easily keep track of deadline for a certain task to be completed
+`* * *` | user | set a venue to a task | know the location of task to be completed
+`* * *` | user | add notes to a task | store additional information about task
+`* * *` | user | add tags to a  task | categorise tasks by tags
+`* * *` | user | assign priority to tasks | so that I can keep track of the priority of tasks
 `* * *` | user | get more information about a command | learn how to use various commands
 `* * *` | user with different kind of tasks| tag a task | so that I can add labels associated with the task
 `* * *` | user | retrieve tasks by tag | so that I can see tasks associated with a label
 `* * *` | user | retrieve tasks due on certain date | so that I can see tasks due on specified date
-`* * *` | user | assign priority to tasks | so that I can keep track of the priority of tasks
 `* * *` | user | retrieve tasks based on priority | so that I can see tasks ranked by priority
 `* * *` | user | undo a command | correct mistakes
 `* * *` | user | redo a command | correct mistakes
-`* *` | advanced user | use shorter versions of a command to type faster | more quickly use the app
-`* *` | complex user | break a task into subtasks | keep track of complex tasks
+`* * *` | user | specify the location of the storage file | save the data to the location of my preference
+`* * ` | user that travels frequently | view the location of the task in Google Maps | know how to travel to theother location
 `* *` | frequent user | add a recurring task | keep track of task that needs to be done many times
 `* *` | user | get a week view of tasks | plan for my week
 `* *` | frequent user | access app with shortcut | quickly access the app
 `* *` | user | change the reccurence setting of a task | update if the task is recurring
 `* ` | user | create a copy of task in google calendar | refer to tasks outside of app
 `* ` | user | set task reminders | remind myself of certain tasks
-`* ` | user | sync the  to my google calendar | sync the tasks with the calendar and get notified
-`* ` | user | specify the location of the storage file | save the data to the location of my preference
+`* ` | user | sync the tasks to my google calendar | sync the tasks with the calendar and get notified
 `* ` | international user | specify the timezone of task | keep track of tasks due across different timezones
 
-{More to be added}
 
 ## Appendix B : Use Cases
 
@@ -483,37 +480,11 @@ Use case ends
 
 >Use case ends
 
-
-#### Use case: Mark or unmark a task
-
-**MSS**
-
-1. User requests to list tasks
-2. TodoApp shows a list of tasks
-3. User requests to mark/unmark a specific task in the list
-4. TodoApp sets completion of the task to true/false
-
-**Extensions**
-
-2a. List is empty
-
-> Use case ends
-
-3a. Invalid index given to delete
-
-> 3a1. TodoApp shows an error message
-  Use case resumes at step 2
-
-3d. Value of completion is the same as the previous value
-> 3d1. TodoApp does nothing
-
->Use case ends
-
 #### Use case: Retrieve a task
 
 **MSS**
 
-1. User requests to retrieve tasks by name/priority/deadline/completion
+1. User requests to retrieve tasks by name/priority/start/deadline/completion
 2. TodoApp shows a list of tasks that matches
 Use case ends
 
@@ -540,15 +511,14 @@ Use case ends
 > 2a1. TodoApp shows a message to indicate that the list is empty
 Use case ends
 
-#### Use case: Mark a task as complete
+#### Use case: Mark a task as completed
 
 **MSS**
 
 1. User requests to list tasks
 2. TodoApp shows a list of tasks
-3. User marks a specific task in the list as complete
-4. TodoApp marks the task as complete
-Use case ends
+3. User requests to mark a specific task in the list
+4. TodoApp sets completion of the task to true
 
 **Extensions**
 
@@ -556,20 +526,24 @@ Use case ends
 
 > Use case ends
 
-3a. The given index is invalid
+3a. Invalid index given to delete
 
 > 3a1. TodoApp shows an error message
-Use case resumes at step 2
+  Use case resumes at step 2
 
-#### Use case: Set deadline to a task
+3b. Value of completion is true
+> 3b1. TodoApp does nothing
+
+>Use case ends
+
+#### Use case: Mark a task as uncompleted
 
 **MSS**
 
 1. User requests to list tasks
 2. TodoApp shows a list of tasks
-3. User requests to set a deadline to a specific task
-4. TodoApp sets a deadline for the task and displays the task
-Use case ends
+3. User requests to unmark a specific task in the list
+4. TodoApp sets completion of the task to 
 
 **Extensions**
 
@@ -577,15 +551,15 @@ Use case ends
 
 > Use case ends
 
-3a. The given index is invalid
+3a. Invalid index given to delete
 
 > 3a1. TodoApp shows an error message
-Use case resumes at step 2
+  Use case resumes at step 2
 
-3b. The date input by user is invalid
+3b. Value of completion is false
+> 3b1. TodoApp does nothing
 
-> 3b1. TodoApp shows an error message
-Use case resumes at step 2
+>Use case ends
 
 #### Use case: Undo a command
 
@@ -618,13 +592,31 @@ Use case resumes at step 2
 
 > Use case ends
 
-{More to be added}
+#### Use case: Specify new file path for ToDoApp
+
+**MSS**
+
+1. User requests to change file path
+2. TodoApp loads task list from new file path
+
+**Extensions**
+
+1a. File path is not a pre-existing task list
+
+> ToDoApp loads a new empty task list at new file pathregular
+
+1b. File path is not valid
+
+> ToDoApp shows an error message
+
+> Use case ends
+
 
 ## Appendix C : Non Functional Requirements
 
 1. Should work on any [mainstream OS](#mainstream-os) as long as it has Java `1.8.0_60` or higher installed.
 2. Should be able to hold up to 1000 tasks without a noticeable sluggishness in performance for typical usage.
-3. A user with above average typing speed for regular English text (i.e. not code, not system admin commands)
+3. A user with above average typing speed for  English text (i.e. not code, not system admin commands)
    should be able to accomplish most of the tasks faster using commands than using the mouse.
 4. Should include well-written guides for both users and developers
 5. Should follow good OOP principles
