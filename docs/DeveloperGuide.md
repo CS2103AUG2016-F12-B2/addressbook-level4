@@ -411,10 +411,11 @@ Priority | As a ... | I want to ... | So that I can...
 `* *` | user | get a week view of tasks | plan for my week
 `* *` | frequent user | access app with shortcut | quickly access the app
 `* *` | user | change the reccurence setting of a task | update if the task is recurring
+`* *` | user | specify the location of the storage file | save the data to the location of my preference
+`* *` | user | import data from a specified file
 `* ` | user | create a copy of task in google calendar | refer to tasks outside of app
 `* ` | user | set task reminders | remind myself of certain tasks
 `* ` | user | sync the  to my google calendar | sync the tasks with the calendar and get notified
-`* ` | user | specify the location of the storage file | save the data to the location of my preference
 `* ` | international user | specify the timezone of task | keep track of tasks due across different timezones
 
 {More to be added}
