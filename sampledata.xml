@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<todoapp>
+    <tasks>
+        <name>CS1010 assignment1</name>
+        <start>Sat Apr 08 11:56:07 2017</start>
+        <deadline>-</deadline>
+        <priority>3</priority>
+        <tagged>daily</tagged>
+        <notes>-</notes>
+        <completion>true</completion>
+        <venue>-</venue>
+    </tasks>
+    <tasks>
+        <name>CS1010 assignment2</name>
+        <start>Sat Apr 08 11:56:07 2017</start>
+        <deadline>-</deadline>
+        <priority>3</priority>
+        <tagged>daily</tagged>
+        <notes>-</notes>
+        <completion>true</completion>
+        <venue>-</venue>
+    </tasks>
+    <tasks>
+        <name>CS1010 assignment3</name>
+        <start>Sat Apr 08 11:56:07 2017</start>
+        <deadline>-</deadline>
+        <priority>3</priority>
+        <tagged>daily</tagged>
+        <notes>-</notes>
+        <completion>true</completion>
+        <venue>-</venue>
+    </tasks>
+    <tasks>
+        <name>CS1010 assignment4</name>
+        <start>-</start>
+        <deadline>-</deadline>
+        <priority>3</priority>
+        <tagged>assignment</tagged>
+        <notes>need help</notes>
+        <completion>true</completion>
+        <venue>-</venue>
+    </tasks>
+    <tasks>
+        <name>CS1010 assignment5</name>
+        <start>-</start>
+        <deadline>-</deadline>
+        <priority>3</priority>
+        <tagged>assignment</tagged>
+        <notes>-</notes>
+        <completion>false</completion>
+        <venue>-</venue>
+    </tasks>
+    <tasks>
+        <name>CS1010 assignment6</name>
+        <start>-</start>
+        <deadline>-</deadline>
+        <priority>3</priority>
+        <tagged>assignment</tagged>
+        <notes>-</notes>
+        <completion>false</completion>
+        <venue>-</venue>
+    </tasks>
+    <tasks>
+        <name>CS1010 tut7</name>
+        <start>-</start>
+        <deadline>-</deadline>
+        <priority>2</priority>
+        <tagged>tut</tagged>
+        <notes>-</notes>
+        <completion>true</completion>
+        <venue>LT27</venue>
+    </tasks>
+    <tasks>
+        <name>CS1010 tut6</name>
+        <start>-</start>
+        <deadline>-</deadline>
+        <priority>2</priority>
+        <tagged>tut</tagged>
+        <notes>-</notes>
+        <completion>true</completion>
+        <venue>LT27</venue>
+    </tasks>
+    <tasks>
+        <name>CS1010 tut5</name>
+        <start>-</start>
+        <deadline>-</deadline>
+        <priority>2</priority>
+        <tagged>tut</tagged>
+        <notes>-</notes>
+        <completion>true</completion>
+        <venue>LT27</venue>
+    </tasks>
+    <tasks>
+        <name>CS1010 tut4</name>
+        <start>-</start>
+        <deadline>-</deadline>
+        <priority>2</priority>
+        <tagged>tut</tagged>
+        <notes>TA on leave</notes>
+        <completion>true</completion>
+        <venue>LT27</venue>
+    </tasks>
+    <tasks>
+        <name>CS1010 tut3</name>
+        <start>-</start>
+        <deadline>-</deadline>
+        <priority>2</priority>
+        <tagged>tut</tagged>
+        <notes>need to do tutorial</notes>
+        <completion>false</completion>
+        <venue>LT27</venue>
+    </tasks>
+    <tasks>
+        <name>CS1010 tut2</name>
+        <start>-</start>
+        <deadline>-</deadline>
+        <priority>2</priority>
+        <tagged>tut</tagged>
+        <notes>-</notes>
+        <completion>false</completion>
+        <venue>LT27</venue>
+    </tasks>
+    <tasks>
+        <name>CS1010 tut1</name>
+        <start>-</start>
+        <deadline>-</deadline>
+        <priority>2</priority>
+        <tagged>tut</tagged>
+        <notes>-</notes>
+        <completion>false</completion>
+        <venue>LT27</venue>
+    </tasks>
+    <tasks>
+        <name>CS1010 midterm</name>
+        <start>-</start>
+        <deadline>-</deadline>
+        <priority>3</priority>
+        <tagged>test</tagged>
+        <notes>-</notes>
+        <completion>false</completion>
+        <venue>MPSH2</venue>
+    </tasks>
+    <tasks>
+        <name>CS1010 finals</name>
+        <start>-</start>
+        <deadline>-</deadline>
+        <priority>5</priority>
+        <tagged>test</tagged>
+        <notes>-</notes>
+        <completion>false</completion>
+        <venue>nus</venue>
+    </tasks>
+    <tasks>
+        <name>CS1020 lecture1</name>
+        <start>-</start>
+        <deadline>-</deadline>
+        <priority>1</priority>
+        <tagged>lect</tagged>
+        <notes>-</notes>
+        <completion>true</completion>
+        <venue>Icube</venue>
+    </tasks>
+    <tasks>
+        <name>CS1020 lecture2</name>
+        <start>-</start>
+        <deadline>-</deadline>
+        <priority>1</priority>
+        <tagged>lect</tagged>
+        <notes>need print lect notes</notes>
+        <completion>true</completion>
+        <venue>Icube</venue>
+    </tasks>
+    <tasks>
+        <name>CS1020 lecture3</name>
+        <start>-</start>
+        <deadline>-</deadline>
+        <priority>1</priority>
+        <tagged>lect</tagged>
+        <notes>-</notes>
+        <completion>true</completion>
+        <venue>Icube</venue>
+    </tasks>
+    <tasks>
+        <name>CS1020 lecture4</name>
+        <start>-</start>
+        <deadline>-</deadline>
+        <priority>1</priority>
+        <tagged>lect</tagged>
+        <notes>-</notes>
+        <completion>true</completion>
+        <venue>Icube</venue>
+    </tasks>
+    <tasks>
+        <name>CS1020 lecture5</name>
+        <start>-</start>
+        <deadline>-</deadline>
+        <priority>1</priority>
+        <tagged>lect</tagged>
+        <notes>-</notes>
+        <completion>false</completion>
+        <venue>Icube</venue>
+    </tasks>
+    <tasks>
+        <name>CS1020 lecture6</name>
+        <start>-</start>
+        <deadline>-</deadline>
+        <priority>1</priority>
+        <tagged>lect</tagged>
+        <notes>-</notes>
+        <completion>false</completion>
+        <venue>Icube</venue>
+    </tasks>
+    <tasks>
+        <name>CS1020 tut1</name>
+        <start>-</start>
+        <deadline>-</deadline>
+        <priority>2</priority>
+        <tagged>tut</tagged>
+        <notes>-</notes>
+        <completion>true</completion>
+        <venue>COM1</venue>
+    </tasks>
+    <tasks>
+        <name>CS1020 tut2</name>
+        <start>-</start>
+        <deadline>-</deadline>
+        <priority>2</priority>
+        <tagged>tut</tagged>
+        <notes>-</notes>
+        <completion>true</completion>
+        <venue>COM1</venue>
+    </tasks>
+    <tasks>
+        <name>CS1020 tut3</name>
+        <start>-</start>
+        <deadline>-</deadline>
+        <priority>2</priority>
+        <tagged>tut</tagged>
+        <notes>need to research on linkedlist</notes>
+        <completion>true</completion>
+        <venue>COM1</venue>
+    </tasks>
+    <tasks>
+        <name>CS1020 tut4</name>
+        <start>-</start>
+        <deadline>-</deadline>
+        <priority>2</priority>
+        <tagged>tut</tagged>
+        <notes>need to complete question1 before tutorial</notes>
+        <completion>true</completion>
+        <venue>COM1</venue>
+    </tasks>
+    <tasks>
+        <name>CS1020 tut5</name>
+        <start>-</start>
+        <deadline>-</deadline>
+        <priority>2</priority>
+        <tagged>tut</tagged>
+        <notes>-</notes>
+        <completion>true</completion>
+        <venue>COM1</venue>
+    </tasks>
+    <tasks>
+        <name>CS1020 tut6</name>
+        <start>-</start>
+        <deadline>-</deadline>
+        <priority>2</priority>
+        <tagged>tut</tagged>
+        <notes>-</notes>
+        <completion>false</completion>
+        <venue>COM1</venue>
+    </tasks>
+    <tasks>
+        <name>CS1020 tut7</name>
+        <start>-</start>
+        <deadline>-</deadline>
+        <priority>2</priority>
+        <tagged>tut</tagged>
+        <notes>-</notes>
+        <completion>false</completion>
+        <venue>COM1</venue>
+    </tasks>
+    <tasks>
+        <name>CS1020 assignment1</name>
+        <start>-</start>
+        <deadline>-</deadline>
+        <priority>3</priority>
+        <tagged>assignment</tagged>
+        <notes>-</notes>
+        <completion>true</completion>
+        <venue>-</venue>
+    </tasks>
+    <tasks>
+        <name>CS1020 assignment2</name>
+        <start>-</start>
+        <deadline>-</deadline>
+        <priority>3</priority>
+        <tagged>assignment</tagged>
+        <notes>need to do early</notes>
+        <completion>true</completion>
+        <venue>-</venue>
+    </tasks>
+    <tasks>
+        <name>CS1020 assignment3</name>
+        <start>-</start>
+        <deadline>-</deadline>
+        <priority>3</priority>
+        <tagged>assignment</tagged>
+        <notes>very hard</notes>
+        <completion>true</completion>
+        <venue>-</venue>
+    </tasks>
+    <tasks>
+        <name>CS1020 assignment4</name>
+        <start>-</start>
+        <deadline>-</deadline>
+        <priority>3</priority>
+        <tagged>assignment</tagged>
+        <notes>need help</notes>
+        <completion>false</completion>
+        <venue>-</venue>
+    </tasks>
+    <tasks>
+        <name>CS1020 assignment5</name>
+        <start>-</start>
+        <deadline>-</deadline>
+        <priority>3</priority>
+        <tagged>assignment</tagged>
+        <notes>-</notes>
+        <completion>false</completion>
+        <venue>-</venue>
+    </tasks>
+    <tasks>
+        <name>CS1020 midterm</name>
+        <start>-</start>
+        <deadline>-</deadline>
+        <priority>5</priority>
+        <tagged>test</tagged>
+        <notes>-</notes>
+        <completion>true</completion>
+        <venue>MPSH3</venue>
+    </tasks>
+    <tasks>
+        <name>CS1020 finals</name>
+        <start>-</start>
+        <deadline>-</deadline>
+        <priority>5</priority>
+        <tagged>test</tagged>
+        <notes>write cheatsheet</notes>
+        <completion>false</completion>
+        <venue>MPSH4</venue>
+    </tasks>
+    <tasks>
+        <name>CS2010 tut1</name>
+        <start>-</start>
+        <deadline>-</deadline>
+        <priority>2</priority>
+        <tagged>tut</tagged>
+        <notes>-</notes>
+        <completion>true</completion>
+        <venue>COM2</venue>
+    </tasks>
+    <tasks>
+        <name>CS2010 tut2</name>
+        <start>-</start>
+        <deadline>-</deadline>
+        <priority>2</priority>
+        <tagged>tut</tagged>
+        <notes>-</notes>
+        <completion>true</completion>
+        <venue>COM2</venue>
+    </tasks>
+    <tasks>
+        <name>CS2010 tut3</name>
+        <start>-</start>
+        <deadline>-</deadline>
+        <priority>2</priority>
+        <tagged>tut</tagged>
+        <notes>need print tutorial</notes>
+        <completion>true</completion>
+        <venue>COM2</venue>
+    </tasks>
+    <tasks>
+        <name>CS2010 tut4</name>
+        <start>-</start>
+        <deadline>-</deadline>
+        <priority>2</priority>
+        <tagged>tut</tagged>
+        <notes>-</notes>
+        <completion>true</completion>
+        <venue>COM2</venue>
+    </tasks>
+    <tasks>
+        <name>CS2010 tut5</name>
+        <start>-</start>
+        <deadline>-</deadline>
+        <priority>2</priority>
+        <tagged>tut</tagged>
+        <notes>-</notes>
+        <completion>false</completion>
+        <venue>COM2</venue>
+    </tasks>
+    <tasks>
+        <name>CS2010 tut6</name>
+        <start>-</start>
+        <deadline>-</deadline>
+        <priority>2</priority>
+        <tagged>tut</tagged>
+        <notes>-</notes>
+        <completion>false</completion>
+        <venue>COM2</venue>
+    </tasks>
+    <tasks>
+        <name>CS2010 lecture1</name>
+        <start>-</start>
+        <deadline>-</deadline>
+        <priority>1</priority>
+        <tagged>lect</tagged>
+        <notes>-</notes>
+        <completion>true</completion>
+        <venue>LT19</venue>
+    </tasks>
+    <tasks>
+        <name>CS2010 lecture2</name>
+        <start>-</start>
+        <deadline>-</deadline>
+        <priority>1</priority>
+        <tagged>lect</tagged>
+        <notes>-</notes>
+        <completion>true</completion>
+        <venue>LT19</venue>
+    </tasks>
+    <tasks>
+        <name>CS2010 lecture3</name>
+        <start>-</start>
+        <deadline>-</deadline>
+        <priority>1</priority>
+        <tagged>lect</tagged>
+        <notes>need to go early</notes>
+        <completion>true</completion>
+        <venue>LT19</venue>
+    </tasks>
+    <tasks>
+        <name>CS2010 lecture4</name>
+        <start>-</start>
+        <deadline>-</deadline>
+        <priority>1</priority>
+        <tagged>lect</tagged>
+        <notes>lecture cancelled</notes>
+        <completion>true</completion>
+        <venue>LT19</venue>
+    </tasks>
+    <tasks>
+        <name>CS2010 lecture5</name>
+        <start>-</start>
+        <deadline>-</deadline>
+        <priority>1</priority>
+        <tagged>lect</tagged>
+        <notes>-</notes>
+        <completion>false</completion>
+        <venue>LT19</venue>
+    </tasks>
+    <tasks>
+        <name>CS2010 lecture6</name>
+        <start>-</start>
+        <deadline>-</deadline>
+        <priority>1</priority>
+        <tagged>lect</tagged>
+        <notes>-</notes>
+        <completion>false</completion>
+        <venue>LT19</venue>
+    </tasks>
+    <tasks>
+        <name>CS2010 assignment1</name>
+        <start>-</start>
+        <deadline>-</deadline>
+        <priority>3</priority>
+        <tagged>assignment</tagged>
+        <notes>hard</notes>
+        <completion>true</completion>
+        <venue>-</venue>
+    </tasks>
+    <tasks>
+        <name>CS2010 assignment2</name>
+        <start>-</start>
+        <deadline>-</deadline>
+        <priority>3</priority>
+        <tagged>assignment</tagged>
+        <notes>very hard</notes>
+        <completion>false</completion>
+        <venue>-</venue>
+    </tasks>
+    <tasks>
+        <name>CS2010 assignment3</name>
+        <start>-</start>
+        <deadline>-</deadline>
+        <priority>3</priority>
+        <tagged>assignment</tagged>
+        <notes>super hard</notes>
+        <completion>false</completion>
+        <venue>-</venue>
+    </tasks>
+    <tasks>
+        <name>CS2010 midterm</name>
+        <start>-</start>
+        <deadline>-</deadline>
+        <priority>5</priority>
+        <tagged>test</tagged>
+        <notes>-</notes>
+        <completion>true</completion>
+        <venue>MPSH5</venue>
+    </tasks>
+    <tasks>
+        <name>CS2010 finals</name>
+        <start>-</start>
+        <deadline>-</deadline>
+        <priority>5</priority>
+        <tagged>test</tagged>
+        <notes>-</notes>
+        <completion>false</completion>
+        <venue>MPSH6</venue>
+    </tasks>
+    <tags>assignment</tags>
+    <tags>tut</tags>
+    <tags>test</tags>
+    <tags>lect</tags>
+    <tags>daily</tags>
+</todoapp>
