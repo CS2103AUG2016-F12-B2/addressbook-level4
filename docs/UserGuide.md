@@ -175,6 +175,24 @@ Format: `exit`
 ToDoApp data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.
 
+<!-- @@author A0124591H -->
+
+### 2.12. Specifying a new file path : `cd`
+
+Specify a new file path for the ToDoApp<br>
+Format: `cd FILEPATH`
+
+> * ToDoApp will clone the current working .xml file to the new specified file path
+> * Further changes to ToDoApp's storage will affect new file path only
+
+### 2.12. Importing from a file : `import`
+
+Import data from a file for the ToDoApp<br>
+Format: `import FILEPATH`
+
+> * ToDoApp will import data from specified file path and overwrite the current working file path
+> * Further changes to ToDoApp's storage will be added to current file path only
+
 ## 3. FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>

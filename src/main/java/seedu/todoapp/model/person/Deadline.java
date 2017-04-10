@@ -38,9 +38,6 @@ public class Deadline {
         this.value = deadline;
     }
 
-    /**
-     * Returns true if a given string is a valid start.
-     */
     public static boolean isValidDeadline(String test) {
         return test.matches(DEADLINE_VALIDATION_REGEX);
     }

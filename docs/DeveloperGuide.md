@@ -411,10 +411,11 @@ Priority | As a ... | I want to ... | So that I can...
 `* *` | user | get a week view of tasks | plan for my week
 `* *` | frequent user | access app with shortcut | quickly access the app
 `* *` | user | change the reccurence setting of a task | update if the task is recurring
+`* *` | user | specify the location of the storage file | save the data to the location of my preference
+`* *` | user | import data from a specified file
 `* ` | user | create a copy of task in google calendar | refer to tasks outside of app
 `* ` | user | set task reminders | remind myself of certain tasks
 `* ` | user | sync the  to my google calendar | sync the tasks with the calendar and get notified
-`* ` | user | specify the location of the storage file | save the data to the location of my preference
 `* ` | international user | specify the timezone of task | keep track of tasks due across different timezones
 
 {More to be added}
@@ -488,6 +489,7 @@ Use case ends
 
 >Use case ends
 
+<!-- @@author A0124591H -->
 
 #### Use case: Mark or unmark a task
 
@@ -509,10 +511,13 @@ Use case ends
 > 3a1. TodoApp shows an error message
   Use case resumes at step 2
 
-3d. Value of completion is the same as the previous value
-> 3d1. TodoApp does nothing
+3b. Value of completion is the same as the previous value
+
+> 3b1. TodoApp does nothing
 
 >Use case ends
+
+<!-- @@author A0124591H -->
 
 #### Use case: Retrieve a task
 
@@ -530,6 +535,8 @@ Use case ends
 
 > Use case ends
 
+<!-- @@author -->
+
 #### Use case: List task
 
 **MSS**
@@ -544,27 +551,6 @@ Use case ends
 
 > 2a1. TodoApp shows a message to indicate that the list is empty
 Use case ends
-
-#### Use case: Mark a task as complete
-
-**MSS**
-
-1. User requests to list tasks
-2. TodoApp shows a list of tasks
-3. User marks a specific task in the list as complete
-4. TodoApp marks the task as complete
-Use case ends
-
-**Extensions**
-
-2a. List is empty
-
-> Use case ends
-
-3a. The given index is invalid
-
-> 3a1. TodoApp shows an error message
-Use case resumes at step 2
 
 #### Use case: Set deadline to a task
 
@@ -623,7 +609,41 @@ Use case resumes at step 2
 
 > Use case ends
 
-{More to be added}
+<!-- @@author A0124591H -->
+
+#### Use case: Specify a new path command
+
+**MSS**
+
+1. User executes a `cd` command
+2. ToDoApp creates a clone of the data file in specified path
+3. Use case ends
+
+**Extensions**
+
+1a. Invalid file path
+
+> 1a1. ToDoApp shows an error message
+
+> Use case ends
+
+<!-- @@author A0124591H -->
+
+#### Use case: Import command
+
+**MSS**
+
+1. User executes an `import` command
+2. ToDoApp imports data from specified file into current ToDoApp
+3. Use case ends
+
+**Extensions**
+
+1a. Invalid file path
+
+> 1a1. ToDoApp shows an error message
+
+> Use case ends
 
 ## Appendix C : Non Functional Requirements
 
@@ -685,6 +705,8 @@ Cons:
 * Not much integrations
 * No options for subtasks
 * No repeat options
+
+<!-- @@author A0124591H -->
 
 **Google Calendar**
 

@@ -13,7 +13,7 @@ import seedu.todoapp.model.person.Task;
 import seedu.todoapp.model.person.UniqueTaskList;
 
 /**
- * Marks the details of an existing person in the address book.
+ * Marks the details of an existing task in the ToDoApp.
  */
 public class MarkCommand extends Command {
 
@@ -32,9 +32,9 @@ public class MarkCommand extends Command {
 
     /**
      * @param filteredTaskListIndex
-     *            the index of the person in the filtered person list to mark
+     *            the index of the task in the filtered task list to mark
      * @param markTaskDescriptor
-     *            details to mark the person with
+     *            details to mark the task with
      */
     public MarkCommand(int filteredTaskListIndex) {
         assert filteredTaskListIndex > 0;
@@ -66,7 +66,7 @@ public class MarkCommand extends Command {
     /**
      * Creates and returns a {@code Task} with the details of {@code taskToMark}
      * marked with {@code markTaskDescriptor}.
-     * @throws IllegalValueException
+     * @throws IllegalValueException if value to fields not accepted
      */
     private static Task createMarkedTask(ReadOnlyTask taskToMark) throws IllegalValueException {
         assert taskToMark != null;
