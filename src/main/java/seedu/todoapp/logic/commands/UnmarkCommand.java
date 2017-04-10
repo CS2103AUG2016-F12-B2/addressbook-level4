@@ -14,7 +14,7 @@ import seedu.todoapp.model.person.Task;
 import seedu.todoapp.model.person.UniqueTaskList;
 
 /**
- * Unmarks the details of an existing person in the address book.
+ * Unmarks the details of an existing task in the ToDoApp.
  */
 public class UnmarkCommand extends Command {
 
@@ -32,9 +32,9 @@ public class UnmarkCommand extends Command {
     private final int filteredTaskListIndex;
 
     /**
-     * @param filteredTaskListIndex the index of the person in the filtered
-     *            person list to mark
-     * @param markTaskDescriptor details to mark the person with
+     * @param filteredTaskListIndex the index of the task in the filtered
+     *            task list to mark
+     * @param markTaskDescriptor details to mark the task with
      */
     public UnmarkCommand(int filteredTaskListIndex) {
         assert filteredTaskListIndex > 0;
