@@ -3,25 +3,17 @@
 package seedu.todoapp.logic.commands;
 
 import java.util.List;
-import java.util.Optional;
 
 import seedu.todoapp.commons.core.Messages;
 import seedu.todoapp.commons.exceptions.IllegalValueException;
-import seedu.todoapp.commons.util.CollectionUtil;
 import seedu.todoapp.logic.commands.exceptions.CommandException;
 import seedu.todoapp.model.person.Completion;
-import seedu.todoapp.model.person.Deadline;
-import seedu.todoapp.model.person.Name;
-import seedu.todoapp.model.person.Notes;
-import seedu.todoapp.model.person.Priority;
 import seedu.todoapp.model.person.ReadOnlyTask;
-import seedu.todoapp.model.person.Start;
 import seedu.todoapp.model.person.Task;
 import seedu.todoapp.model.person.UniqueTaskList;
-import seedu.todoapp.model.tag.UniqueTagList;
 
 /**
- * Marks the details of an existing person in the address book.
+ * Marks the details of an existing task in the ToDoApp.
  */
 public class MarkCommand extends Command {
 
@@ -40,9 +32,9 @@ public class MarkCommand extends Command {
 
     /**
      * @param filteredTaskListIndex
-     *            the index of the person in the filtered person list to mark
+     *            the index of the task in the filtered task list to mark
      * @param markTaskDescriptor
-     *            details to mark the person with
+     *            details to mark the task with
      */
     public MarkCommand(int filteredTaskListIndex) {
         assert filteredTaskListIndex > 0;
@@ -74,109 +66,12 @@ public class MarkCommand extends Command {
     /**
      * Creates and returns a {@code Task} with the details of {@code taskToMark}
      * marked with {@code markTaskDescriptor}.
-     * @throws IllegalValueException
+     * @throws IllegalValueException if value to fields not accepted
      */
     private static Task createMarkedTask(ReadOnlyTask taskToMark) throws IllegalValueException {
         assert taskToMark != null;
 
         return new Task(taskToMark.getName(), taskToMark.getStart(), taskToMark.getDeadline(), taskToMark.getPriority(),
                 taskToMark.getTags(), taskToMark.getNotes(), new Completion("true"), taskToMark.getVenue());
-    }
-
-    /**
-     * Stores the details to mark the person with. Each non-empty field value
-     * will replace the corresponding field value of the person.
-     */
-    public static class MarkTaskDescriptor {
-        private Optional<Name> name = Optional.empty();
-        private Optional<Start> start = Optional.empty();
-        private Optional<Deadline> deadline = Optional.empty();
-        private Optional<Priority> priority = Optional.empty();
-        private Optional<UniqueTagList> tags = Optional.empty();
-        private Optional<Notes> notes = Optional.empty();
-        private Optional<Completion> completion = Optional.empty();
-
-        public MarkTaskDescriptor() {
-        }
-
-        public MarkTaskDescriptor(MarkTaskDescriptor toCopy) {
-            this.name = toCopy.getName();
-            this.start = toCopy.getStart();
-            this.deadline = toCopy.getDeadline();
-            this.priority = toCopy.getPriority();
-            this.tags = toCopy.getTags();
-            this.notes = toCopy.getNotes();
-            this.completion = toCopy.getCompletion();
-        }
-
-        /**
-         * Returns true if at least one field is marked.
-         */
-        public boolean isAnyFieldMarked() {
-            return CollectionUtil.isAnyPresent(this.name, this.tags);
-        }
-
-        public void setName(Optional<Name> name) {
-            assert name != null;
-            this.name = name;
-        }
-
-        public Optional<Name> getName() {
-            return name;
-        }
-
-        public void setStart(Optional<Start> start) {
-            assert start != null;
-            this.start = start;
-        }
-
-        public Optional<Start> getStart() {
-            return start;
-        }
-
-        public void setDeadline(Optional<Deadline> deadline) {
-            assert deadline != null;
-            this.deadline = deadline;
-        }
-
-        public Optional<Deadline> getDeadline() {
-            return deadline;
-        }
-
-        public void setPriority(Optional<Priority> priority) {
-            assert priority != null;
-            this.priority = priority;
-        }
-
-        public Optional<Priority> getPriority() {
-            return priority;
-        }
-
-        public void setTags(Optional<UniqueTagList> tags) {
-            assert tags != null;
-            this.tags = tags;
-        }
-
-        public Optional<UniqueTagList> getTags() {
-            return tags;
-        }
-
-        public void setNotes(Optional<Notes> notes) {
-            assert notes != null;
-            this.notes = notes;
-        }
-
-        public Optional<Notes> getNotes() {
-            return notes;
-        }
-
-        public void setCompletion(Optional<Completion> completion) {
-            assert completion != null;
-            this.completion = completion;
-        }
-
-        public Optional<Completion> getCompletion() {
-            return completion;
-        }
     }
 }

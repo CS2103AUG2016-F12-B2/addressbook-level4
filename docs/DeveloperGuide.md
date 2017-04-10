@@ -162,6 +162,11 @@ _Figure 2.1.8 : Sequence diagram for `undo` & `redo` commands_
 > Vice versa, when `redo` command is invoked, we pop the `StateCommandPair` from `redoStack` and put it on the `undoStack`. We then invoke the `executeCommand` from `StateCommandPair`. <br><br>
 > When the user performs any action, the redo stack is cleared. <br>
 > Undoability and Redoability are defined by whether either stack is empty, as well as if an action is undo-able, i.e only `add`, `edit`, `delete`, `mark`, `unmark`, `clear` commands.
+
+he Sequence Diagram below shows how ToDoApp handles the event where a user `select` or clicks on a task <br><br>
+<img src="images/ToDoApp_Seq-Diag-GMaps.png" width="800"><br>
+_Figure 2.1.9 : Sequence diagram for `select` / click on task_
+> On user interaction, whether it being a click or a `select` command, `BrowserPanel` will retrieve the venue from the Task, and does a Google search for the location of the venue and render the webpage accordingly.
 <!-- @@author -->
 
 The sections below give more details of each component.
@@ -205,7 +210,7 @@ _Figure 2.3.1 : Structure of the Logic Component_
 
 Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")`
  API call.<br>
-<img src="images/DeletePersonSdForLogic.png" width="800"><br>
+<img src="images/DeleteTaskSdForLogic.png" width="800"><br>
 _Figure 2.3.1 : Interactions Inside the Logic Component for the `delete 1` Command_
 
 ### 2.4. Model component
@@ -406,10 +411,11 @@ Priority | As a ... | I want to ... | So that I can...
 `* *` | user | get a week view of tasks | plan for my week
 `* *` | frequent user | access app with shortcut | quickly access the app
 `* *` | user | change the reccurence setting of a task | update if the task is recurring
+`* *` | user | specify the location of the storage file | save the data to the location of my preference
+`* *` | user | import data from a specified file
 `* ` | user | create a copy of task in google calendar | refer to tasks outside of app
 `* ` | user | set task reminders | remind myself of certain tasks
 `* ` | user | sync the  to my google calendar | sync the tasks with the calendar and get notified
-`* ` | user | specify the location of the storage file | save the data to the location of my preference
 `* ` | international user | specify the timezone of task | keep track of tasks due across different timezones
 
 {More to be added}
@@ -483,6 +489,7 @@ Use case ends
 
 >Use case ends
 
+<!-- @@author A0124591H -->
 
 #### Use case: Mark or unmark a task
 
@@ -504,10 +511,13 @@ Use case ends
 > 3a1. TodoApp shows an error message
   Use case resumes at step 2
 
-3d. Value of completion is the same as the previous value
-> 3d1. TodoApp does nothing
+3b. Value of completion is the same as the previous value
+
+> 3b1. TodoApp does nothing
 
 >Use case ends
+
+<!-- @@author A0124591H -->
 
 #### Use case: Retrieve a task
 
@@ -525,6 +535,8 @@ Use case ends
 
 > Use case ends
 
+<!-- @@author -->
+
 #### Use case: List task
 
 **MSS**
@@ -539,27 +551,6 @@ Use case ends
 
 > 2a1. TodoApp shows a message to indicate that the list is empty
 Use case ends
-
-#### Use case: Mark a task as complete
-
-**MSS**
-
-1. User requests to list tasks
-2. TodoApp shows a list of tasks
-3. User marks a specific task in the list as complete
-4. TodoApp marks the task as complete
-Use case ends
-
-**Extensions**
-
-2a. List is empty
-
-> Use case ends
-
-3a. The given index is invalid
-
-> 3a1. TodoApp shows an error message
-Use case resumes at step 2
 
 #### Use case: Set deadline to a task
 
@@ -618,7 +609,41 @@ Use case resumes at step 2
 
 > Use case ends
 
-{More to be added}
+<!-- @@author A0124591H -->
+
+#### Use case: Specify a new path command
+
+**MSS**
+
+1. User executes a `cd` command
+2. ToDoApp creates a clone of the data file in specified path
+3. Use case ends
+
+**Extensions**
+
+1a. Invalid file path
+
+> 1a1. ToDoApp shows an error message
+
+> Use case ends
+
+<!-- @@author A0124591H -->
+
+#### Use case: Import command
+
+**MSS**
+
+1. User executes an `import` command
+2. ToDoApp imports data from specified file into current ToDoApp
+3. Use case ends
+
+**Extensions**
+
+1a. Invalid file path
+
+> 1a1. ToDoApp shows an error message
+
+> Use case ends
 
 ## Appendix C : Non Functional Requirements
 
@@ -680,6 +705,8 @@ Cons:
 * Not much integrations
 * No options for subtasks
 * No repeat options
+
+<!-- @@author A0124591H -->
 
 **Google Calendar**
 

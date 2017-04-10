@@ -1,31 +1,30 @@
 //@@author A0124153U
 
-
 package seedu.todoapp.model.person;
 
 import seedu.todoapp.commons.exceptions.IllegalValueException;
 
 /**
- * Represents a Task's notes in the ToDoApp
- * Guarantees: immutable; is valid as declared in {@link #isValidNotes(String)}
+ * Represents a Task's notes in the ToDoApp Guarantees: immutable; is valid as
+ * declared in {@link #isValidNotes(String)}
  */
 public class Notes {
 
-    public static final String MESSAGE_NOTES_CONSTRAINTS =
-            "Task notes";
+    public static final String MESSAGE_NOTES_CONSTRAINTS = "Task notes";
 
     /*
-     * The first character of the notes must not be a whitespace,
-     * otherwise " " (a blank string) becomes a valid input.
+     * The first character of the notes must not be a whitespace, otherwise " "
+     * (a blank string) becomes a valid input.
      */
-    public static final String NOTES_VALIDATION_REGEX = "([^\\s])+";
+    public static final String NOTES_VALIDATION_REGEX = "[^\\s].*";
 
     public final String value;
 
     /**
      * Validates given notes.
      *
-     * @throws IllegalValueException if given notes string is invalid.
+     * @throws IllegalValueException
+     *             if given notes string is invalid.
      */
     public Notes(String notes) throws IllegalValueException {
         assert notes != null;
@@ -39,7 +38,7 @@ public class Notes {
      * Returns true if a given string is a valid notes.
      */
     public static boolean isValidNotes(String test) {
-        return true;
+        return test.matches(NOTES_VALIDATION_REGEX);
     }
 
     @Override
@@ -51,7 +50,8 @@ public class Notes {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof Notes // instanceof handles nulls
-                && this.value.equals(((Notes) other).value)); // state check
+                        && this.value.equals(((Notes) other).value)); // state
+                                                                      // check
     }
 
     @Override
