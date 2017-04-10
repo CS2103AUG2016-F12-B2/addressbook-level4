@@ -81,9 +81,11 @@ public class RecurrentTaskManager {
     }
 
     /*
-     * Helper function to check if task is recurring, and update accordingly
+     * Helper function to check if task is recurring, and update accordingly if it's not completed
      */
     private void updateTask(int idx, ReadOnlyTask task) throws Exception {
+        // Check if task is already completed
+        if (task.getCompletion().value) return;
         UniqueTagList tagList = task.getTags();
         for (int j = 0; j < tagList.asObservableList().size(); j++) {
             if (supportedTypes.contains(tagList.asObservableList().get(j).tagName)) {

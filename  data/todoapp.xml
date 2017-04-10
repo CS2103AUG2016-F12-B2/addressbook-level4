@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<todoapp>
+    <tasks>
+        <name>Buy printer</name>
+        <tagged>shopping</tagged>
+    </tasks>
+    <tasks>
+        <name>odpdodod</name>
+    </tasks>
+    <tasks>
+        <name>haha</name>
+    </tasks>
+    <tags>shopping</tags>
+    <tags>exercise</tags>
+</todoapp>
